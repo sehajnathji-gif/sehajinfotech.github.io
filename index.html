@@ -647,105 +647,843 @@ function renderNews(){
   </div>`;
 }
 
-// ── AI COUNSELLOR ─────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+//  SEHAJNATH AI CAREER COUNSELLOR — FULL TREE SYSTEM
+//  Class 10 → Stream → 12th → UG/PG → University → Job
+// ═══════════════════════════════════════════════════════════
+
+// ── KNOWLEDGE BASE ────────────────────────────────
+const EDU_KB = {
+  streams:{
+    science:{label:"Science",icon:"🔬",color:"#2196F3",
+      combos:["PCM — Physics + Chemistry + Maths","PCB — Physics + Chemistry + Biology","PCMB — Physics + Chemistry + Maths + Biology"],
+      careers:["Engineering","Medicine","Research","IT/AI","Architecture","Pharmacy","Biotechnology","Data Science"],
+      ug:["B.Tech/B.E.","MBBS/BDS","B.Sc","BCA","B.Pharm","B.Arch","B.Sc Nursing","B.Sc Agriculture"],
+      pg:["M.Tech","MD/MS","M.Sc","MCA","MBA","Ph.D"]},
+    commerce:{label:"Commerce",icon:"💹",color:"#3DD68C",
+      combos:["Accountancy + Business Studies + Economics","Commerce + Maths","Commerce + IP/CS"],
+      careers:["CA/CMA","MBA Finance","Banking","Financial Analyst","Entrepreneur","Company Secretary","Law"],
+      ug:["B.Com","BBA","B.Com(H)","BA Economics","BBA LLB","CA Foundation","CS Foundation"],
+      pg:["M.Com","MBA","CA Final","CFA","CS","LLM"]},
+    humanities:{label:"Humanities/Arts",icon:"📜",color:"#FF9933",
+      combos:["History + Political Science + Sociology","History + Geography + Economics","Psychology + Sociology + English","Philosophy + Literature + Languages"],
+      careers:["Civil Services (IAS/IPS/IFS)","Journalism","Law","Teaching/Professor","Social Work","NGO","Media & Communication","Research"],
+      ug:["BA","BA Hons","B.Journalism (BJMC)","LLB/BA LLB","B.Ed","BSW","BA Psychology","BA Economics"],
+      pg:["MA","LLM","MBA","BJMC PG","M.Ed","PG Diploma Journalism","UPSC Prep"]},
+    finearts:{label:"Fine Arts",icon:"🎨",color:"#9C27B0",
+      combos:["Drawing + Painting + Design","Music + Dance + Drama","Visual Arts + Craft + Sculpture"],
+      careers:["Graphic Designer","Animator/VFX Artist","UI/UX Designer","Film Director","Art Director","Fashion Designer","Illustrator"],
+      ug:["BFA","B.Des","B.Arch","BA Fine Arts","Animation & Multimedia Diploma","NIFT Fashion Design"],
+      pg:["MFA","M.Des","MA Visual Communication","PG Animation","NID/NIFT PG"]},
+    vocational:{label:"Vocational/Technical",icon:"🛠️",color:"#FF5722",
+      combos:["IT + Computer Science","Electronics + Auto Engineering","Healthcare Science","Agriculture Science","Fashion Technology","Retail Management"],
+      careers:["IT Technician","Electronic Engineer","Healthcare Specialist","Agricultural Expert","Entrepreneur","Retail Manager"],
+      ug:["B.Voc","Polytechnic Diploma (3yr)","B.Sc IT","BCA","B.Tech Lateral Entry","B.Sc Agriculture"],
+      pg:["M.Voc","MBA","PG Diploma","B.Tech (via Lateral Entry)","M.Tech"]}
+  },
+  interestMap:{
+    "Maths & Calculations":["science","commerce"],
+    "Biology & Medicine":["science"],
+    "Computers & Coding":["science","vocational"],
+    "Business & Entrepreneurship":["commerce"],
+    "Economics & Finance":["commerce","humanities"],
+    "Law & Politics":["humanities"],
+    "History & Literature":["humanities"],
+    "Art & Design":["finearts"],
+    "Music & Performing Arts":["finearts"],
+    "Technical & Mechanical":["vocational"],
+    "Agriculture & Environment":["vocational","science"],
+    "Social Work & NGO":["humanities"],
+    "Teaching & Education":["humanities","science","commerce"]
+  },
+  universities:{
+    punjab:{
+      ptu:{name:"IKG Punjab Technical University (PTU)",short:"PTU",url:"https://www.ptu.ac.in",type:"State Technical",
+        courses:[
+          {name:"B.Tech Computer Science Engineering",dur:"4 yr",fee:"~₹80k/yr",entrance:"JEE Main / LEET",stream:"science",type:"Engineering"},
+          {name:"B.Tech Mechanical Engineering",dur:"4 yr",fee:"~₹80k/yr",entrance:"JEE Main / LEET",stream:"science",type:"Engineering"},
+          {name:"B.Tech Civil Engineering",dur:"4 yr",fee:"~₹75k/yr",entrance:"JEE Main / LEET",stream:"science",type:"Engineering"},
+          {name:"B.Tech Electronics & Comm (ECE)",dur:"4 yr",fee:"~₹80k/yr",entrance:"JEE Main / LEET",stream:"science",type:"Engineering"},
+          {name:"B.Tech Electrical Engineering (EE)",dur:"4 yr",fee:"~₹78k/yr",entrance:"JEE Main / LEET",stream:"science",type:"Engineering"},
+          {name:"B.Tech Food Technology",dur:"4 yr",fee:"~₹70k/yr",entrance:"JEE Main / LEET",stream:"science",type:"Engineering"},
+          {name:"B.Pharm (Bachelor of Pharmacy)",dur:"4 yr",fee:"~₹75k/yr",entrance:"GPAT / PTU CET",stream:"science",type:"Pharmacy"},
+          {name:"MBA (Master of Business Admin)",dur:"2 yr",fee:"~₹60k/yr",entrance:"CAT / MAT / PTU CET",stream:"commerce",type:"Management"},
+          {name:"MCA (Master of Computer Apps)",dur:"3 yr",fee:"~₹50k/yr",entrance:"PTU CET / NIMCET",stream:"science",type:"IT"},
+          {name:"B.Arch (Bachelor of Architecture)",dur:"5 yr",fee:"~₹85k/yr",entrance:"NATA / JEE Paper 2",stream:"science",type:"Architecture"},
+          {name:"Hotel Management (BHM)",dur:"4 yr",fee:"~₹65k/yr",entrance:"NCHMCT JEE",stream:"vocational",type:"Hospitality"},
+          {name:"B.Tech Lateral Entry (After Diploma)",dur:"3 yr",fee:"~₹80k/yr",entrance:"LEET",stream:"vocational",type:"Engineering"},
+          {name:"Diploma Polytechnic (Various Branches)",dur:"3 yr",fee:"~₹25k/yr",entrance:"Merit / PAT",stream:"vocational",type:"Diploma"},
+        ],
+        syllabus:{
+          "B.Tech Computer Science Engineering":{
+            sem1:["Engineering Mathematics I","Programming in C","Basic Electrical Engineering","Engineering Physics","Workshop Practice"],
+            sem2:["Engineering Mathematics II","Data Structures","Digital Electronics","Engineering Chemistry","Communication Skills"],
+            sem3:["OOP with Java","Discrete Mathematics","Computer Organisation","Operating Systems","Database Management"],
+            sem4:["Analysis of Algorithms","Theory of Computation","Computer Networks","Software Engineering","Web Technologies"],
+            sem5:["Compiler Design","Computer Graphics","AI & Machine Learning","Elective I","Mini Project"],
+            sem6:["Advanced Database","Cloud Computing","Cyber Security","Elective II","Industrial Training"],
+            sem7:["Big Data Analytics","Blockchain","Elective III","Major Project (Part I)"],
+            sem8:["Major Project (Part II)","Seminar","Comprehensive Viva"],
+          }
+        }
+      },
+      gndu:{name:"Guru Nanak Dev University (GNDU)",short:"GNDU",url:"https://www.gndu.ac.in",type:"Central University",
+        courses:[
+          {name:"BA (Various Subjects)",dur:"3 yr",fee:"~₹15k/yr",entrance:"Merit Based",stream:"humanities",type:"Arts"},
+          {name:"BA Hons (Economics / History / Pol Sci)",dur:"3 yr",fee:"~₹16k/yr",entrance:"Merit Based",stream:"humanities",type:"Arts"},
+          {name:"B.Sc (Physics/Chemistry/Maths/Biology)",dur:"3 yr",fee:"~₹18k/yr",entrance:"Merit Based",stream:"science",type:"Science"},
+          {name:"B.Com / B.Com Hons",dur:"3 yr",fee:"~₹16k/yr",entrance:"Merit Based",stream:"commerce",type:"Commerce"},
+          {name:"BCA (Bachelor of Computer Apps)",dur:"3 yr",fee:"~₹25k/yr",entrance:"Merit Based",stream:"science",type:"IT"},
+          {name:"LLB Hons (Integrated 5-year)",dur:"5 yr",fee:"~₹20k/yr",entrance:"CLAT / GNDU CET",stream:"humanities",type:"Law"},
+          {name:"LLB (3-year after graduation)",dur:"3 yr",fee:"~₹18k/yr",entrance:"CLAT / GNDU",stream:"humanities",type:"Law"},
+          {name:"B.Ed (Bachelor of Education)",dur:"2 yr",fee:"~₹30k/yr",entrance:"GNDU B.Ed Entrance",stream:"humanities",type:"Education"},
+          {name:"BFA (Bachelor of Fine Arts)",dur:"4 yr",fee:"~₹20k/yr",entrance:"Talent Test / Portfolio",stream:"finearts",type:"Fine Arts"},
+          {name:"BJMC (Journalism & Mass Comm)",dur:"3 yr",fee:"~₹22k/yr",entrance:"Merit / Entrance",stream:"humanities",type:"Media"},
+          {name:"MBA (Master of Business Admin)",dur:"2 yr",fee:"~₹45k/yr",entrance:"CAT / MAT / GNDU CET",stream:"commerce",type:"Management"},
+          {name:"M.Sc (Various Sciences)",dur:"2 yr",fee:"~₹15k/yr",entrance:"Merit / GNDU PG",stream:"science",type:"Postgrad"},
+          {name:"MA (Various Subjects)",dur:"2 yr",fee:"~₹12k/yr",entrance:"Merit",stream:"humanities",type:"Postgrad"},
+          {name:"B.Sc Nursing",dur:"4 yr",fee:"~₹40k/yr",entrance:"NEET / Merit",stream:"science",type:"Nursing"},
+        ]
+      },
+      pu:{name:"Panjab University (PU) Chandigarh",short:"PU",url:"https://www.puchd.ac.in",type:"Central University",
+        courses:[
+          {name:"B.Sc Hons (PCM / PCB)",dur:"3 yr",fee:"~₹15k/yr",entrance:"CUET / Merit",stream:"science",type:"Science"},
+          {name:"BA Hons (Economics / History / Pol Sci / Psych)",dur:"3 yr",fee:"~₹14k/yr",entrance:"CUET / Merit",stream:"humanities",type:"Arts"},
+          {name:"B.Com (Pass / Hons)",dur:"3 yr",fee:"~₹14k/yr",entrance:"CUET / Merit",stream:"commerce",type:"Commerce"},
+          {name:"LLB / BA LLB (5 yr)",dur:"3/5 yr",fee:"~₹20k/yr",entrance:"CLAT / PU CET",stream:"humanities",type:"Law"},
+          {name:"MBBS",dur:"5.5 yr",fee:"~₹8k/yr (Govt)",entrance:"NEET",stream:"science",type:"Medical"},
+          {name:"B.Tech (via affiliated colleges)",dur:"4 yr",fee:"~₹1.5L/yr",entrance:"JEE Main / PU CET",stream:"science",type:"Engineering"},
+          {name:"BDS (Bachelor of Dental Surgery)",dur:"5 yr",fee:"Varies",entrance:"NEET",stream:"science",type:"Dental"},
+          {name:"M.Phil / Ph.D",dur:"2-5 yr",fee:"Varies",entrance:"NET / JRF / PU Entrance",stream:"science",type:"Research"},
+          {name:"MBA (University Business School)",dur:"2 yr",fee:"~₹80k/yr",entrance:"CAT / MAT / PU CET",stream:"commerce",type:"Management"},
+        ]
+      },
+      lpu:{name:"Lovely Professional University (LPU)",short:"LPU",url:"https://www.lpu.in",type:"Private University",
+        courses:[
+          {name:"B.Tech (All Branches — CSE/ME/ECE/CE/EE/AI/DS)",dur:"4 yr",fee:"~₹1.2L/yr",entrance:"LPUNEST / JEE Main",stream:"science",type:"Engineering"},
+          {name:"B.Sc Agriculture",dur:"4 yr",fee:"~₹90k/yr",entrance:"LPUNEST",stream:"vocational",type:"Agriculture"},
+          {name:"BBA (Various Specialisations)",dur:"3 yr",fee:"~₹1L/yr",entrance:"LPUNEST",stream:"commerce",type:"Management"},
+          {name:"B.Des (Industrial / Fashion / UX Design)",dur:"4 yr",fee:"~₹1.1L/yr",entrance:"LPUNEST / NIFT / NID",stream:"finearts",type:"Design"},
+          {name:"BJMC (Journalism & Mass Communication)",dur:"3 yr",fee:"~₹80k/yr",entrance:"LPUNEST",stream:"humanities",type:"Media"},
+          {name:"BA Psychology",dur:"3 yr",fee:"~₹70k/yr",entrance:"LPUNEST",stream:"humanities",type:"Psychology"},
+          {name:"BCA (with Cloud / AI specialisation)",dur:"3 yr",fee:"~₹80k/yr",entrance:"LPUNEST",stream:"science",type:"IT"},
+          {name:"B.Com (Hons / Regular)",dur:"3 yr",fee:"~₹70k/yr",entrance:"LPUNEST / Merit",stream:"commerce",type:"Commerce"},
+          {name:"B.Pharm",dur:"4 yr",fee:"~₹1L/yr",entrance:"LPUNEST / GPAT",stream:"science",type:"Pharmacy"},
+          {name:"MBA (International / Finance / HR / Marketing)",dur:"2 yr",fee:"~₹1.5L/yr",entrance:"CAT / MAT / LPUNEST",stream:"commerce",type:"Management"},
+        ]
+      },
+      cu:{name:"Chandigarh University (CU)",short:"CU",url:"https://www.cuchd.in",type:"Private University (NAAC A++)",
+        courses:[
+          {name:"B.Tech CSE (AI / ML / Cybersecurity / Cloud / IoT)",dur:"4 yr",fee:"~₹1.3L/yr",entrance:"CUCET / JEE Main",stream:"science",type:"Engineering"},
+          {name:"B.Tech (ME / ECE / CE / EE / Biotech)",dur:"4 yr",fee:"~₹1.2L/yr",entrance:"CUCET / JEE",stream:"science",type:"Engineering"},
+          {name:"BBA / BCA",dur:"3 yr",fee:"~₹90k/yr",entrance:"CUCET",stream:"commerce",type:"Management/IT"},
+          {name:"B.Pharm",dur:"4 yr",fee:"~₹1L/yr",entrance:"CUCET",stream:"science",type:"Pharmacy"},
+          {name:"B.Des (Graphic / Product / UX Design)",dur:"4 yr",fee:"~₹1.1L/yr",entrance:"CUCET / Portfolio",stream:"finearts",type:"Design"},
+          {name:"B.Sc Nursing",dur:"4 yr",fee:"~₹90k/yr",entrance:"NEET / CUCET",stream:"science",type:"Nursing"},
+          {name:"LLB (Integrated 5-yr)",dur:"5 yr",fee:"~₹90k/yr",entrance:"CUCET / CLAT",stream:"humanities",type:"Law"},
+          {name:"MBA (various tracks)",dur:"2 yr",fee:"~₹1.2L/yr",entrance:"CAT/MAT/CUCET",stream:"commerce",type:"Management"},
+        ]
+      },
+    },
+    delhi:{
+      du:{name:"Delhi University (DU)",short:"DU",url:"https://www.du.ac.in",type:"Central University",
+        courses:[
+          {name:"BA Hons (Various — Eco/History/English/Pol Sci/Psych)",dur:"4 yr",fee:"~₹20k/yr",entrance:"CUET",stream:"humanities",type:"Arts"},
+          {name:"B.Sc Hons (Physics/Chemistry/Maths/Computer Sci)",dur:"4 yr",fee:"~₹20k/yr",entrance:"CUET",stream:"science",type:"Science"},
+          {name:"B.Com Hons",dur:"4 yr",fee:"~₹20k/yr",entrance:"CUET",stream:"commerce",type:"Commerce"},
+          {name:"LLB (3 yr)",dur:"3 yr",fee:"~₹15k/yr",entrance:"CLAT / DU Entrance",stream:"humanities",type:"Law"},
+          {name:"BMS / BBA (Financial Investment Analysis)",dur:"4 yr",fee:"~₹25k/yr",entrance:"CUET",stream:"commerce",type:"Management"},
+          {name:"B.El.Ed (Elementary Education)",dur:"4 yr",fee:"~₹18k/yr",entrance:"DU Entrance",stream:"humanities",type:"Education"},
+          {name:"B.Sc Home Science / Nutrition",dur:"4 yr",fee:"~₹15k/yr",entrance:"CUET",stream:"science",type:"Science"},
+        ]
+      },
+      ipu:{name:"GGSIPU (IP University, Delhi)",short:"IPU",url:"https://www.ipu.ac.in",type:"State University",
+        courses:[
+          {name:"B.Tech (All Branches — CSE/ME/ECE/CE/IT)",dur:"4 yr",fee:"~₹90k/yr",entrance:"IPU CET",stream:"science",type:"Engineering"},
+          {name:"BCA / MCA",dur:"3/2 yr",fee:"~₹50k/yr",entrance:"IPU CET",stream:"science",type:"IT"},
+          {name:"BBA",dur:"3 yr",fee:"~₹50k/yr",entrance:"IPU CET",stream:"commerce",type:"Management"},
+          {name:"MBBS / BDS",dur:"5.5/5 yr",fee:"Varies",entrance:"NEET",stream:"science",type:"Medical"},
+          {name:"LLB (3 yr)",dur:"3 yr",fee:"~₹50k/yr",entrance:"IPU CET Law",stream:"humanities",type:"Law"},
+          {name:"B.Ed",dur:"2 yr",fee:"~₹35k/yr",entrance:"IPU CET B.Ed",stream:"humanities",type:"Education"},
+          {name:"MBA",dur:"2 yr",fee:"~₹1L/yr",entrance:"CAT/MAT/IPU CET",stream:"commerce",type:"Management"},
+        ]
+      },
+    },
+    himachal:{
+      hpu:{name:"Himachal Pradesh University (HPU)",short:"HPU",url:"https://www.hpuniv.ac.in",type:"State University",
+        courses:[
+          {name:"BA / B.Sc / B.Com (All Subjects)",dur:"3 yr",fee:"~₹12k/yr",entrance:"Merit Based",stream:"humanities",type:"UG"},
+          {name:"LLB",dur:"3 yr",fee:"~₹18k/yr",entrance:"Merit / CLAT",stream:"humanities",type:"Law"},
+          {name:"B.Ed",dur:"2 yr",fee:"~₹20k/yr",entrance:"HPU B.Ed Entrance",stream:"humanities",type:"Education"},
+          {name:"MBA",dur:"2 yr",fee:"~₹35k/yr",entrance:"CAT / HPU CET",stream:"commerce",type:"Management"},
+          {name:"M.Sc / MA",dur:"2 yr",fee:"~₹10k/yr",entrance:"Merit / PG Entrance",stream:"science",type:"Postgrad"},
+        ]
+      },
+    },
+    haryana:{
+      mdu:{name:"MDU Rohtak (Maharshi Dayanand University)",short:"MDU",url:"https://www.mdurohtak.ac.in",type:"State University",
+        courses:[
+          {name:"BA / B.Sc / B.Com",dur:"3 yr",fee:"~₹10k/yr",entrance:"Merit Based",stream:"humanities",type:"UG"},
+          {name:"B.Tech (via affiliated colleges)",dur:"4 yr",fee:"~₹80k/yr",entrance:"JEE / HSTES",stream:"science",type:"Engineering"},
+          {name:"MBA",dur:"2 yr",fee:"~₹40k/yr",entrance:"CAT / MAT / MDU CET",stream:"commerce",type:"Management"},
+          {name:"LLB",dur:"3 yr",fee:"~₹15k/yr",entrance:"CLAT / MDU",stream:"humanities",type:"Law"},
+          {name:"B.Ed",dur:"2 yr",fee:"~₹25k/yr",entrance:"MDU B.Ed Entrance",stream:"humanities",type:"Education"},
+          {name:"BCA",dur:"3 yr",fee:"~₹20k/yr",entrance:"Merit",stream:"science",type:"IT"},
+        ]
+      },
+    },
+    up:{
+      du_bhu:{name:"BHU (Banaras Hindu University)",short:"BHU",url:"https://www.bhu.ac.in",type:"Central University",
+        courses:[
+          {name:"BA / B.Sc / B.Com Hons",dur:"3 yr",fee:"~₹10k/yr",entrance:"CUET",stream:"humanities",type:"UG"},
+          {name:"B.Tech",dur:"4 yr",fee:"~₹50k/yr",entrance:"JEE Main / BHU CET",stream:"science",type:"Engineering"},
+          {name:"MBBS / BDS",dur:"5.5 yr",fee:"~₹12k/yr",entrance:"NEET",stream:"science",type:"Medical"},
+          {name:"LLB",dur:"3 yr",fee:"~₹15k/yr",entrance:"BHU CET",stream:"humanities",type:"Law"},
+          {name:"MBA",dur:"2 yr",fee:"~₹35k/yr",entrance:"CAT / BHU CET",stream:"commerce",type:"Management"},
+        ]
+      },
+    }
+  },
+  entrances:{
+    "JEE Main":{body:"NTA",for:"B.Tech/B.E. (NITs, IIITs, GFTIs & State Colleges)",
+      stages:["📝 Registration at jeemain.nta.nic.in (Nov–Dec)","🖼️ Upload photo & signature","💳 Fee payment online","📄 Admit card download (10 days before exam)","✍️ Appear in Jan session (CBT mode)","✍️ Appear in Apr session (optional — best score counts)","📊 Result & percentile release","🎯 JoSAA counselling registration (Jun–Jul)","🏛️ Round 1–7 seat allotment","📁 Document verification at reporting centre","🎓 Fee deposit & enrollment","📚 Classes begin (Aug)"],
+      schedule:"Registration: Nov-Dec | Jan Exam | Apr Exam | Result: Feb & May | Counselling: Jun-Jul",
+      docs:["10th Marksheet","12th Marksheet (or Appearing Certificate)","Aadhar Card","Passport size photo","Category Certificate (SC/ST/OBC/EWS)","PwD Certificate (if applicable)"]},
+    "NEET":{body:"NTA",for:"MBBS / BDS / B.Sc Nursing / BAMS / BHMS",
+      stages:["📝 Registration at neet.nta.nic.in (Feb–Mar)","✅ Form correction window (Mar)","📄 Admit card (May)","✍️ Exam in May (offline pen-paper)","📊 Provisional answer key (Jun)","📊 Final result (Jun)","🎯 MCC (Medical Counselling Committee) Round 1","🎯 MCC Round 2","🎯 Mop-up + Stray vacancy round","📁 Document verification + Joining","📚 Classes begin (Aug–Sep)"],
+      schedule:"Registration: Feb-Mar | Exam: May | Result: Jun | Counselling: Jul-Aug",
+      docs:["10th & 12th Marksheets","Aadhar Card","NEET Admit Card","Category Certificate","State Domicile","Photo ID"]},
+    "CUET":{body:"NTA",for:"Central Universities UG — DU, BHU, JNU, etc.",
+      stages:["📝 Registration at cuet.samarth.ac.in (Feb–Mar)","📄 City intimation slip","📄 Admit card (May)","✍️ Exam (May–Jun, CBT)","📊 Result (Jul)","🏛️ University-wise counselling / merit list","📁 Document verification","💳 Fee payment & enrollment","📚 Classes begin (Aug–Sep)"],
+      schedule:"Registration: Feb-Mar | Exam: May-Jun | Result: Jul | Counselling: Jul-Aug",
+      docs:["12th Marksheet","Category Certificate","Aadhar / ID Proof","Photo"]},
+    "CLAT":{body:"Consortium of NLUs",for:"LLB / BA LLB (5-yr) at National Law Universities",
+      stages:["📝 Registration at consortiumofnlus.ac.in (Jul–Sep)","📝 Form filling & fee payment","📄 Admit card (Nov)","✍️ Exam in Dec (offline)","📊 Result (Dec–Jan)","🎯 Counselling Round 1, 2, 3 (Jan–Feb)","📁 Document upload & verification","💳 Fee payment","📚 Classes begin (Jul–Aug)"],
+      schedule:"Registration: Jul-Sep | Exam: Dec | Counselling: Jan-Feb",
+      docs:["10th & 12th Marksheets","Graduation marksheet (for LLM)","Category Certificate","Photo ID"]},
+    "LEET":{body:"Punjab State Board of Technical Education (PSBTE)",for:"B.Tech Lateral Entry (2nd year direct) at PTU colleges",
+      stages:["📝 Registration on ptu.ac.in portal","✅ Eligibility check (Diploma/B.Sc required)","📊 Merit list based on Diploma % ","🎯 Counselling at PSBTE / PTU campus","🏛️ Choice filling for college & branch","📁 Document verification","💳 Tuition fee deposit","📚 Join directly in 2nd year (3-year B.Tech)"],
+      schedule:"Registration: Jun-Jul | Counselling: Jul-Aug",
+      docs:["10th & 12th Marksheets","Diploma Marksheets (all semesters)","Character Certificate","Category Certificate","Medical Fitness Certificate"]},
+    "NATA":{body:"Council of Architecture (CoA)",for:"B.Arch at architecture colleges",
+      stages:["📝 Registration at nata.in (Feb)","🎨 Aptitude test — Drawing + PCM + General Aptitude","📄 Admit card","✍️ Test 1 (Apr) — attempt both for best score","✍️ Test 2 (Jun)","📊 Result","🏛️ College-wise counselling / state counselling","📁 Document verification","📚 Classes begin"],
+      schedule:"Registration: Feb | Test 1: Apr | Test 2: Jun | Counselling: Jul",
+      docs:["10th & 12th Marksheets","NATA Score Card","Photo & Signature","Category Certificate"]},
+    "PTU CET":{body:"IKG Punjab Technical University",for:"MCA / MBA / M.Tech / B.Pharm at PTU-affiliated colleges",
+      stages:["📝 Online registration at ptu.ac.in","✍️ Computer-based test","📊 Result & merit list","🎯 Online counselling","📁 Document verification","📚 Enrollment"],
+      schedule:"Registration: Apr-May | Exam: May-Jun | Counselling: Jun-Jul",
+      docs:["Graduation Marksheets","12th Marksheet","Category Certificate","Photo ID"]},
+    "IPU CET":{body:"GGSIPU Delhi",for:"B.Tech / BCA / BBA / LLB at IP University colleges",
+      stages:["📝 Registration at ipu.ac.in","✍️ Online CET exam","📊 Merit list","🎯 Online counselling rounds","📁 Document verification","📚 Classes begin"],
+      schedule:"Registration: Mar-Apr | Exam: Apr-May | Counselling: Jun-Jul",
+      docs:["10th & 12th Marksheets","Aadhar","Category Certificate","Photo"]},
+    "GNDU CET":{body:"Guru Nanak Dev University",for:"LLB / B.Ed / MCA / MBA at GNDU",
+      stages:["📝 Apply at gndu.ac.in","✍️ Entrance test (department-specific)","📊 Merit list","🎯 Counselling / allotment","📁 Document submission","📚 Enrollment"],
+      schedule:"Application: Apr-May | Exam: May-Jun | Enrollment: Jul",
+      docs:["10th & 12th Marksheets","Graduation Certificate","Photo ID","Category Certificate"]},
+    "CAT":{body:"IIMs (rotational)",for:"MBA at IIMs & top B-Schools",
+      stages:["📝 Registration at iimcat.ac.in (Aug-Sep)","✍️ Exam in Nov (CBT, 3 slots)","📊 Result (Dec-Jan)","🎯 Shortlisting by individual IIMs","✍️ WAT + GD + PI rounds (Jan-Mar)","📊 Final merit list & offers (Mar-Apr)","📚 Classes begin (Jun)"],
+      schedule:"Registration: Aug-Sep | Exam: Nov | PI: Jan-Mar | Join: Jun",
+      docs:["Graduation Certificate","Category Certificate","Work experience documents (if any)","Photo ID"]},
+    "LPUNEST":{body:"Lovely Professional University",for:"All UG/PG courses at LPU",
+      stages:["📝 Apply at lpu.in (year-round)","✍️ Online test (Aptitude + Domain)","📊 Result & scholarship slab","🎯 Admission offer","📁 Document submission","💳 Fee payment","📚 Classes begin"],
+      schedule:"Year-round rolling admissions",
+      docs:["10th & 12th Marksheets","Aadhar Card","Photo"]},
+    "CUCET":{body:"Chandigarh University",for:"All UG/PG courses at CU",
+      stages:["📝 Apply at cuchd.in","✍️ Online test","📊 Scholarship & merit result","🎯 Admission offer","📁 Document verification","📚 Enrollment"],
+      schedule:"Rolling admissions — Jan to Jul",
+      docs:["10th & 12th Marksheets","Aadhar","Photo"]},
+  },
+  careerGuide:{
+    engineering:{
+      justify:"Engineering is the backbone of India's ₹3 trillion infrastructure & IT economy. Engineers are hired by Infosys, TCS, DRDO, ISRO, L&T, Google India, and 500+ MNCs. Starting salaries range from ₹3.5–₹25 LPA.",
+      careers:["Software Engineer / SDE","Data Scientist / ML Engineer","Civil / Structural Engineer","Mechanical Design Engineer","VLSI / Embedded Engineer","Cybersecurity Analyst","Product Manager","Govt Engineer (UPSC/GATE-PSU)"],
+      pg:["M.Tech (via GATE)","MS/M.Eng (abroad — GRE)","MBA (CAT/GMAT)","Ph.D in Engineering"],
+      pgExams:["GATE","GRE","CAT","GMAT"],
+      skills:["Programming (Python/Java/C++)","Data Structures & Algorithms","System Design","Cloud Computing (AWS/Azure)","Version Control (Git)","Communication & Teamwork","Problem Solving","Domain-specific CAD/Lab Skills"],
+      salary:"Entry: ₹3.5–8 LPA | Mid: ₹10–25 LPA | Senior: ₹30–80 LPA | Abroad: $70k–$200k",
+      studyPlan:{1:["Calculus, Physics, Chemistry fundamentals","Learn C / C++ programming","Join coding club or robotics society","Start competitive programming on Codeforces/LeetCode"],2:["Deep dive into core CS/ME/ECE subjects","Build 2–3 small projects (GitHub)","Apply for internships (TCS, Infosys NextStep)","Begin GATE/placement preparation awareness"],3:["Major project + internship (min 6 months)","LeetCode 200+ problems solved","Appear in campus placement drives","Higher studies: Begin GATE prep if MS/M.Tech planned"],4:["Final year project (impressive topic = better placement)","Campus placements — AMCAT, CoCubes, company drives","GRE/GATE exams","LinkedIn profile + Resume + Portfolio"]}
+    },
+    medicine:{
+      justify:"Medicine is a lifelong vocation with unmatched job security. India needs 600,000+ more doctors. MBBS opens doors to specialisation, research, public health, and global practice.",
+      careers:["MBBS Doctor (General Physician)","Specialist (MD/MS — Surgery, Ortho, Cardio, etc.)","Medical Researcher","Public Health Officer","Healthcare Administrator","Medical Writer","Healthcare Startup Founder"],
+      pg:["MD/MS (NEET PG)","DNB (National Board)","MPH (Public Health)","MBA Healthcare","DM/MCh (Super-speciality)"],
+      pgExams:["NEET PG","INI CET","USMLE (USA)","PLAB (UK)"],
+      skills:["Clinical Diagnosis","Anatomy & Physiology","Pharmacology","Patient Communication","Research Methodology","Emergency Care","Medical Ethics"],
+      salary:"Intern: ₹20–50k/month | Junior Doctor: ₹1–2 LPM | Specialist: ₹3–15 LPM | Private: ₹50 LPA+",
+      studyPlan:{1:["Anatomy, Physiology, Biochemistry (Phase I)","Study 8–10 hrs/day from Day 1","Join MBBS study groups","Start Anki flashcard habit"],2:["Pathology, Pharmacology, Microbiology (Phase II)","Hospital clinical postings begin","Read Harrison / Davidson alongside college notes","Attend CMEs"],3:["Surgery, Medicine, OBG, Paediatrics, Ortho clinicals","Appear in professional exams (university)","Begin NEET PG awareness & subject-wise revision","Case presentations & ward rounds"],4:["Community Medicine posting + PSM exam","Final professional university exams","NEET PG prep (2000+ MCQs/day target)","Apply for internship hospitals"],5:["Rotating internship (12 months mandatory)","Emergency, OPD, ICU, Operation Theatre postings","NEET PG exam","Apply for PG residency"]}
+    },
+    commerce_ca:{
+      justify:"CA is India's most prestigious finance qualification. Only 50,000 CAs pass annually vs 5 lakh applicants — making it high value. Every company, bank, PSU, and startup needs chartered accountants.",
+      careers:["Chartered Accountant (CA)","Company Secretary (CS)","Cost & Management Accountant (CMA)","Financial Analyst","Investment Banker","CFO / Finance Director","Tax Consultant","Auditor"],
+      pg:["CA Final (ICAI)","CMA Final","CS Executive & Professional","MBA Finance","CFA (CFA Institute)","US CPA"],
+      pgExams:["ICAI CA Final","CMA Final","CS Professional","CAT for MBA"],
+      skills:["Financial Accounting & Reporting","Taxation (Direct & Indirect)","Auditing","Cost Management","Tally/SAP/ERP","MS Excel & Power BI","Corporate Law","Business Communication"],
+      salary:"Articleship: ₹7–15k/month | Fresher CA: ₹7–12 LPA | Experienced: ₹15–40 LPA | Big 4: ₹20–60 LPA",
+      studyPlan:{1:["B.Com Year 1 — Accounting, Business Law, Economics","Register for CA Foundation simultaneously","CA Foundation: Principles of Accounting, Business Math, Economics","Attempt CA Foundation in Nov (Dec exam)"],2:["B.Com Year 2 — Cost Accounting, Taxation, Finance","CA Intermediate registration (after Foundation clear)","CA Inter Group 1 & 2 study alongside degree","Articleship search (3-year CA firm training)"],3:["B.Com Year 3 — Audit, Advanced Accounts, Income Tax","CA Inter exams — attempt May & Nov","Begin Articleship (3 years concurrent with studies)","Network with CA firms, Big 4 campus visits"]}
+    },
+    arts_civil:{
+      justify:"Humanities opens the most prestigious path — UPSC Civil Services. IAS/IPS officers shape national policy. The degree also leads to law, journalism, academia, and international organisations.",
+      careers:["IAS / IPS / IFS (Civil Services)","Lawyer / Advocate","Journalist / News Anchor","Professor / Researcher","Diplomat (Foreign Service)","NGO Director","Political Analyst","Social Entrepreneur"],
+      pg:["MA (History/Economics/Pol Sci/Sociology)","LLM (Law)","PG Journalism/Mass Comm","MPhil / Ph.D","MBA (for management roles)"],
+      pgExams:["UPSC CSE (Prelims + Mains + Interview)","CLAT PG","UGC NET / SET","State PCS exams","JNU / DU Entrance for MA"],
+      skills:["Essay Writing & Critical Analysis","Current Affairs (read newspaper DAILY)","GK & Static Knowledge","Ethics & Governance","Public Speaking & Debate","Research Methodology","Data Interpretation","Language Skills (English + Hindi + regional)"],
+      salary:"IAS: ₹56,100–₹2.5L + perks | Lawyer: ₹3–50 LPA | Journalist: ₹3–15 LPA | Professor: ₹57,700–₹1.77L (7th CPC)",
+      studyPlan:{1:["BA Year 1 — Foundation subjects (History/Pol Sci/Sociology/Eco)","Start newspaper reading habit (The Hindu / IE)","Make UPSC optional subject decision","Join college debating/GK society"],2:["BA Year 2 — Advanced subjects + electives","Start UPSC Prelims GS Paper 1 & 2 notes","Solve NCERT 6–12 (all subjects) completely","Join test series for current affairs"],3:["BA Year 3 — Final year + major project","Attempt UPSC CSE Prelims (practice attempt)","Complete Laxmikant (Polity), Spectrum (Modern History), Economic Survey","Build answer writing habit — 10 questions/day"]}
+    },
+    design_arts:{
+      justify:"India's creative economy is worth ₹2.5 trillion and growing 15% yearly. Designers, animators, and UX experts are hired by Google, Adobe, Byju's, Bollywood, and global gaming studios at premium salaries.",
+      careers:["Graphic Designer","UI/UX Designer","3D Animator / VFX Artist","Film Director / Cinematographer","Fashion Designer","Illustrator","Brand Identity Designer","Game Designer"],
+      pg:["MFA (Master of Fine Arts)","M.Des (NID / IIT)","MA Visual Communication","PG Diploma Animation","NIFT PG"],
+      pgExams:["CEED (IITs for M.Des)","NID Entrance","NIFT PG Entrance","State Design School entrances"],
+      skills:["Adobe Creative Suite (Photoshop, Illustrator, After Effects, XD)","3D Modelling (Blender, Maya, ZBrush)","Color Theory & Typography","UX Research & Wireframing (Figma)","Portfolio Building","Storytelling & Concept Development","Photography","Client Communication"],
+      salary:"Entry: ₹2.5–5 LPA | Mid: ₹6–15 LPA | Senior/Lead: ₹15–35 LPA | Freelance: ₹5–50 LPA",
+      studyPlan:{1:["Master fundamentals — Drawing, Color Theory, Typography","Learn Adobe Photoshop & Illustrator completely","Build a sketchbook habit (fill 1 sketchbook/month)","Start a Behance / Instagram portfolio"],2:["Learn digital tools — Figma, After Effects, Blender basics","Take on freelance projects (logo, poster, social media)","Participate in design competitions","Visit design exhibitions and art galleries"],3:["Specialise in chosen field (UI/UX vs Animation vs Fashion)","Build 5–7 portfolio projects","Apply for design internships (agencies, studios)","Prepare for NID/CEED/NIFT if PG planned"],4:["Major project / final collection","Campus placements or freelance client base","Build social media presence (10k+ followers helps)","Apply for design jobs / creative agencies"]}
+    },
+    vocational:{
+      justify:"Skill-based vocational education is India's fastest-growing career route. NSDC, PMKVY, and industry-linked B.Voc programs offer direct job placements. Polytechnic diploma holders are preferred in manufacturing, healthcare, and IT support.",
+      careers:["IT Support Technician","Industrial Electrician","Auto / CNC Technician","Healthcare Technician (Radiology/Lab)","Retail Store Manager","Agricultural Expert","Fashion Production Manager","Entrepreneur / Startup Founder"],
+      pg:["M.Voc","MBA (after B.Voc)","B.Tech Lateral Entry","Advanced Diploma","PG Diploma (industry-specific)"],
+      pgExams:["LEET (for B.Tech Lateral)","GATE (for M.Tech)","State PG entrance exams","MBA CET"],
+      skills:["Domain-specific technical skills","Industry certification (CISCO, CompTIA, AWS, Tally, AutoCAD)","Entrepreneurship & Business Basics","Communication & Soft Skills","Machine Operation & Safety","Quality Control","Problem Solving"],
+      salary:"Entry: ₹1.8–4 LPA | Mid: ₹4–10 LPA | Technical Lead: ₹8–20 LPA | Entrepreneur: Unlimited",
+      studyPlan:{1:["Master core technical subject","Get 1 industry certification (CISCO/Tally/AutoCAD)","Join workshop and lab sessions seriously","Start building small projects / prototypes"],2:["Internship in relevant industry (minimum 3 months)","Get 2nd certification in specialised tool","Build industry contacts & mentors","Explore NSDC / PMKVY additional skill courses"],3:["Major project tied to real industry problem","Final internship with placement conversion goal","Prepare for B.Tech lateral (LEET) if higher education needed","Launch small entrepreneurial venture or freelance"]}
+    }
+  }
+};
+
+// ── COUNSELLOR STATE ──────────────────────────────
+let eduState={step:0,profile:{class10:false,interests:[],stream:null,passed12:false,state:null,uniKey:null,stateKey:null,course:null,entrance:null},history:[]};
+let chatBusy=false,chatHist=[];
+
 function renderCounsel(){
-  document.getElementById('mc').innerHTML=`<div class="fade">
-    <div class="cw">
-      <div class="chdr">
-        <div class="cava">🤖</div>
-        <div>
-          <div class="chname">SEHAJNATH AI Career Counsellor</div>
-          <div class="chsub">
-            <span class="odot"></span> Online &nbsp;|&nbsp;
-            🗓️ 21 March 2026 (Saturday) &nbsp;|&nbsp;
-            ⏰ <span class="chts lc">${hnow()} IST</span>
-            &nbsp;|&nbsp; Live web search ON
+  // Reset edu state for fresh session
+  eduState={step:0,profile:{class10:false,interests:[],stream:null,passed12:false,state:null,uniKey:null,stateKey:null,course:null,entrance:null},history:[]};
+  chatHist=[];chatBusy=false;
+
+  document.getElementById('mc').innerHTML=`<div class="fade" style="display:grid;grid-template-columns:1fr 300px;gap:16px;align-items:start">
+    <!-- LEFT: Chat panel -->
+    <div>
+      <!-- Mode toggle -->
+      <div style="display:flex;gap:9px;margin-bottom:13px;flex-wrap:wrap">
+        <button id="modeEdu" onclick="setMode('edu')" style="flex:1;padding:10px 14px;background:linear-gradient(135deg,#FF9933,#E8830A);border:none;border-radius:9px;color:#fff;font-weight:800;cursor:pointer;font-family:'Baloo 2',sans-serif;font-size:13px">
+          🎓 Student Career Counsellor<br><span style="font-size:10px;font-weight:400;opacity:0.85">Class 10 → Stream → UG/PG → Job</span>
+        </button>
+        <button id="modeJob" onclick="setMode('job')" style="flex:1;padding:10px 14px;background:rgba(33,150,243,0.15);border:1.5px solid rgba(33,150,243,0.4);border-radius:9px;color:#90CAF9;font-weight:800;cursor:pointer;font-family:'Baloo 2',sans-serif;font-size:13px">
+          🏛️ Job & Exam Counsellor<br><span style="font-size:10px;font-weight:400;opacity:0.85">UPSC, SSC, Banking, Police, PSU</span>
+        </button>
+      </div>
+
+      <!-- Chat window -->
+      <div class="cw" id="counselWin" style="height:62vh">
+        <div class="chdr">
+          <div class="cava" id="cAva">🎓</div>
+          <div>
+            <div class="chname" id="cTitle">SEHAJNATH AI — Student Career Counsellor</div>
+            <div class="chsub">
+              <span class="odot"></span> Online &nbsp;|&nbsp;
+              ⏰ <span class="chts lc">${hnow()} IST</span>
+              &nbsp;|&nbsp; 🌐 Live AI + Web Search Active
+            </div>
           </div>
         </div>
+        <div class="chips" id="chipBar">
+          ${['Class 10th guidance','After 12th Science','After 12th Commerce','PTU courses list','GNDU courses list','Career after BCA','Study plan for B.Tech','UPSC after BA'].map(q=>`<button class="chip" onclick="eduChipClick('${q}')">${q}</button>`).join('')}
+        </div>
+        <div class="cmsgs" id="cmsgs"></div>
+        <div class="cinrow">
+          <input class="cinp" id="cinp" placeholder="Type your question or choose an option..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();handleSend();}"/>
+          <button class="csend" id="csend" onclick="handleSend()">➤</button>
+        </div>
       </div>
-      <div class="chips">
-        ${['UPSC CSE 2026 notification details','Punjab Police Constable 2026 — apply by 30 Mar','RRB Group D 2026 correction window','NHPC Trainee Engineer GATE 2026','RBI Assistant 2026 exam dates','Best govt job for 12th pass in 2026','SSC CGL 2026 expected date','Document checklist for joining govt job'].map(q=>`<button class="chip" onclick="preC('${q}')">${q}</button>`).join('')}
-      </div>
-      <div class="cmsgs" id="cmsgs">
-        <div class="msg assistant"><div class="mb" id="wmsg"></div></div>
-      </div>
-      <div class="cinrow">
-        <input class="cinp" id="cinp" placeholder="Ask about any current job, deadline, preparation... (AI + live search)" onkeydown="if(event.key==='Enter')sendC()"/>
-        <button class="csend" id="csend" onclick="sendC()">➤</button>
+
+      <!-- Journey steps -->
+      <div class="sh" style="margin-top:16px"><div class="stit">📍 Complete Journey — Class 10 to Job</div></div>
+      <div class="stgs" id="journeySteps">
+        ${[['1','Class 10th','Interests & stream'],['2','12th Stream','Subject combination'],['3','After 12th','UG/PG choice'],['4','State & Univ','College selection'],['5','Entrance','Exam process'],['6','Study Plan','Year-wise roadmap'],['7','Career','Job & salary'],['8','Further','PG & growth']].map(([n,t,d],i)=>`<div class="stg" id="js${i}" style="border-left:3px solid rgba(255,153,51,0.2)"><div class="stgnm">${n}️⃣ ${t}</div><div class="stgdc">${d}</div></div>`).join('')}
       </div>
     </div>
-    <div class="sh" style="margin-top:18px"><div class="stit">📍 Counselling Journey — Entrance to Joining</div></div>
-    <div class="stgs">
-      ${[['1️⃣ Career Assessment','Know your strengths & right jobs'],['2️⃣ Exam Selection','Choose right exams for your profile'],['3️⃣ Study Plan','Customized roadmap & books'],['4️⃣ Apply Online','Form fill-up & document checklist'],['5️⃣ Admit Card & Exam','Hall ticket & exam-day strategy'],['6️⃣ Result & Interview','Document verification prep'],['7️⃣ Joining Formalities','Medical, police verification & posting']].map(([n,d])=>`<div class="stg"><div class="stgnm">${n}</div><div class="stgdc">${d}</div></div>`).join('')}
+
+    <!-- RIGHT: Profile panel -->
+    <div style="display:flex;flex-direction:column;gap:12px;position:sticky;top:90px">
+      <!-- Student profile -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,153,51,0.2);border-radius:14px;padding:14px">
+        <div style="font-family:'Baloo 2',sans-serif;font-size:13px;font-weight:800;color:#FF9933;margin-bottom:10px">👤 Student Profile</div>
+        <div id="profilePanel">
+          ${profRow('Class','—','pid-class')}${profRow('Interests','—','pid-int')}${profRow('Stream','—','pid-stream')}${profRow('State','—','pid-state')}${profRow('University','—','pid-univ')}${profRow('Course','—','pid-course')}${profRow('Entrance','—','pid-ent')}
+        </div>
+      </div>
+      <!-- Career roadmap -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(33,150,243,0.2);border-radius:14px;padding:14px">
+        <div style="font-family:'Baloo 2',sans-serif;font-size:13px;font-weight:800;color:#2196F3;margin-bottom:10px">🗺️ Career Roadmap</div>
+        <div id="roadmapPanel" style="font-size:12px;color:#8A9BB0">Complete the counselling flow to see your personalized roadmap...</div>
+      </div>
+      <!-- Key skills -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(61,214,140,0.2);border-radius:14px;padding:14px">
+        <div style="font-family:'Baloo 2',sans-serif;font-size:13px;font-weight:800;color:#3DD68C;margin-bottom:10px">⚡ Key Skills to Build</div>
+        <div id="skillsPanel" style="font-size:12px;color:#8A9BB0">Will appear after course selection...</div>
+      </div>
     </div>
   </div>`;
-  document.getElementById('wmsg').innerHTML=md(`🙏 <strong>Namaste! Welcome to SEHAJNATH CONSULTANCY SERVICES PORTAL.</strong><br><br>
-I am your <strong>AI Career Counsellor</strong>.<br>
-📅 <strong style="color:#FFD700">Today: Saturday, 21 March 2026 &nbsp;|&nbsp; ⏰ ${hnow()} IST</strong><br><br>
-<strong>Currently Active Jobs (as of today):</strong><br>
-🟢 UPSC CSE 2026 — 933 posts (Prelims: 25 May 2026)<br>
-🟢 RRB Group D 2026 — 22,195 posts (Correction window open TODAY)<br>
-🟢 Punjab Police Constable 2026 — 3,298 posts (Apply by 30 Mar 2026)<br>
-🟢 NHPC Trainee Engineer 2026 — 72 posts (Apply by 06 Apr 2026)<br>
-🟢 EIL Management Trainee 2026 — 59 posts (Apply by 13 Apr 2026)<br>
-🟢 RBI Assistant 2026 — 650 posts (Closing 31 Mar 2026)<br><br>
-Ask me anything — exam strategy, eligibility, study plan, document checklist, deadlines! 🚀`);
+
+  // Start edu flow
+  setTimeout(()=>eduStart(),300);
 }
-function preC(t){const el=document.getElementById('cinp');if(el){el.value=t;el.focus();}}
 
-async function sendC(){
-  const inp=document.getElementById('cinp');if(!inp)return;
-  const msg=inp.value.trim();if(!msg||chatBusy)return;
-  inp.value='';chatBusy=true;
-  chatHist.push({role:'user',content:msg});
-  appC('user',msg);showTyp(true);
-  document.getElementById('csend').disabled=true;
-  try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',max_tokens:1000,
-        system:`You are an expert AI career counsellor for SEHAJNATH CONSULTANCY SERVICES PORTAL.
-TODAY'S DATE: Saturday, 21 March 2026 | TIME: ${fullnow()}
-
-CURRENTLY ACTIVE JOBS (verified today, 21 Mar 2026):
-1. UPSC CSE 2026 — 933 vacancies | Prelims: 25 May 2026 | upsc.gov.in
-2. RRB Group D 2026 — 22,195 posts | CEN 09/2025 | Correction window: 12–21 Mar 2026 | rrbcdg.gov.in
-3. Punjab Police Constable 2026 — 3,298 posts | Apply by 30 Mar 2026 | punjabpolice.gov.in
-4. NHPC Trainee Engineer 2026 — 72 posts (Special SRD via GATE) | Apply: 16 Mar–6 Apr 2026 | nhpcindia.com
-5. SSB Odisha Junior Asst & Clerk 2026 — 883 posts | Apr 2026 deadline | ssbodisha.ac.in
-6. EIL Management Trainee 2026 — 59 posts via GATE 2026 | Apply: 20 Mar–13 Apr 2026 | engineersindia.com
-7. MPESB Jail Warder & Forest Guard 2026 — 1,679 posts | Last date extended | esb.mp.gov.in
-8. Allahabad HC Private Secretary 2026 — 195 posts | Apr 2026 | allahabadhighcourt.in
-9. RBI Assistant 2026 — 650 posts | Apply by 31 Mar 2026 | rbi.org.in
-10. BPSC Civil Judge 2026 (33rd exam) — Bihar | Last date extended | bpsc.bih.nic.in
-11. Odisha Police SPO 2026 — 800 posts | offline apply | odishapolice.gov.in
-Total: 3,78,320+ vacancies open all India as of 18 Mar 2026.
-
-Guide users on all Indian jobs — UPSC, SSC, Banking, Railway, Defence, Police, Teaching, State PSC, PSU, Post Office, Medical, IT, Engineering. Local level to All India level. Always mention current deadline dates. Use web_search for latest updates. Be specific and encouraging.`,
-        tools:[{type:'web_search_20250305',name:'web_search'}],
-        messages:chatHist
-      })
-    });
-    const data=await res.json();
-    const reply=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n')||"Sorry, couldn't process. Please try again.";
-    chatHist.push({role:'assistant',content:reply});
-    showTyp(false);appC('assistant',reply);
-  }catch(e){showTyp(false);appC('assistant','⚠️ Network error. Please try again.');}
-  chatBusy=false;document.getElementById('csend').disabled=false;
+function profRow(k,v,id){
+  return `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px">
+    <span style="color:#8A9BB0">${k}</span><span style="font-weight:600;text-align:right;max-width:55%;color:#E8EAF6" id="${id}">${v}</span></div>`;
 }
-function appC(role,text){
+function updateProfile(){
+  const p=eduState.profile;
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  set('pid-class',p.class10?'Class 10th / 12th':'—');
+  set('pid-int',(p.interests||[]).slice(0,2).join(', ')||'—');
+  set('pid-stream',p.stream?EDU_KB.streams[p.stream]?.label||p.stream:'—');
+  set('pid-state',p.state?p.state.charAt(0).toUpperCase()+p.state.slice(1):'—');
+  const unis=p.state&&EDU_KB.universities[p.state];
+  set('pid-univ',p.uniKey&&unis&&unis[p.uniKey]?unis[p.uniKey].short:'—');
+  set('pid-course',p.course||'—');
+  set('pid-ent',p.entrance||'—');
+}
+function markStep(n){
+  document.querySelectorAll('.stg').forEach((el,i)=>{
+    el.style.borderLeftColor=i<n?'#3DD68C':(i===n?'#FF9933':'rgba(255,153,51,0.2)');
+    el.style.background=i===n?'rgba(255,153,51,0.1)':'';
+  });
+}
+
+// ── EDU FLOW HELPERS ──────────────────────────────
+function eduAppend(role,html){
   const msgs=document.getElementById('cmsgs');if(!msgs)return;
   const d=document.createElement('div');d.className=`msg ${role}`;
-  const b=document.createElement('div');b.className='mb';b.innerHTML=md(text);
+  const b=document.createElement('div');b.className='mb';
+  b.innerHTML=role==='assistant'?md(html):html;
   d.appendChild(b);msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
 }
-function showTyp(show){
+function eduTyping(show){
   const msgs=document.getElementById('cmsgs');if(!msgs)return;
-  const ex=document.getElementById('typind');
-  if(show&&!ex){const d=document.createElement('div');d.className='msg assistant';d.id='typind';d.innerHTML='<div class="typdots"><span></span><span></span><span></span><span style="margin-left:6px;color:var(--muted);font-size:12px">AI searching live web...</span></div>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+  const ex=document.getElementById('etypind');
+  if(show&&!ex){const d=document.createElement('div');d.className='msg assistant';d.id='etypind';d.innerHTML='<div class="typdots"><span></span><span></span><span></span><span style="margin-left:6px;color:#8A9BB0;font-size:11.5px">SEHAJNATH AI is thinking...</span></div>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
   else if(!show&&ex)ex.remove();
 }
+function eduBot(html,delay=700){
+  return new Promise(r=>{
+    eduTyping(true);
+    setTimeout(()=>{eduTyping(false);eduAppend('assistant',html);r();},delay);
+  });
+}
+function eduOptions(opts,cb){
+  const msgs=document.getElementById('cmsgs');if(!msgs)return;
+  const d=document.createElement('div');d.className='msg assistant';
+  const wrap=document.createElement('div');
+  wrap.style.cssText='display:flex;flex-wrap:wrap;gap:7px;padding:8px 0';
+  opts.forEach(o=>{
+    const b=document.createElement('button');
+    b.style.cssText='padding:7px 13px;border-radius:8px;border:1px solid rgba(255,153,51,0.35);background:rgba(255,153,51,0.07);color:#FFD700;font-size:12px;font-weight:700;cursor:pointer;font-family:Mukta,sans-serif;transition:.18s';
+    b.onmouseover=()=>{b.style.background='rgba(255,153,51,0.2)';b.style.borderColor='#FF9933';};
+    b.onmouseout=()=>{if(!b.disabled){b.style.background='rgba(255,153,51,0.07)';b.style.borderColor='rgba(255,153,51,0.35)';}};
+    const label=typeof o==='string'?o:o.label;
+    const val=typeof o==='string'?o:o.value;
+    b.textContent=label;
+    b.onclick=()=>{
+      wrap.querySelectorAll('button').forEach(x=>{x.disabled=true;x.style.opacity='0.5';x.style.cursor='default';});
+      b.style.opacity='1';b.style.background='rgba(255,153,51,0.25)';b.style.borderColor='#FF9933';
+      setTimeout(()=>{wrap.remove();eduAppend('user',label);cb(val,label);},150);
+    };
+    wrap.appendChild(b);
+  });
+  d.appendChild(wrap);msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+function eduMulti(opts,confirmTxt,cb){
+  const msgs=document.getElementById('cmsgs');if(!msgs)return;
+  const sel=new Set();
+  const d=document.createElement('div');d.className='msg assistant';
+  const wrap=document.createElement('div');wrap.style.cssText='display:flex;flex-wrap:wrap;gap:7px;padding:8px 0';
+  opts.forEach(o=>{
+    const b=document.createElement('button');
+    b.style.cssText='padding:7px 12px;border-radius:8px;border:1px solid rgba(255,153,51,0.3);background:rgba(255,153,51,0.06);color:#FFD700;font-size:12px;font-weight:600;cursor:pointer;font-family:Mukta,sans-serif;transition:.18s';
+    b.textContent=o;
+    b.onclick=()=>{
+      if(sel.has(o)){sel.delete(o);b.style.background='rgba(255,153,51,0.06)';b.style.borderColor='rgba(255,153,51,0.3)';}
+      else{sel.add(o);b.style.background='rgba(255,153,51,0.25)';b.style.borderColor='#FF9933';}
+    };
+    wrap.appendChild(b);
+  });
+  const cf=document.createElement('button');
+  cf.textContent=confirmTxt;
+  cf.style.cssText='width:100%;margin-top:8px;padding:9px;border-radius:9px;border:none;background:linear-gradient(135deg,#FF9933,#E8830A);color:#fff;font-weight:800;cursor:pointer;font-family:Baloo 2,sans-serif;font-size:13px';
+  cf.onclick=()=>{wrap.remove();const arr=[...sel];eduAppend('user',arr.join(' | ')||'(none)');cb(arr);};
+  wrap.appendChild(cf);d.appendChild(wrap);msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+
+// ── EDU CONVERSATION FLOW ─────────────────────────
+async function eduStart(){
+  markStep(0);
+  await eduBot(`🙏 **Namaste! Welcome to SEHAJNATH AI Career Counsellor.**\n\n📅 **Today: ${daynow()}, ${dnow()} | ⏰ ${hnow()} IST**\n\nI am your complete **Career Guidance System** — from Class 10th subject selection to your first job! I cover:\n✅ Class 10 → 12th Stream → UG/PG → Entrance → Job\n✅ PTU, GNDU, PU, LPU, CU courses synced from official portals\n✅ Full entrance process (Registration → Day 1 of Classes)\n✅ Year-wise Study Plan & Syllabus\n✅ Career Justification & Salary Guide\n\n**Where are you right now?`,800);
+  eduOptions([
+    {label:'📚 In Class 10th — Help me choose stream',value:'10'},
+    {label:'🎓 Just passed 12th — Want UG guidance',value:'12done'},
+    {label:'🏛️ In UG — Want PG / career guidance',value:'ug'},
+    {label:'💼 Ask about a specific university (PTU/GNDU/PU/LPU)',value:'uni'},
+    {label:'📋 Show me all courses for a stream',value:'stream'},
+  ], async(v,l)=>{
+    if(v==='10'){eduState.profile.class10=true;updateProfile();await flowClass10();}
+    else if(v==='12done'){await flow12Passed();}
+    else if(v==='ug'){await flowUG();}
+    else if(v==='uni'){await flowPickUniversity();}
+    else{await flowPickStream();}
+  });
+}
+
+async function flowClass10(){
+  markStep(0);
+  await eduBot(`Great! You're in **Class 10th** 🏫\n\nLet me find the **perfect 12th stream** for you based on your interests.\n\nSelect all your **areas of interest** (you can choose multiple):`,600);
+  eduMulti(Object.keys(EDU_KB.interestMap),'✅ These are my interests →', async(selected)=>{
+    eduState.profile.interests=selected;updateProfile();
+    await showStreamRecommendation(selected);
+  });
+}
+
+async function showStreamRecommendation(interests){
+  markStep(1);
+  // Score streams
+  const score={};
+  (interests||[]).forEach(i=>(EDU_KB.interestMap[i]||[]).forEach(s=>{score[s]=(score[s]||0)+1;}));
+  const ranked=Object.keys(EDU_KB.streams).sort((a,b)=>(score[b]||0)-(score[a]||0));
+
+  let html=`**🔍 Based on your interests, here are your recommended streams:**\n\n`;
+  ranked.slice(0,3).forEach((k,i)=>{
+    const s=EDU_KB.streams[k];
+    html+=`**${i===0?'⭐ TOP PICK':'🔹'} ${s.icon} ${s.label}**\nSubject Combos: ${s.combos[0]}\nCareers: ${s.careers.slice(0,4).join(', ')}\n\n`;
+  });
+  html+=`**All available streams in Class 12th:**`;
+  await eduBot(html,1000);
+  await eduBot(`Which stream do you want to select for Class 12th?`,300);
+  eduOptions(Object.keys(EDU_KB.streams).map(k=>({label:`${EDU_KB.streams[k].icon} ${EDU_KB.streams[k].label}`,value:k})),async(v,l)=>{
+    eduState.profile.stream=v;updateProfile();
+    await showStreamDetail(v);
+  });
+}
+
+async function showStreamDetail(streamKey){
+  const s=EDU_KB.streams[streamKey];
+  markStep(1);
+  let html=`**${s.icon} ${s.label} — Complete Guide**\n\n`;
+  html+=`**📌 Subject Combinations:**\n${s.combos.map(c=>`• ${c}`).join('\n')}\n\n`;
+  html+=`**🎯 Career Paths After 12th:**\n${s.careers.map(c=>`• ${c}`).join('\n')}\n\n`;
+  html+=`**🎓 UG Courses Available:**\n${s.ug.map(c=>`• ${c}`).join('\n')}\n\n`;
+  html+=`**📊 PG Options:**\n${s.pg.map(c=>`• ${c}`).join('\n')}`;
+  await eduBot(html,900);
+  await eduBot(`Have you **already passed 12th** or are you still in 12th?`,500);
+  eduOptions([
+    {label:'✅ Already passed 12th — show me UG options',value:'passed'},
+    {label:'📖 Still in 12th — save this, I\'ll come back later',value:'planning'},
+    {label:'🔄 Show a different stream',value:'change'},
+  ],async(v)=>{
+    if(v==='passed'){eduState.profile.passed12=true;await flow12Passed();}
+    else if(v==='change'){await flowClass10();}
+    else{await eduBot(`**Perfect! Here's your action plan for Class 12th:**\n\n✅ Focus on scoring **75%+ in boards** (minimum for most UG admissions)\n✅ Start entrance exam preparation from **Class 11 itself**:\n   • Science → JEE/NEET from Day 1 of Class 11\n   • Commerce → CA Foundation can be registered now\n   • Humanities → CUET prep, newspaper reading habit\n✅ Join **NCC / NSS / sports clubs** to build extracurriculars\n✅ **Come back after 12th** — I'll guide you with complete UG admission process!\n\n🙏 Best of luck! You can always start a new session.`,800);}
+  });
+}
+
+async function flow12Passed(){
+  markStep(2);
+  if(!eduState.profile.stream){
+    await eduBot(`What was your **stream in Class 12th?**`,600);
+    eduOptions(Object.keys(EDU_KB.streams).map(k=>({label:`${EDU_KB.streams[k].icon} ${EDU_KB.streams[k].label}`,value:k})),async(v)=>{
+      eduState.profile.stream=v;updateProfile();await afterStreamSet();
+    });
+  } else await afterStreamSet();
+}
+async function afterStreamSet(){
+  await eduBot(`Do you want to **continue in the same stream** for UG, or **change to a different stream?**\n\n_Note: You CAN change streams at UG level — I'll guide you on eligibility._`,700);
+  eduOptions([{label:'➡️ Continue with same stream',value:'same'},{label:'🔄 Want to change stream for UG',value:'change'}],async(v)=>{
+    if(v==='change'){
+      await eduBot(`No problem! At UG level you have many cross-stream options. Which **UG stream** interests you?`,600);
+      eduOptions(Object.keys(EDU_KB.streams).map(k=>({label:`${EDU_KB.streams[k].icon} ${EDU_KB.streams[k].label}`,value:k})),async(sv)=>{
+        eduState.profile.stream=sv;updateProfile();await askState();
+      });
+    } else await askState();
+  });
+}
+
+async function askState(){
+  markStep(3);
+  await eduBot(`From which **state** do you want to pursue your UG/Diploma course?\n\n_I'll show you university-wise courses from official portals of that state._`,700);
+  eduOptions([
+    {label:'🟠 Punjab (PTU, GNDU, PU, LPU, CU)',value:'punjab'},
+    {label:'🔵 Delhi / NCR (DU, IPU)',value:'delhi'},
+    {label:'🟢 Himachal Pradesh (HPU)',value:'himachal'},
+    {label:'🟡 Haryana (MDU)',value:'haryana'},
+    {label:'🟣 Uttar Pradesh (BHU, AKTU)',value:'up'},
+    {label:'🌐 Other State',value:'other'},
+  ],async(v)=>{
+    if(v==='other'){
+      await eduBot(`For other states, I recommend checking:\n• **UGC Approved University List:** ugc.ac.in\n• **NIRF Rankings:** nirfindia.org\n• **State Admission Portal** of your state\n\nMeanwhile, I can also guide you for **Punjab or Delhi** universities which are fully indexed. Would you like that?`,700);
+      eduOptions([{label:'Show Punjab universities',value:'punjab'},{label:'Show Delhi universities',value:'delhi'}],async(sv)=>{
+        eduState.profile.state=sv;updateProfile();await showUniversities(sv);
+      });
+    } else {
+      eduState.profile.state=v;updateProfile();await showUniversities(v);
+    }
+  });
+}
+
+async function showUniversities(stateKey){
+  const unis=EDU_KB.universities[stateKey];
+  if(!unis){await eduBot(`Loading data for this state... Please try Punjab or Delhi.`,500);return;}
+  markStep(3);
+  const uniKeys=Object.keys(unis);
+  let html=`**🏛️ Universities in ${stateKey.charAt(0).toUpperCase()+stateKey.slice(1)} (Data from Official Portals):**\n\n`;
+  uniKeys.forEach((k,i)=>{
+    const u=unis[k];
+    html+=`**${i+1}. ${u.name}**\nType: ${u.type} | Courses: ${u.courses.length} | Portal: ${u.url}\n\n`;
+  });
+  await eduBot(html,900);
+  await eduBot(`Select a university to see **complete course list with fees & entrance exams:**`,400);
+  eduOptions(uniKeys.map(k=>({label:`🏛️ ${unis[k].short} — ${unis[k].name.split('(')[0].trim()}`,value:k})),async(v)=>{
+    eduState.profile.uniKey=v;updateProfile();await showCourses(stateKey,v);
+  });
+}
+
+async function showCourses(stateKey,uniKey){
+  const uni=EDU_KB.universities[stateKey][uniKey];
+  markStep(3);
+  const streamFilter=eduState.profile.stream;
+  const relevant=uni.courses.filter(c=>!streamFilter||c.stream===streamFilter||c.stream==='vocational');
+  const others=uni.courses.filter(c=>streamFilter&&c.stream!==streamFilter&&c.stream!=='vocational');
+
+  let html=`**📋 ${uni.name}** | 🔗 ${uni.url}\n\n`;
+  if(relevant.length){
+    html+=`**✅ Recommended for your stream (${EDU_KB.streams[streamFilter]?.label||'All'}):**\n`;
+    relevant.forEach(c=>{html+=`• **${c.name}** | ${c.dur} | ${c.fee} | Entrance: ${c.entrance}\n`;});
+  }
+  if(others.length){
+    html+=`\n**🔄 Other available courses (stream change options):**\n`;
+    others.slice(0,5).forEach(c=>{html+=`• ${c.name} | ${c.dur} | ${c.fee} | Entrance: ${c.entrance}\n`;});
+  }
+  await eduBot(html,1000);
+  await eduBot(`**Select a course** for complete Career Analysis, Entrance Process & Study Plan:`,400);
+  eduOptions(uni.courses.map(c=>({label:`${c.name} (${c.dur} | ${c.fee})`,value:c.name})),async(v)=>{
+    eduState.profile.course=v;
+    const cObj=uni.courses.find(c=>c.name===v);
+    eduState.profile.entrance=cObj?.entrance||null;
+    updateProfile();
+    await showFullAnalysis(stateKey,uniKey,v,cObj);
+  });
+}
+
+async function showFullAnalysis(stateKey,uniKey,courseName,courseObj){
+  markStep(4);
+  const uni=EDU_KB.universities[stateKey][uniKey];
+  const streamKey=courseObj?.stream||eduState.profile.stream||'science';
+  const guideKey=streamKey==='science'?(courseName.toLowerCase().includes('mbbs')||courseName.toLowerCase().includes('medical')?'medicine':'engineering'):
+    streamKey==='commerce'?'commerce_ca':streamKey==='humanities'?'arts_civil':streamKey==='finearts'?'design_arts':'vocational';
+  const guide=EDU_KB.careerGuide[guideKey]||EDU_KB.careerGuide.engineering;
+
+  // Update skills panel
+  const sp=document.getElementById('skillsPanel');
+  if(sp)sp.innerHTML=guide.skills.map(s=>`<span style="display:inline-block;background:rgba(61,214,140,0.12);border:1px solid rgba(61,214,140,0.3);border-radius:20px;padding:2px 8px;font-size:11px;margin:2px;color:#3DD68C">${s}</span>`).join('');
+
+  // Update roadmap
+  const rp=document.getElementById('roadmapPanel');
+  if(rp)rp.innerHTML=`<div style="display:flex;flex-direction:column;gap:6px">
+    ${[['🏫','Class 10th','Foundation & stream selection'],['📚','Class 12th',EDU_KB.streams[streamKey]?.label+' stream'],['🎓','UG: '+courseName.split('(')[0].trim(),uni.short+' — '+courseObj?.dur],['✍️','Entrance: '+courseObj?.entrance,'Exam process'],['💼','Career',guide.careers[0]+', '+guide.careers[1]],['🎯','PG: '+guide.pg[0],guide.pgExams[0]+' exam']].map(([ico,title,sub])=>`
+      <div style="display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+        <span style="font-size:16px">${ico}</span>
+        <div><div style="font-size:12px;font-weight:700;color:#E8EAF6">${title}</div><div style="font-size:10.5px;color:#8A9BB0">${sub}</div></div>
+      </div>`).join('')}
+  </div>`;
+
+  // Career analysis
+  await eduBot(`**🎯 CAREER ANALYSIS: ${courseName}**\n\n**✅ Why this course? (Justification):**\n${guide.justify}\n\n**💼 Career Options After This Course:**\n${guide.careers.map(c=>`• ${c}`).join('\n')}\n\n**🎓 PG / Further Studies:**\n${guide.pg.map(p=>`• ${p}`).join('\n')}\n\n**📊 PG Entrance Exams:** ${guide.pgExams.join(' | ')}\n\n**💰 Salary Range:** ${guide.salary}`,1200);
+
+  markStep(5);
+  // Entrance process
+  const entranceName=courseObj?.entrance?.split('/')[0]?.trim()||'JEE Main';
+  const entData=EDU_KB.entrances[entranceName]||EDU_KB.entrances['JEE Main'];
+  await eduBot(`**📝 ENTRANCE EXAM PROCESS: ${entranceName}**\nConducted by: ${entData.body}\nFor: ${entData.for}\n📅 ${entData.schedule}\n\n**Step-by-step (Registration → Day 1 of Classes):**\n${entData.stages.map((s,i)=>`${i+1}. ${s}`).join('\n')}\n\n**📁 Documents Required:**\n${entData.docs.map(d=>`• ${d}`).join('\n')}`,1000);
+
+  markStep(6);
+  // Study plan
+  const years=courseName.includes('B.Tech')||courseName.includes('B.Arch')||courseName.includes('B.Des')||courseName.includes('B.Pharm')?4:courseName.includes('MBBS')?5:courseName.includes('MBA')||courseName.includes('M.')?2:3;
+  let spHtml=`**📋 ${years}-YEAR STUDY PLAN FOR ${courseName.split('(')[0].trim().toUpperCase()}**\n\n`;
+  const plan=guide.studyPlan||{1:['Master fundamentals','Build projects'],2:['Specialise','Internship'],3:['Final project','Placements']};
+  for(let y=1;y<=years;y++){
+    const tasks=plan[Math.min(y,Object.keys(plan).length)]||plan[Object.keys(plan)[0]];
+    spHtml+=`**Year ${y}:**\n${tasks.map(t=>`• ${t}`).join('\n')}\n\n`;
+  }
+  // Add syllabus if available
+  const syllabus=uni.syllabus&&uni.syllabus[courseName];
+  if(syllabus){
+    spHtml+=`**📚 SYLLABUS HIGHLIGHTS (${uni.short}):**\n`;
+    Object.entries(syllabus).slice(0,4).forEach(([sem,subs])=>{
+      spHtml+=`**${sem.toUpperCase()}:** ${subs.join(', ')}\n`;
+    });
+  }
+  await eduBot(spHtml,1000);
+
+  markStep(7);
+  // Colleges
+  await eduBot(`**🏫 AFFILIATED COLLEGES / STUDY TIPS for ${uni.name}:**\n\n✅ **Official portal:** ${uni.url} — Check for complete affiliated college list\n✅ **Previous year cutoffs:** Available on university portal under "Admission" section\n✅ **Scholarship:** Many universities offer merit-based fee waivers for top students\n✅ **Hostel & facilities:** Apply early — hostel seats limited\n✅ **Placement cell:** ${uni.short} has active placement cells — register from Day 1\n\n**🗓️ Admission Calendar (Typical):**\n• Entrance Exam: ${entData.schedule.split('|')[0]}\n• Counselling & Seat Allotment: June–July\n• Document Verification: July–August\n• Fee Payment: August\n• Classes Begin: August–September\n\n🔗 **For real-time updates, visit:** ${uni.url}`,900);
+
+  markStep(7);
+  await eduBot(`Your complete guidance is ready! What would you like to do next?`,500);
+  eduOptions([
+    {label:'🔄 Choose another course / university',value:'restart'},
+    {label:'📊 Compare two courses',value:'compare'},
+    {label:'🌏 Look at a different state',value:'state'},
+    {label:'🎓 PG options after this UG',value:'pg'},
+    {label:'💼 Job market & companies hiring',value:'jobs'},
+  ],async(v)=>{
+    if(v==='restart') await showUniversities(stateKey);
+    else if(v==='state') await askState();
+    else if(v==='pg'){
+      await eduBot(`**🎓 PG OPTIONS after ${courseName.split('(')[0].trim()}:**\n\n${guide.pg.map(p=>`• **${p}**`).join('\n')}\n\n**Key PG Entrance Exams:**\n${guide.pgExams.map(e=>`• **${e}**`).join('\n')}\n\n**💡 Tip:** Start preparing for PG entrance from Year 2 of UG itself. For GATE, start in Year 3. For CAT, start from Year 2.`,900);
+    } else if(v==='jobs'){
+      await eduBot(`**💼 Job Market for ${courseName.split('(')[0].trim()} graduates:**\n\n${guide.careers.map(c=>`• ${c}`).join('\n')}\n\n**📊 Salary:** ${guide.salary}\n\n**🏢 Top Recruiters:** Visit the Jobs tab of this portal for current openings! Use the 🏛️ Govt Jobs and 🏢 Private Jobs tabs for live vacancies.`,800);
+    } else {
+      await eduBot(`🔍 Course comparison: Tell me which two courses you want to compare and I'll do a side-by-side analysis. You can also use the AI chat below to ask me anything!`,600);
+    }
+  });
+}
+
+async function flowPickUniversity(){
+  await eduBot(`Which **university** do you want to explore in detail?`,500);
+  eduOptions([
+    {label:'🏛️ PTU (Punjab Technical University)',value:'ptu_punjab'},
+    {label:'🏛️ GNDU (Guru Nanak Dev University)',value:'gndu_punjab'},
+    {label:'🏛️ PU Chandigarh (Panjab University)',value:'pu_punjab'},
+    {label:'🏛️ LPU (Lovely Professional University)',value:'lpu_punjab'},
+    {label:'🏛️ CU (Chandigarh University)',value:'cu_punjab'},
+    {label:'🏛️ DU (Delhi University)',value:'du_delhi'},
+  ],async(v)=>{
+    const [uk,sk]=v.split('_');
+    eduState.profile.state=sk;eduState.profile.uniKey=uk;updateProfile();
+    await showCourses(sk,uk);
+  });
+}
+async function flowPickStream(){
+  await eduBot(`Which **stream** do you want to explore UG courses for?`,500);
+  eduOptions(Object.keys(EDU_KB.streams).map(k=>({label:`${EDU_KB.streams[k].icon} ${EDU_KB.streams[k].label}`,value:k})),async(v)=>{
+    eduState.profile.stream=v;updateProfile();await askState();
+  });
+}
+async function flowUG(){
+  await eduBot(`You're currently in a UG program. What do you need guidance on?`,600);
+  eduOptions([
+    {label:'🎓 PG course selection & entrance',value:'pg'},
+    {label:'💼 Campus placement preparation',value:'placement'},
+    {label:'🌍 Study abroad (MS / MBA)',value:'abroad'},
+    {label:'📋 Govt job exams after graduation',value:'govt'},
+  ],async(v)=>{
+    if(v==='pg'){
+      await eduBot(`Which UG course are you currently studying?`,500);
+      eduOptions(['B.Tech CSE','B.Tech Other','MBBS','B.Com / BBA','BA / BSW','BCA','B.Sc','B.Pharm','LLB','BFA / B.Des'],async(cv)=>{
+        const guideMap={'B.Tech CSE':'engineering','MBBS':'medicine','B.Com / BBA':'commerce_ca','BA / BSW':'arts_civil','BFA / B.Des':'design_arts'};
+        const gk=guideMap[cv]||'engineering';
+        const guide=EDU_KB.careerGuide[gk];
+        await eduBot(`**🎓 PG Options after ${cv}:**\n\n${guide.pg.map(p=>`• **${p}**`).join('\n')}\n\n**Entrance Exams:**\n${guide.pgExams.map(e=>`• ${e}`).join('\n')}\n\n**💡 Timeline:**\n• Start PG prep from UG Year 2/3\n• GATE: 3 months intensive in final year\n• CAT: 6 months of prep\n• UPSC: 1–2 years minimum\n\n${guide.salary}`,900);
+      });
+    } else if(v==='placement'){
+      await eduBot(`**💼 Campus Placement Preparation Guide:**\n\n**Round 1 — Aptitude Test:**\n• Practice on IndiaBix, PrepInsta, Testbook\n• Topics: Quant, Reasoning, Verbal, Data Interpretation\n\n**Round 2 — Coding/Technical:**\n• LeetCode (100+ problems), HackerRank, GeeksforGeeks\n• DSA: Arrays, Linked Lists, Trees, DP\n\n**Round 3 — Technical Interview:**\n• Core subjects (DBMS, OS, CN for CS; Thermodynamics for Mech etc.)\n• 2–3 strong projects to discuss\n\n**Round 4 — HR Interview:**\n• Tell me about yourself\n• Why our company?\n• Strengths & weaknesses\n\n**Resume Tips:**\n• 1 page, clean format\n• Highlight GitHub projects, internships, certifications\n• CGPA above 6.5 for most companies`,900);
+    } else if(v==='abroad'){
+      await eduBot(`**🌍 Study Abroad Guide:**\n\n**For MS/M.Eng (USA/Canada/Europe):**\n• GRE: Quant 160+ | Verbal 150+ | AWA 4+\n• TOEFL: 95+ / IELTS: 7.0+\n• Target: Sep admit (apply Oct–Dec), Jan admit (apply Jun–Aug)\n• Universities: Top 50 via US News rankings\n• Cost: $25–60k/year | Scholarships & TA/RA available\n\n**For MBA abroad:**\n• GMAT: 650–730+\n• Work experience: 2–5 years preferred\n• Target: ISB (India), LBS, Wharton, INSEAD\n\n**Timeline:**\n• Year 3 of UG: Appear for GRE/IELTS\n• Final year: Apply for Sep/Jan intake\n• After result: Visa (F-1/Study visa), accommodation`,900);
+    } else {
+      await eduBot(`**📋 Govt Job Exams After Graduation:**\n\n**UPSC CSE (IAS/IPS/IFS):** Any graduate | Best exam in India | 1–2 yr prep\n**SSC CGL:** Graduate | Group B&C | 6–8 months prep\n**IBPS PO/Clerk:** Graduate | Banking | 4–6 months\n**SBI PO:** Graduate | Premier banking | 6 months\n**RBI Grade B:** Graduate | Top banking job | 1 year\n**CAT → IIM MBA:** Graduate | Premier management | 6–8 months\n**GATE → PSU:** B.Tech | PSU jobs (ONGC, BHEL, NTPC) | 4–6 months\n**State PCS:** Graduate | IAS equivalent at state level\n\n🔗 **Check the Govt Jobs tab** on this portal for all current openings!`,900);
+    }
+  });
+}
+
+// ── MODE TOGGLE ───────────────────────────────────
+let currentMode='edu';
+function setMode(mode){
+  currentMode=mode;
+  const t=document.getElementById('cTitle');
+  const a=document.getElementById('cAva');
+  const chips=document.getElementById('chipBar');
+  const btn1=document.getElementById('modeEdu');
+  const btn2=document.getElementById('modeJob');
+  if(mode==='edu'){
+    if(t)t.textContent='SEHAJNATH AI — Student Career Counsellor';
+    if(a)a.textContent='🎓';
+    if(btn1){btn1.style.background='linear-gradient(135deg,#FF9933,#E8830A)';btn1.style.border='none';btn1.style.color='#fff';}
+    if(btn2){btn2.style.background='rgba(33,150,243,0.15)';btn2.style.border='1.5px solid rgba(33,150,243,0.4)';btn2.style.color='#90CAF9';}
+    document.getElementById('cmsgs').innerHTML='';chatHist=[];
+    eduStart();
+  } else {
+    if(t)t.textContent='SEHAJNATH AI — Job & Exam Counsellor';
+    if(a)a.textContent='🏛️';
+    if(btn2){btn2.style.background='linear-gradient(135deg,#2196F3,#1565C0)';btn2.style.border='none';btn2.style.color='#fff';}
+    if(btn1){btn1.style.background='rgba(255,153,51,0.15)';btn1.style.border='1.5px solid rgba(255,153,51,0.4)';btn1.style.color='#FFD700';}
+    if(chips)chips.innerHTML=['UPSC CSE 2026 notification','Punjab Police 2026 last date','RBI Assistant 2026 apply','GATE 2026 PSU cutoffs','SSC CGL 2026 syllabus','RRB Group D eligibility','Best exam for 12th pass','Document checklist UPSC joining'].map(q=>`<button class="chip" onclick="preC('${q}')">${q}</button>`).join('');
+    document.getElementById('cmsgs').innerHTML='';chatHist=[];
+    eduTyping(true);
+    setTimeout(()=>{
+      eduTyping(false);
+      eduAppend('assistant',`🙏 **Namaste! I'm SEHAJNATH AI — Job & Exam Counsellor.**\n\n📅 **Today: ${daynow()}, ${dnow()} | ⏰ ${hnow()} IST**\n\n**🔴 URGENT DEADLINES TODAY:**\n• RRB Group D 2026 — Correction window closes TODAY (21 Mar)\n• Punjab Police Constable 2026 — Apply by **30 March 2026**\n• RBI Assistant 2026 — Apply by **31 March 2026**\n\n**Currently Active: 3,78,320+ vacancies across India**\n\nAsk me anything about govt/private jobs, exam strategy, syllabus, eligibility, document checklist, or joining process! 🚀`);
+    },600);
+  }
+}
+
+function eduChipClick(q){
+  if(currentMode==='job'){preC(q);}
+  else{
+    // map chip to flow
+    const cinp=document.getElementById('cinp');
+    if(q.includes('Class 10')){document.getElementById('cmsgs').innerHTML='';eduStart();}
+    else if(q.includes('PTU')){eduState.profile.state='punjab';eduState.profile.uniKey='ptu';updateProfile();showCourses('punjab','ptu');}
+    else if(q.includes('GNDU')){eduState.profile.state='punjab';eduState.profile.uniKey='gndu';updateProfile();showCourses('punjab','gndu');}
+    else if(cinp){cinp.value=q;handleSend();}
+  }
+}
+
+// ── HANDLE SEND (both modes) ──────────────────────
+async function handleSend(){
+  const inp=document.getElementById('cinp');if(!inp)return;
+  const msg=inp.value.trim();if(!msg||chatBusy)return;
+  inp.value='';
+  if(currentMode==='job'){
+    chatBusy=true;
+    chatHist.push({role:'user',content:msg});
+    eduAppend('user',msg);eduTyping(true);
+    document.getElementById('csend').disabled=true;
+    try{
+      const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,
+          system:`You are an expert AI career counsellor for SEHAJNATH CONSULTANCY SERVICES PORTAL. TODAY'S DATE: ${daynow()}, ${fullnow()}. CURRENTLY ACTIVE JOBS: UPSC CSE 2026 (933 posts, Prelims 25 May), RRB Group D (22195 posts, correction window CLOSES TODAY 21 Mar), Punjab Police Constable (3298 posts, apply by 30 Mar), NHPC Trainee Engineer (72 posts GATE, apply by 6 Apr), RBI Assistant (650 posts, close 31 Mar), EIL Management Trainee (59 posts GATE, 13 Apr), MPESB (1679 posts), Allahabad HC (195 posts). Guide users on all Indian govt/private jobs. Be specific with dates. Use web search for latest info. Format with markdown.`,
+          tools:[{type:'web_search_20250305',name:'web_search'}],messages:chatHist})});
+      const data=await res.json();
+      const reply=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n')||"Sorry, please try again.";
+      chatHist.push({role:'assistant',content:reply});
+      eduTyping(false);eduAppend('assistant',reply);
+    }catch(e){eduTyping(false);eduAppend('assistant','⚠️ Network error. Please try again.');}
+    chatBusy=false;document.getElementById('csend').disabled=false;
+  } else {
+    // In edu mode, free-text → send to AI with edu context
+    chatBusy=true;
+    eduAppend('user',msg);eduTyping(true);
+    document.getElementById('csend').disabled=true;
+    try{
+      const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,
+          system:`You are an expert Indian education and career counsellor for SEHAJNATH CONSULTANCY SERVICES. Today: ${fullnow()}. Student profile: Stream=${eduState.profile.stream||'unknown'}, State=${eduState.profile.state||'unknown'}, University=${eduState.profile.uniKey||'unknown'}, Course=${eduState.profile.course||'unknown'}. Guide about Indian UG/PG courses, universities (PTU, GNDU, PU, LPU, CU, DU), entrance exams (JEE, NEET, CUET, CLAT, GATE, CAT), study plans, career options. Use web search for official university info. Be specific, accurate, encouraging.`,
+          tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:msg}]})});
+      const data=await res.json();
+      const reply=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n')||"Please try again.";
+      eduTyping(false);eduAppend('assistant',reply);
+    }catch(e){eduTyping(false);eduAppend('assistant','⚠️ Network error. Please try again.');}
+    chatBusy=false;document.getElementById('csend').disabled=false;
+  }
+}
+
+function preC(t){const el=document.getElementById('cinp');if(el){el.value=t;el.focus();}}
+
+// sendC kept for backward compat — routes to handleSend
+function sendC(){handleSend();}
+function appC(role,text){eduAppend(role,text);}
+function showTyp(show){eduTyping(show);}
 function md(t){return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/`(.*?)`/g,'<code style="background:rgba(255,255,255,.12);padding:1px 5px;border-radius:3px;font-size:12px">$1</code>').replace(/\n/g,'<br>');}
 
 // ── ALL ALERTS ────────────────────────────────────
