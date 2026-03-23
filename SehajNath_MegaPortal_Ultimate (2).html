@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⚡ SEHAJ NATH INFOTECH — Ultimate Mega Portal | Patel Chowk, Pathankot</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════ CSS VARIABLES ═══════════════════ */
+:root{
+  --bg:#070d14;--bg2:#0c1520;--bg3:#111e2e;
+  --card:#0f1c2d;--card2:#142234;--card3:#1a2d42;
+  --s1:#0e1c2c;--s2:#141f2e;
+  --t1:#e8f0fe;--t2:#8aadce;--t3:#4d7498;
+  --a1:#00d4ff;--a2:#ff6b35;--a3:#00ff88;--a4:#ffd700;--a5:#ff3388;
+  --brd:rgba(0,212,255,.12);--brd2:rgba(0,212,255,.22);
+  --glow:0 0 20px rgba(0,212,255,.15);
+  --r:10px;--r2:14px;--r3:20px;
+  --f1:'Exo 2',sans-serif;--f2:'Rajdhani',sans-serif;--f3:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:var(--f1);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse at 15% 20%,rgba(0,212,255,.04) 0%,transparent 50%),
+  radial-gradient(ellipse at 85% 80%,rgba(255,107,53,.04) 0%,transparent 50%),
+  radial-gradient(ellipse at 50% 50%,rgba(0,255,136,.02) 0%,transparent 70%);
+  pointer-events:none;z-index:0}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--a1);border-radius:3px;opacity:.5}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font-family:var(--f1);outline:none}
+.z1{position:relative;z-index:1}
+
+/* ═══════════════════ HEADER ═══════════════════ */
+.hdr{background:rgba(7,13,20,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd2);
+  display:flex;align-items:center;gap:16px;padding:0 20px;height:62px;
+  position:sticky;top:0;z-index:500;box-shadow:0 2px 30px rgba(0,0,0,.6)}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--a1),#0070aa);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+  box-shadow:0 0 18px rgba(0,212,255,.3);flex-shrink:0}
+.logo-text{font-family:var(--f2);font-size:1.15rem;font-weight:700;line-height:1.1;letter-spacing:.5px}
+.logo-text span{display:block;font-size:.6rem;font-weight:400;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+.hdr-search{flex:1;max-width:500px;position:relative}
+.hdr-search input{width:100%;background:var(--card2);border:1px solid var(--brd);color:var(--t1);
+  padding:9px 46px 9px 16px;border-radius:50px;font-size:.85rem;transition:.2s}
+.hdr-search input:focus{border-color:var(--a1);box-shadow:0 0 0 3px rgba(0,212,255,.1)}
+.hdr-search input::placeholder{color:var(--t3)}
+.hdr-search button{position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  background:var(--a1);border:none;color:var(--bg);width:32px;height:32px;border-radius:50%;
+  cursor:pointer;font-size:.9rem;transition:.2s}
+.hdr-search button:hover{background:var(--a2);transform:translateY(-50%) scale(1.05)}
+.hdr-pills{display:flex;align-items:center;gap:8px;margin-left:auto;flex-wrap:nowrap}
+.hpill{background:var(--card2);border:1px solid var(--brd);padding:4px 10px;border-radius:50px;
+  font-size:.67rem;color:var(--t3);white-space:nowrap;letter-spacing:.5px}
+.hpill strong{color:var(--a4)}
+.live-pill{background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);color:var(--a3);
+  padding:4px 11px;border-radius:50px;font-size:.67rem;display:flex;align-items:center;gap:5px;cursor:pointer}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--a3);animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,255,136,.4)}50%{opacity:.6;box-shadow:0 0 0 5px rgba(0,255,136,0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* ═══════════════════ TICKER ═══════════════════ */
+.ticker-wrap{overflow:hidden;padding:7px 0;border-bottom:1px solid var(--brd);position:relative}
+.ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
+.ticker-wrap::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.ticker-wrap::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.ticker-inner{display:inline-flex;gap:48px;animation:scroll-x 60s linear infinite;white-space:nowrap}
+.ticker-inner:hover{animation-play-state:paused}
+@keyframes scroll-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tick-item{font-size:.75rem;color:var(--t2);display:inline-flex;align-items:center;gap:6px}
+.tick-item .lbl{color:var(--a4);font-weight:700;font-family:var(--f2);font-size:.7rem}
+.tick-item .pos{color:var(--a3)}
+.tick-item .neg{color:var(--a2)}
+.tick-bg-news{background:rgba(0,212,255,.05)}
+.tick-bg-jobs{background:rgba(0,255,136,.05)}
+.tick-bg-exam{background:rgba(255,215,0,.05)}
+
+/* ═══════════════════ NAV TABS ═══════════════════ */
+.nav-bar{background:var(--bg2);border-bottom:1px solid var(--brd);position:sticky;top:62px;z-index:400;overflow-x:auto;scrollbar-width:none}
+.nav-bar::-webkit-scrollbar{display:none}
+.nav-tabs{display:flex;min-width:max-content;padding:0 16px}
+.ntab{padding:13px 16px;font-family:var(--f2);font-size:.92rem;font-weight:600;color:var(--t3);
+  cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;background:none;
+  border-top:none;border-left:none;border-right:none;transition:.15s;display:flex;align-items:center;gap:7px;letter-spacing:.3px}
+.ntab:hover{color:var(--t2)}
+.ntab.on{color:var(--a1);border-bottom-color:var(--a1)}
+.ntab .bdg{background:var(--a2);color:#fff;font-size:.58rem;font-weight:700;padding:1px 5px;border-radius:50px;line-height:1.4}
+.ntab .nbdg{background:var(--a3);color:var(--bg);font-size:.58rem;font-weight:700;padding:1px 5px;border-radius:50px;line-height:1.4}
+
+/* ═══════════════════ TAB PANELS ═══════════════════ */
+.tab-panel{display:none;animation:fadeIn .25s ease}
+.tab-panel.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.layout{max-width:1600px;margin:0 auto;padding:24px 16px 60px;position:relative;z-index:1}
+
+/* ═══════════════════ SECTION HEADERS ═══════════════════ */
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--brd)}
+.sec-title{font-family:var(--f2);font-size:1.3rem;font-weight:700;letter-spacing:.3px;display:flex;align-items:center;gap:8px}
+.sec-title .ico{font-size:1.1rem}
+.sec-right{display:flex;align-items:center;gap:8px}
+.btn{background:var(--card2);border:1px solid var(--brd);color:var(--t2);padding:6px 14px;border-radius:8px;font-size:.8rem;cursor:pointer;transition:.15s;font-family:var(--f2);font-weight:600;letter-spacing:.3px}
+.btn:hover{background:var(--card3);border-color:var(--brd2);color:var(--t1)}
+.btn-accent{background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.3);color:var(--a1)}
+.btn-accent:hover{background:rgba(0,212,255,.18)}
+.btn-green{background:rgba(0,255,136,.1);border-color:rgba(0,255,136,.3);color:var(--a3)}
+.btn-orange{background:rgba(255,107,53,.1);border-color:rgba(255,107,53,.3);color:var(--a2)}
+
+/* ═══════════════════ CARDS ═══════════════════ */
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:16px;transition:.2s}
+.card:hover{border-color:var(--brd2);box-shadow:var(--glow)}
+.card-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.card-ico{font-size:1.4rem}
+.card-ttl{font-family:var(--f2);font-weight:700;font-size:1rem;letter-spacing:.3px}
+.card-sub{font-size:.78rem;color:var(--t3);margin-top:1px}
+
+/* ═══════════════════ NEWS CARDS ═══════════════════ */
+.nc{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.2s}
+.nc:hover{border-color:var(--brd2);transform:translateY(-3px);box-shadow:var(--glow)}
+.nc-img{width:100%;height:150px;object-fit:cover;display:block}
+.nc-body{padding:12px}
+.nc-src{font-size:.65rem;color:var(--a1);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.nc-t{font-family:var(--f2);font-size:.92rem;font-weight:600;color:var(--t1);line-height:1.4;margin-bottom:6px}
+.nc-d{font-size:.78rem;color:var(--t3);line-height:1.5;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nc-time{font-size:.68rem;color:var(--t3)}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+
+/* ═══════════════════ HERO BANNER ═══════════════════ */
+.hero{background:linear-gradient(135deg,#040b14 0%,#0a1628 40%,#050e1a 100%);
+  padding:44px 24px 36px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--brd)}
+.hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 20% 50%,rgba(0,212,255,.08) 0%,transparent 50%),
+  radial-gradient(ellipse at 80% 50%,rgba(255,107,53,.06) 0%,transparent 50%),
+  radial-gradient(ellipse at 50% 0%,rgba(0,255,136,.04) 0%,transparent 40%)}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,255,.08);
+  border:1px solid rgba(0,212,255,.2);color:var(--a1);font-size:.7rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px;position:relative}
+.hero h1{font-family:var(--f2);font-size:clamp(1.8rem,4vw,3.2rem);font-weight:800;
+  color:var(--t1);line-height:1.05;letter-spacing:-.5px;position:relative;margin-bottom:10px}
+.hero h1 em{color:var(--a1);font-style:normal}
+.hero h1 strong{color:var(--a4)}
+.hero p{color:var(--t3);font-size:.9rem;max-width:500px;margin:0 auto 24px;line-height:1.7;position:relative}
+.hero-stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;position:relative}
+.hstat{text-align:center}
+.hstat-n{font-family:var(--f2);font-size:1.8rem;font-weight:800;color:var(--a1);line-height:1}
+.hstat-l{font-size:.72rem;color:var(--t3);margin-top:3px;text-transform:uppercase;letter-spacing:1px}
+
+/* ═══════════════════ YOUTUBE ═══════════════════ */
+.yt-search-bar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.yt-search-bar input{flex:1;min-width:200px;background:var(--card2);border:1px solid var(--brd);
+  color:var(--t1);padding:10px 16px;border-radius:10px;font-size:.9rem}
+.yt-search-bar input:focus{border-color:var(--a2)}
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.yt-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.2s}
+.yt-card:hover{border-color:rgba(255,107,53,.4);transform:translateY(-3px);box-shadow:0 0 20px rgba(255,107,53,.15)}
+.yt-thumb{position:relative;padding-bottom:56.25%;background:var(--bg3)}
+.yt-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.yt-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.4);opacity:0;transition:.2s}
+.yt-card:hover .yt-play{opacity:1}
+.yt-play-ico{width:48px;height:48px;background:rgba(255,0,0,.85);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;padding-left:4px}
+.yt-dur{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.8);
+  color:#fff;font-size:.65rem;padding:2px 5px;border-radius:4px;font-family:var(--f3)}
+.yt-info{padding:10px}
+.yt-title{font-family:var(--f2);font-size:.88rem;font-weight:600;line-height:1.35;
+  color:var(--t1);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.yt-meta{font-size:.72rem;color:var(--t3);margin-top:5px;display:flex;justify-content:space-between}
+.yt-player-wrap{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r2);
+  overflow:hidden;margin-bottom:20px;position:relative}
+.yt-player-wrap iframe{display:block;width:100%;aspect-ratio:16/9;border:none}
+.yt-player-info{padding:14px 16px;background:var(--card)}
+.yt-player-title{font-family:var(--f2);font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.yt-player-meta{font-size:.8rem;color:var(--t3);display:flex;gap:16px}
+.yt-quick-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.yt-cat{background:var(--card2);border:1px solid var(--brd);color:var(--t2);padding:5px 13px;
+  border-radius:50px;font-size:.78rem;cursor:pointer;transition:.15s;font-family:var(--f2);font-weight:600}
+.yt-cat:hover,.yt-cat.on{background:rgba(255,107,53,.15);border-color:rgba(255,107,53,.4);color:var(--a2)}
+
+/* ═══════════════════ MUSIC PLAYER ═══════════════════ */
+.music-player{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--brd);
+  border-radius:var(--r3);padding:24px;margin-bottom:24px;position:relative;overflow:hidden}
+.music-player::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(255,51,136,.08) 0%,transparent 60%)}
+.mp-disc{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--bg3),var(--card3));
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+  border:3px solid rgba(255,51,136,.3);font-size:3rem;position:relative;flex-shrink:0}
+.mp-disc.playing{animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mp-disc::after{content:'';position:absolute;width:24px;height:24px;background:var(--card);border-radius:50%;border:2px solid rgba(255,51,136,.4)}
+.mp-layout{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.mp-vis{flex-shrink:0;text-align:center}
+.mp-info{flex:1;min-width:200px}
+.mp-title{font-family:var(--f2);font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.mp-artist{font-size:.85rem;color:var(--t3);margin-bottom:16px}
+.mp-progress{background:var(--bg3);height:4px;border-radius:2px;margin-bottom:8px;cursor:pointer;position:relative}
+.mp-bar{height:100%;background:linear-gradient(to right,var(--a5),var(--a1));border-radius:2px;width:35%;transition:width .5s}
+.mp-time{display:flex;justify-content:space-between;font-size:.72rem;color:var(--t3);margin-bottom:16px;font-family:var(--f3)}
+.mp-controls{display:flex;align-items:center;justify-content:center;gap:12px}
+.mp-btn{background:var(--card2);border:1px solid var(--brd);color:var(--t2);width:38px;height:38px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;transition:.15s}
+.mp-btn:hover{border-color:var(--a5);color:var(--a5)}
+.mp-play{background:linear-gradient(135deg,var(--a5),#cc0066);border:none;color:#fff;
+  width:52px;height:52px;font-size:1.2rem;box-shadow:0 0 20px rgba(255,51,136,.3)}
+.mp-play:hover{transform:scale(1.08);box-shadow:0 0 30px rgba(255,51,136,.5)}
+.mp-vol{display:flex;align-items:center;gap:8px;margin-top:16px}
+.mp-vol input{flex:1;accent-color:var(--a5)}
+.music-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.mcat{background:var(--card2);border:1px solid var(--brd);color:var(--t2);padding:5px 13px;border-radius:50px;font-size:.78rem;cursor:pointer;transition:.15s;font-family:var(--f2);font-weight:600}
+.mcat:hover,.mcat.on{background:rgba(255,51,136,.15);border-color:rgba(255,51,136,.4);color:var(--a5)}
+.playlist{display:flex;flex-direction:column;gap:6px;max-height:380px;overflow-y:auto}
+.pl-item{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:10px 14px;
+  display:flex;align-items:center;gap:12px;cursor:pointer;transition:.15s}
+.pl-item:hover{border-color:var(--brd2)}
+.pl-item.playing{background:rgba(255,51,136,.08);border-color:rgba(255,51,136,.3)}
+.pl-num{font-family:var(--f3);font-size:.75rem;color:var(--t3);width:22px;text-align:center;flex-shrink:0}
+.pl-item.playing .pl-num{color:var(--a5)}
+.pl-name{flex:1;font-size:.88rem;font-weight:500}
+.pl-item.playing .pl-name{color:var(--a5);font-weight:600}
+.pl-dur{font-family:var(--f3);font-size:.72rem;color:var(--t3)}
+.pl-playing-ico{color:var(--a5);font-size:.8rem;animation:pulse 1s infinite}
+
+/* ═══════════════════ CRICKET ═══════════════════ */
+.cricket-hero{background:linear-gradient(135deg,#001a0d,#003316);border:1px solid rgba(0,255,136,.15);
+  border-radius:var(--r2);padding:20px;margin-bottom:20px;position:relative;overflow:hidden}
+.cricket-hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%,rgba(0,255,136,.05) 0%,transparent 50%),
+  radial-gradient(ellipse at 70% 50%,rgba(255,215,0,.03) 0%,transparent 50%)}
+.match-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:16px;transition:.2s}
+.match-card:hover{border-color:rgba(0,255,136,.3);box-shadow:0 0 20px rgba(0,255,136,.08)}
+.match-status{display:inline-flex;align-items:center;gap:5px;background:rgba(255,107,53,.1);
+  border:1px solid rgba(255,107,53,.2);color:var(--a2);font-size:.68rem;font-weight:700;
+  padding:2px 9px;border-radius:50px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.match-status.live{background:rgba(0,255,136,.1);border-color:rgba(0,255,136,.2);color:var(--a3)}
+.match-status.upcoming{background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.2);color:var(--a1)}
+.teams{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0}
+.team{text-align:center;flex:1}
+.team-name{font-family:var(--f2);font-size:1.1rem;font-weight:700;letter-spacing:.5px}
+.team-score{font-family:var(--f3);font-size:1.4rem;font-weight:600;color:var(--a4);margin:4px 0}
+.team-overs{font-size:.75rem;color:var(--t3)}
+.vs-badge{background:var(--card2);border:1px solid var(--brd);padding:6px 10px;border-radius:8px;
+  font-family:var(--f2);font-size:.85rem;font-weight:700;color:var(--t3);flex-shrink:0}
+.match-venue{font-size:.77rem;color:var(--t3);text-align:center;margin-top:8px}
+.match-series{font-size:.7rem;color:var(--a1);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.crkt-embed{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r2);overflow:hidden;margin-bottom:20px}
+.crkt-embed iframe{display:block;width:100%;height:500px;border:none}
+.cricket-streams{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.stream-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.2s}
+.stream-card:hover{border-color:rgba(0,255,136,.4);transform:translateY(-2px)}
+.stream-thumb{height:120px;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  background:linear-gradient(135deg,var(--bg3),var(--card2));position:relative}
+.stream-live-tag{position:absolute;top:6px;right:6px;background:var(--a2);color:#fff;
+  font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:50px;letter-spacing:1px;text-transform:uppercase}
+.stream-info{padding:10px}
+.stream-name{font-family:var(--f2);font-size:.9rem;font-weight:700;margin-bottom:2px}
+.stream-meta{font-size:.73rem;color:var(--t3)}
+
+/* ═══════════════════ WEATHER ═══════════════════ */
+.weather-main{background:linear-gradient(135deg,#001224,#002244);border:1px solid rgba(0,212,255,.2);
+  border-radius:var(--r3);padding:24px;margin-bottom:20px;position:relative;overflow:hidden}
+.weather-main::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 60% 0%,rgba(0,212,255,.1) 0%,transparent 50%)}
+.weather-city{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.weather-city input{flex:1;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);
+  color:var(--t1);padding:9px 14px;border-radius:10px;font-size:.9rem}
+.weather-city button{background:var(--a1);border:none;color:var(--bg);padding:9px 18px;border-radius:10px;font-weight:700;cursor:pointer;font-family:var(--f2)}
+.wtemp{font-family:var(--f2);font-size:4.5rem;font-weight:800;color:var(--a1);line-height:1}
+.wcity{font-size:1.1rem;color:var(--t2);margin-bottom:4px;font-family:var(--f2);font-weight:600}
+.wdesc{font-size:.85rem;color:var(--t3);text-transform:capitalize;margin-bottom:16px}
+.wstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.wstat{background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.1);border-radius:var(--r);padding:12px;text-align:center}
+.wstat-v{font-family:var(--f2);font-size:1.1rem;font-weight:700;color:var(--a1)}
+.wstat-l{font-size:.7rem;color:var(--t3);margin-top:2px;text-transform:uppercase;letter-spacing:.8px}
+.forecast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:16px}
+.fcast-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:12px;text-align:center;transition:.2s}
+.fcast-card:hover{border-color:var(--a1);transform:translateY(-2px)}
+.fcast-day{font-family:var(--f2);font-size:.78rem;font-weight:700;color:var(--t2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.fcast-ico{font-size:1.8rem;margin-bottom:6px;display:block}
+.fcast-hi{font-family:var(--f2);font-size:1.1rem;font-weight:700;color:var(--a4)}
+.fcast-lo{font-size:.78rem;color:var(--t3);margin-top:2px}
+.weather-widget-map{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);
+  overflow:hidden;height:300px;display:flex;align-items:center;justify-content:center;color:var(--t3)}
+
+/* ═══════════════════ LIVE STREAMING ═══════════════════ */
+.stream-hero{background:linear-gradient(135deg,#14001a,#200030);border:1px solid rgba(255,51,136,.15);
+  border-radius:var(--r2);padding:20px;margin-bottom:20px;position:relative}
+.stream-cats-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.scat{background:var(--card2);border:1px solid var(--brd);color:var(--t2);padding:6px 14px;
+  border-radius:50px;font-size:.8rem;cursor:pointer;transition:.15s;font-family:var(--f2);font-weight:600}
+.scat:hover,.scat.on{background:rgba(255,51,136,.15);border-color:rgba(255,51,136,.4);color:var(--a5)}
+.embed-player{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r2);
+  overflow:hidden;margin-bottom:20px;position:relative}
+.embed-player iframe{display:block;width:100%;aspect-ratio:16/9;border:none}
+.embed-player-label{padding:12px 16px;background:var(--card);display:flex;align-items:center;justify-content:space-between}
+.stream-channels{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.ch-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:14px;
+  cursor:pointer;transition:.2s;display:flex;align-items:center;gap:12px}
+.ch-card:hover{border-color:rgba(255,51,136,.4);background:rgba(255,51,136,.05)}
+.ch-card.active{border-color:var(--a5);background:rgba(255,51,136,.08)}
+.ch-ico{font-size:1.8rem;flex-shrink:0}
+.ch-name{font-family:var(--f2);font-size:.9rem;font-weight:700;letter-spacing:.3px}
+.ch-tag{font-size:.7rem;color:var(--t3);margin-top:2px}
+.ch-live{display:inline-flex;align-items:center;gap:3px;background:rgba(255,107,53,.1);
+  border:1px solid rgba(255,107,53,.2);color:var(--a2);font-size:.6rem;font-weight:700;
+  padding:1px 6px;border-radius:50px;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+
+/* ═══════════════════ STOCKS / TRADING ═══════════════════ */
+.trading-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:20px}
+.stock-tile{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:14px;
+  transition:.2s;cursor:pointer}
+.stock-tile:hover{border-color:var(--brd2);box-shadow:var(--glow)}
+.st-sym{font-family:var(--f3);font-size:.75rem;font-weight:600;color:var(--a1);letter-spacing:1px;margin-bottom:4px}
+.st-name{font-size:.78rem;color:var(--t3);margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-price{font-family:var(--f2);font-size:1.3rem;font-weight:700;color:var(--t1)}
+.st-chg{font-size:.78rem;font-weight:600;margin-top:4px}
+.st-chg.pos{color:var(--a3)}
+.st-chg.neg{color:var(--a2)}
+.chart-embed{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);
+  overflow:hidden;margin-bottom:16px}
+.chart-embed iframe{display:block;width:100%;height:400px;border:none}
+
+/* ═══════════════════ JOBS ═══════════════════ */
+.job-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:16px;transition:.2s;cursor:pointer}
+.job-card:hover{border-color:rgba(0,255,136,.3);transform:translateY(-2px);box-shadow:0 0 20px rgba(0,255,136,.08)}
+.job-title{font-family:var(--f2);font-size:1rem;font-weight:700;color:var(--t1);margin-bottom:6px}
+.job-org{font-size:.83rem;color:var(--a3);font-weight:600;margin-bottom:8px}
+.job-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.jtag{background:var(--card2);border:1px solid var(--brd);color:var(--t3);
+  font-size:.68rem;padding:2px 8px;border-radius:50px;font-family:var(--f2);font-weight:600;letter-spacing:.3px}
+.jtag.new{background:rgba(0,255,136,.1);border-color:rgba(0,255,136,.2);color:var(--a3)}
+.jtag.urgent{background:rgba(255,107,53,.1);border-color:rgba(255,107,53,.2);color:var(--a2)}
+.job-deadline{font-size:.75rem;color:var(--a4)}
+.job-meta{display:flex;gap:12px;margin-top:8px;font-size:.77rem;color:var(--t3)}
+
+/* ═══════════════════ EXAMS ═══════════════════ */
+.exam-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:16px;transition:.2s;cursor:pointer}
+.exam-card:hover{border-color:rgba(0,212,255,.3);transform:translateY(-2px);box-shadow:var(--glow)}
+.exam-name{font-family:var(--f2);font-size:1rem;font-weight:700;color:var(--t1);margin-bottom:4px}
+.exam-body{font-size:.8rem;color:var(--a1);font-weight:600;margin-bottom:8px}
+.exam-dates{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.edate{background:var(--card2);border:1px solid var(--brd);border-radius:7px;padding:7px 10px}
+.edate-l{font-size:.65rem;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:2px}
+.edate-v{font-family:var(--f2);font-size:.88rem;font-weight:700;color:var(--a4)}
+
+/* ═══════════════════ FUEL / PRICES ═══════════════════ */
+.price-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:16px;text-align:center;transition:.2s}
+.price-card:hover{border-color:var(--brd2);box-shadow:var(--glow)}
+.price-ico{font-size:2rem;margin-bottom:8px;display:block}
+.price-label{font-family:var(--f2);font-size:.82rem;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.price-val{font-family:var(--f2);font-size:1.8rem;font-weight:800;color:var(--a4);line-height:1}
+.price-unit{font-size:.72rem;color:var(--t3);margin-top:2px}
+.price-city{font-size:.72rem;color:var(--t3);margin-top:4px}
+.price-chg{font-size:.75rem;margin-top:4px;font-weight:600}
+.price-chg.pos{color:var(--a3)}
+.price-chg.neg{color:var(--a2)}
+
+/* ═══════════════════ CURRENT AFFAIRS ═══════════════════ */
+.ca-card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:14px;
+  border-left:3px solid var(--a1);transition:.2s;cursor:pointer}
+.ca-card:hover{border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.03)}
+.ca-date{font-size:.68rem;color:var(--a1);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.ca-title{font-family:var(--f2);font-size:.92rem;font-weight:600;line-height:1.4;margin-bottom:5px}
+.ca-body{font-size:.78rem;color:var(--t3);line-height:1.5}
+.ca-grid{display:flex;flex-direction:column;gap:8px}
+
+/* ═══════════════════ SEARCH RESULTS ═══════════════════ */
+.search-result{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:14px;
+  cursor:pointer;transition:.15s;border-left:3px solid var(--a1)}
+.search-result:hover{border-color:var(--brd2);background:rgba(0,212,255,.03)}
+.sr-title{font-family:var(--f2);font-size:.95rem;font-weight:600;color:var(--a1);margin-bottom:4px}
+.sr-url{font-size:.72rem;color:var(--a3);margin-bottom:5px}
+.sr-desc{font-size:.8rem;color:var(--t2);line-height:1.5}
+.sr-grid{display:flex;flex-direction:column;gap:8px}
+
+/* ═══════════════════ WIDGETS ROW ═══════════════════ */
+.widgets-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:24px}
+.widget{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:16px;
+  display:flex;flex-direction:column;gap:4px;transition:.2s}
+.widget:hover{border-color:var(--brd2);box-shadow:var(--glow)}
+.wgt-label{font-size:.68rem;color:var(--t3);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.wgt-val{font-family:var(--f2);font-size:1.5rem;font-weight:800;color:var(--t1)}
+.wgt-sub{font-size:.75rem;color:var(--t3)}
+.wgt-ico{font-size:1.5rem;margin-bottom:4px}
+
+/* ═══════════════════ EMPTY / LOADING ═══════════════════ */
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:48px;color:var(--t3);gap:12px;font-size:.88rem}
+.spinner{width:32px;height:32px;border:2px solid var(--brd);border-top-color:var(--a1);
+  border-radius:50%;animation:spin 1s linear infinite}
+.empty{text-align:center;padding:40px;color:var(--t3);font-size:.88rem}
+
+/* ═══════════════════ MODAL ═══════════════════ */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);
+  z-index:999;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:.2s}
+.modal-bg.on{opacity:1;pointer-events:all}
+.modal{background:var(--bg2);border:1px solid var(--brd2);border-radius:var(--r3);
+  max-width:900px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:12px;right:12px;background:var(--card2);border:1px solid var(--brd);
+  color:var(--t2);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;z-index:10;transition:.15s}
+.modal-close:hover{background:rgba(255,107,53,.2);border-color:var(--a2);color:var(--a2)}
+
+/* ═══════════════════ SCROLLABLE PANELS ═══════════════════ */
+.scrollable{max-height:500px;overflow-y:auto;padding-right:4px}
+.scrollable::-webkit-scrollbar{width:4px}
+.scrollable::-webkit-scrollbar-thumb{background:var(--brd2);border-radius:2px}
+
+/* ═══════════════════ FOOTER ═══════════════════ */
+.footer{background:var(--bg2);border-top:1px solid var(--brd);padding:24px;text-align:center;
+  font-size:.78rem;color:var(--t3);margin-top:40px}
+.footer strong{color:var(--a1)}
+
+/* ═══════════════════ QUICK ACCESS GRID ═══════════════════ */
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:28px}
+.qcard{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:16px;
+  text-align:center;cursor:pointer;transition:.2s}
+.qcard:hover{border-color:var(--brd2);transform:translateY(-3px);box-shadow:var(--glow)}
+.qcard-ico{font-size:2rem;display:block;margin-bottom:8px}
+.qcard-l{font-family:var(--f2);font-size:.82rem;font-weight:700;color:var(--t2)}
+
+/* ═══════════════════ RADIO ═══════════════════ */
+.radio-player{background:linear-gradient(135deg,#001420,#002040);border:1px solid rgba(0,212,255,.2);
+  border-radius:var(--r2);padding:20px;margin-bottom:20px}
+.radio-stations{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.radio-stn{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:12px 14px;
+  cursor:pointer;transition:.2s;display:flex;align-items:center;gap:10px}
+.radio-stn:hover{border-color:rgba(0,212,255,.4)}
+.radio-stn.playing{border-color:var(--a1);background:rgba(0,212,255,.05)}
+.rs-ico{font-size:1.5rem;flex-shrink:0}
+.rs-name{font-family:var(--f2);font-size:.88rem;font-weight:700}
+.rs-lang{font-size:.7rem;color:var(--t3);margin-top:1px}
+.rs-eq{display:flex;gap:2px;align-items:flex-end;height:16px;margin-left:auto}
+.rs-eq span{width:3px;background:var(--a1);border-radius:1px;animation:eq .6s ease infinite alternate}
+.rs-eq span:nth-child(1){height:8px;animation-delay:0s}
+.rs-eq span:nth-child(2){height:14px;animation-delay:.15s}
+.rs-eq span:nth-child(3){height:10px;animation-delay:.3s}
+.rs-eq span:nth-child(4){height:16px;animation-delay:.45s}
+@keyframes eq{to{height:4px}}
+
+/* ═══════════════════ TABS WITHIN TABS ═══════════════════ */
+.inner-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.itab{background:var(--card2);border:1px solid var(--brd);color:var(--t3);padding:6px 14px;
+  border-radius:8px;font-size:.8rem;cursor:pointer;transition:.15s;font-family:var(--f2);font-weight:600}
+.itab:hover{color:var(--t2)}
+.itab.on{background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.3);color:var(--a1)}
+
+/* ═══════════════════ RESPONSIVE ═══════════════════ */
+@media(max-width:768px){
+  .hdr{padding:0 12px;gap:10px}
+  .hpill,.live-pill{display:none}
+  .logo-text span{display:none}
+  .hero h1{font-size:1.6rem}
+  .hero-stats{gap:16px}
+  .hstat-n{font-size:1.3rem}
+  .mp-layout{flex-direction:column;text-align:center}
+  .mp-disc{margin:0 auto}
+}
+@media(max-width:500px){
+  .layout{padding:16px 10px 40px}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .quick-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* ═══════════════════ ANIMATIONS ═══════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+.ani{animation:fadeUp .35s ease both}
+.ani-d1{animation-delay:.05s}
+.ani-d2{animation-delay:.1s}
+.ani-d3{animation-delay:.15s}
+.ani-d4{animation-delay:.2s}
+
+/* Gradient text */
+.gtext{background:linear-gradient(135deg,var(--a1),var(--a3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gtext2{background:linear-gradient(135deg,var(--a2),var(--a4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gtext3{background:linear-gradient(135deg,var(--a5),var(--a1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header class="hdr">
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    <div class="logo-text">SEHAJ NATH<span>Infotech · Pathankot</span></div>
+  </div>
+  <div class="hdr-search">
+    <input type="text" id="main-search" placeholder="Search news, videos, jobs, exams..." onkeydown="if(event.key==='Enter')doSearch()">
+    <button onclick="doSearch()">🔍</button>
+  </div>
+  <div class="hdr-pills">
+    <div class="hpill">📅 <strong id="live-date">---</strong></div>
+    <div class="hpill">⏰ <strong id="live-time">--:--</strong></div>
+    <div class="live-pill"><div class="live-dot"></div> LIVE</div>
+  </div>
+</header>
+
+<!-- ═══════════════════ TICKERS ═══════════════════ -->
+<div class="ticker-wrap tick-bg-news z1">
+  <div class="ticker-inner" id="ticker-news">
+    <span class="tick-item"><span class="lbl">🔴 BREAKING</span> Portal loaded — all live feeds active</span>
+    <span class="tick-item"><span class="lbl">📡 LIVE</span> Cricket, Stocks, Weather, News all updating in real-time</span>
+    <span class="tick-item"><span class="lbl">🇮🇳 INDIA</span> Today's top headlines loading…</span>
+    <span class="tick-item"><span class="lbl">💹 MARKETS</span> NSE · BSE · Crypto · Gold prices live</span>
+    <span class="tick-item"><span class="lbl">🎵 MUSIC</span> Bollywood · Punjabi · English streams ready</span>
+    <span class="tick-item"><span class="lbl">🏏 CRICKET</span> Live scores updating every 2 minutes</span>
+    <span class="tick-item"><span class="lbl">☁️ WEATHER</span> 7-day forecast for all India cities</span>
+    <span class="tick-item"><span class="lbl">💼 JOBS</span> Govt &amp; Private openings — apply now</span>
+    <!-- duplicate for infinite loop -->
+    <span class="tick-item"><span class="lbl">🔴 BREAKING</span> Portal loaded — all live feeds active</span>
+    <span class="tick-item"><span class="lbl">📡 LIVE</span> Cricket, Stocks, Weather, News all updating in real-time</span>
+    <span class="tick-item"><span class="lbl">🇮🇳 INDIA</span> Today's top headlines loading…</span>
+    <span class="tick-item"><span class="lbl">💹 MARKETS</span> NSE · BSE · Crypto · Gold prices live</span>
+    <span class="tick-item"><span class="lbl">🎵 MUSIC</span> Bollywood · Punjabi · English streams ready</span>
+    <span class="tick-item"><span class="lbl">🏏 CRICKET</span> Live scores updating every 2 minutes</span>
+    <span class="tick-item"><span class="lbl">☁️ WEATHER</span> 7-day forecast for all India cities</span>
+    <span class="tick-item"><span class="lbl">💼 JOBS</span> Govt &amp; Private openings — apply now</span>
+  </div>
+</div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="nav-bar z1">
+  <div class="nav-tabs">
+    <button class="ntab on" onclick="showTab('home')">🏠 Home</button>
+    <button class="ntab" onclick="showTab('youtube')">▶️ YouTube <span class="bdg">HD</span></button>
+    <button class="ntab" onclick="showTab('music')">🎵 Music <span class="nbdg">LIVE</span></button>
+    <button class="ntab" onclick="showTab('radio')">📻 Radio</button>
+    <button class="ntab" onclick="showTab('cricket')">🏏 Cricket <span class="nbdg">LIVE</span></button>
+    <button class="ntab" onclick="showTab('streaming')">📺 Live TV</button>
+    <button class="ntab" onclick="showTab('weather')">🌤️ Weather</button>
+    <button class="ntab" onclick="showTab('news')">📰 News</button>
+    <button class="ntab" onclick="showTab('stocks')">💹 Markets</button>
+    <button class="ntab" onclick="showTab('jobs')">💼 Jobs</button>
+    <button class="ntab" onclick="showTab('exams')">📝 Exams</button>
+    <button class="ntab" onclick="showTab('sports')">⚽ Sports</button>
+    <button class="ntab" onclick="showTab('affairs')">📚 Affairs</button>
+    <button class="ntab" onclick="showTab('search')">🔍 Search</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ TAB: HOME ═══════════════════ -->
+<div class="tab-panel on" id="tab-home">
+  <div class="hero">
+    <div class="hero-tag"><div class="live-dot"></div> ALL-IN-ONE MEGA PORTAL</div>
+    <h1>⚡ SEHAJ NATH <em>INFOTECH</em><br><strong>Ultimate</strong> Digital Gateway</h1>
+    <p>India's most comprehensive portal — Live TV · YouTube · Music · Cricket · Weather · News · Jobs · Exams · Markets · Sports & more</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n gtext">18+</div><div class="hstat-l">Live Sources</div></div>
+      <div class="hstat"><div class="hstat-n gtext2">500+</div><div class="hstat-l">Channels</div></div>
+      <div class="hstat"><div class="hstat-n gtext3">A-Z</div><div class="hstat-l">Categories</div></div>
+      <div class="hstat"><div class="hstat-n gtext">24/7</div><div class="hstat-l">Live Streams</div></div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- Quick Access -->
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">⚡</span> Quick Access</div>
+    </div>
+    <div class="quick-grid">
+      <div class="qcard ani" onclick="showTab('youtube')"><span class="qcard-ico">▶️</span><div class="qcard-l">YouTube</div></div>
+      <div class="qcard ani ani-d1" onclick="showTab('music')"><span class="qcard-ico">🎵</span><div class="qcard-l">Music</div></div>
+      <div class="qcard ani ani-d1" onclick="showTab('radio')"><span class="qcard-ico">📻</span><div class="qcard-l">Radio</div></div>
+      <div class="qcard ani ani-d2" onclick="showTab('cricket')"><span class="qcard-ico">🏏</span><div class="qcard-l">Cricket</div></div>
+      <div class="qcard ani ani-d2" onclick="showTab('streaming')"><span class="qcard-ico">📺</span><div class="qcard-l">Live TV</div></div>
+      <div class="qcard ani ani-d3" onclick="showTab('weather')"><span class="qcard-ico">🌤️</span><div class="qcard-l">Weather</div></div>
+      <div class="qcard ani ani-d3" onclick="showTab('news')"><span class="qcard-ico">📰</span><div class="qcard-l">News</div></div>
+      <div class="qcard ani ani-d4" onclick="showTab('stocks')"><span class="qcard-ico">💹</span><div class="qcard-l">Markets</div></div>
+      <div class="qcard ani ani-d4" onclick="showTab('jobs')"><span class="qcard-ico">💼</span><div class="qcard-l">Jobs</div></div>
+      <div class="qcard ani ani-d4" onclick="showTab('exams')"><span class="qcard-ico">📝</span><div class="qcard-l">Exams</div></div>
+      <div class="qcard ani ani-d4" onclick="showTab('sports')"><span class="qcard-ico">⚽</span><div class="qcard-l">Sports</div></div>
+      <div class="qcard ani ani-d4" onclick="showTab('affairs')"><span class="qcard-ico">📚</span><div class="qcard-l">Affairs</div></div>
+    </div>
+
+    <!-- Live Widgets -->
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">📊</span> Live Dashboard</div>
+      <div class="sec-right"><button class="btn btn-accent" onclick="refreshAll()">🔄 Refresh All</button></div>
+    </div>
+    <div class="widgets-row" id="home-widgets">
+      <div class="widget ani"><div class="wgt-ico">🌡️</div><div class="wgt-label">Temperature</div><div class="wgt-val" id="w-temp">--°C</div><div class="wgt-sub" id="w-city">Pathankot, PB</div></div>
+      <div class="widget ani ani-d1"><div class="wgt-ico">💨</div><div class="wgt-label">Wind</div><div class="wgt-val" id="w-wind">-- km/h</div><div class="wgt-sub" id="w-humidity">Humidity: --%</div></div>
+      <div class="widget ani ani-d2"><div class="wgt-ico">☀️</div><div class="wgt-label">UV Index</div><div class="wgt-val" id="w-uv">--</div><div class="wgt-sub" id="w-desc">Loading…</div></div>
+      <div class="widget ani ani-d3"><div class="wgt-ico">💰</div><div class="wgt-label">Gold (10g)</div><div class="wgt-val" id="w-gold">₹--</div><div class="wgt-sub">24K · MCX</div></div>
+      <div class="widget ani ani-d4"><div class="wgt-ico">⛽</div><div class="wgt-label">Petrol</div><div class="wgt-val" id="w-petrol">₹--</div><div class="wgt-sub">Pathankot/litre</div></div>
+      <div class="widget ani ani-d4"><div class="wgt-ico">🏏</div><div class="wgt-label">Cricket</div><div class="wgt-val" id="w-cricket" style="font-size:.9rem">Loading…</div><div class="wgt-sub">Live Score</div></div>
+    </div>
+
+    <!-- Top News Preview -->
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">📰</span> Breaking News</div>
+      <div class="sec-right"><button class="btn" onclick="showTab('news')">View All →</button></div>
+    </div>
+    <div class="news-grid" id="home-news">
+      <div class="loading"><div class="spinner"></div>Loading headlines…</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: YOUTUBE ═══════════════════ -->
+<div class="tab-panel" id="tab-youtube">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">▶️</span> YouTube Player <span style="font-size:.75rem;color:var(--t3);font-family:var(--f1);font-weight:400">Inline Embedded</span></div>
+    </div>
+
+    <!-- Player -->
+    <div class="yt-player-wrap" id="yt-player-wrap" style="display:none">
+      <iframe id="yt-iframe" src="" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
+      <div class="yt-player-info">
+        <div class="yt-player-title" id="yt-player-title">—</div>
+        <div class="yt-player-meta">
+          <span id="yt-player-ch">—</span>
+          <span id="yt-player-views">—</span>
+          <button class="btn" onclick="closeYTPlayer()">✕ Close Player</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="yt-search-bar">
+      <input type="text" id="yt-search-inp" placeholder="Search YouTube videos…" onkeydown="if(event.key==='Enter')ytSearch()">
+      <button class="btn btn-orange" onclick="ytSearch()">🔍 Search</button>
+    </div>
+
+    <!-- Quick Category Tabs -->
+    <div class="yt-quick-cats" id="yt-cats">
+      <div class="yt-cat on" onclick="ytQuick('cricket highlights india')">🏏 Cricket</div>
+      <div class="yt-cat" onclick="ytQuick('bollywood songs 2025')">🎬 Bollywood</div>
+      <div class="yt-cat" onclick="ytQuick('punjabi songs 2025')">🎵 Punjabi</div>
+      <div class="yt-cat" onclick="ytQuick('india news today live')">📰 News</div>
+      <div class="yt-cat" onclick="ytQuick('comedy india 2025')">😂 Comedy</div>
+      <div class="yt-cat" onclick="ytQuick('tech review india 2025')">💻 Tech</div>
+      <div class="yt-cat" onclick="ytQuick('cooking recipes india')">🍛 Food</div>
+      <div class="yt-cat" onclick="ytQuick('motivational hindi 2025')">💪 Motivation</div>
+      <div class="yt-cat" onclick="ytQuick('ipl 2025 highlights')">🏟️ IPL</div>
+      <div class="yt-cat" onclick="ytQuick('kabaddi pro league 2025')">🤼 Kabaddi</div>
+      <div class="yt-cat" onclick="ytQuick('english songs trending 2025')">🎸 English</div>
+      <div class="yt-cat" onclick="ytQuick('devotional songs bhajan')">🙏 Bhajan</div>
+    </div>
+
+    <!-- Grid -->
+    <div class="yt-grid" id="yt-grid">
+      <div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading videos…</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: MUSIC ═══════════════════ -->
+<div class="tab-panel" id="tab-music">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">🎵</span> Music Player</div>
+    </div>
+
+    <!-- Music Player Widget -->
+    <div class="music-player">
+      <div class="mp-layout">
+        <div class="mp-vis">
+          <div class="mp-disc" id="mp-disc">🎵</div>
+          <div style="margin-top:8px;font-size:.72rem;color:var(--t3)" id="mp-status">Tap a song to play</div>
+        </div>
+        <div class="mp-info">
+          <div class="mp-title" id="mp-title">Select a track</div>
+          <div class="mp-artist" id="mp-artist">Artist · Album</div>
+          <div class="mp-progress" id="mp-prog" onclick="mpSeek(event)"><div class="mp-bar" id="mp-bar"></div></div>
+          <div class="mp-time"><span id="mp-cur">0:00</span><span id="mp-dur">0:00</span></div>
+          <div class="mp-controls">
+            <div class="mp-btn" id="mp-shuf" onclick="toggleShuffle()" title="Shuffle">🔀</div>
+            <div class="mp-btn" onclick="mpPrev()">⏮</div>
+            <div class="mp-btn mp-play" id="mp-playbtn" onclick="mpToggle()">▶</div>
+            <div class="mp-btn" onclick="mpNext()">⏭</div>
+            <div class="mp-btn" id="mp-rep" onclick="toggleRepeat()" title="Repeat">🔁</div>
+          </div>
+          <div class="mp-vol">
+            <span>🔇</span>
+            <input type="range" min="0" max="100" value="80" id="mp-vol" oninput="setVol(this.value)">
+            <span>🔊</span>
+          </div>
+          <audio id="audio-el" preload="none"></audio>
+        </div>
+      </div>
+    </div>
+
+    <!-- Music Categories -->
+    <div class="music-cats">
+      <div class="mcat on" onclick="loadPlaylist('bollywood')">🎬 Bollywood</div>
+      <div class="mcat" onclick="loadPlaylist('punjabi')">🎵 Punjabi</div>
+      <div class="mcat" onclick="loadPlaylist('english')">🎸 English</div>
+      <div class="mcat" onclick="loadPlaylist('devotional')">🙏 Devotional</div>
+      <div class="mcat" onclick="loadPlaylist('lofi')">🌙 Lo-Fi</div>
+      <div class="mcat" onclick="loadPlaylist('classical')">🎻 Classical</div>
+      <div class="mcat" onclick="loadPlaylist('haryanvi')">🥁 Haryanvi</div>
+      <div class="mcat" onclick="loadPlaylist('pop')">🎤 Pop</div>
+    </div>
+
+    <!-- Playlist Section -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div class="sec-hdr" style="margin-bottom:12px">
+          <div class="sec-title" style="font-size:1rem">📋 Playlist</div>
+        </div>
+        <div class="playlist" id="playlist-container"></div>
+      </div>
+      <div>
+        <div class="sec-hdr" style="margin-bottom:12px">
+          <div class="sec-title" style="font-size:1rem">▶️ YouTube Music</div>
+        </div>
+        <div class="yt-search-bar">
+          <input type="text" id="music-yt-inp" placeholder="Search YouTube music…" onkeydown="if(event.key==='Enter')musicYTSearch()">
+          <button class="btn" style="background:rgba(255,51,136,.1);border-color:rgba(255,51,136,.3);color:var(--a5)" onclick="musicYTSearch()">🔍</button>
+        </div>
+        <div id="music-yt-results" class="yt-grid" style="grid-template-columns:1fr 1fr"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: RADIO ═══════════════════ -->
+<div class="tab-panel" id="tab-radio">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">📻</span> Online Radio Stations</div>
+    </div>
+
+    <div class="radio-player">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <div style="font-size:2.5rem" id="radio-ico">📻</div>
+        <div style="flex:1">
+          <div style="font-family:var(--f2);font-size:1.1rem;font-weight:700" id="radio-name">Select a station</div>
+          <div style="font-size:.8rem;color:var(--t3);margin-top:3px" id="radio-lang">—</div>
+        </div>
+        <div class="mp-controls" style="gap:10px">
+          <div class="mp-btn mp-play" id="radio-playbtn" onclick="radioToggle()" style="background:linear-gradient(135deg,var(--a1),#005588)">▶</div>
+          <div class="mp-vol" style="margin:0;width:120px">
+            <input type="range" min="0" max="100" value="80" id="radio-vol" oninput="setRadioVol(this.value)" style="accent-color:var(--a1)">
+          </div>
+        </div>
+      </div>
+      <audio id="radio-audio" preload="none"></audio>
+    </div>
+
+    <div class="inner-tabs" id="radio-lang-tabs">
+      <div class="itab on" onclick="filterRadio('all')">All</div>
+      <div class="itab" onclick="filterRadio('Hindi')">Hindi</div>
+      <div class="itab" onclick="filterRadio('Punjabi')">Punjabi</div>
+      <div class="itab" onclick="filterRadio('English')">English</div>
+      <div class="itab" onclick="filterRadio('News')">News</div>
+      <div class="itab" onclick="filterRadio('Classical')">Classical</div>
+    </div>
+
+    <div class="radio-stations" id="radio-stations-grid"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: CRICKET ═══════════════════ -->
+<div class="tab-panel" id="tab-cricket">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">🏏</span> Live Cricket</div>
+      <div class="sec-right">
+        <div class="live-pill"><div class="live-dot"></div> LIVE</div>
+        <button class="btn btn-green" onclick="refreshCricket()">🔄 Refresh</button>
+      </div>
+    </div>
+
+    <!-- Live Score Widget -->
+    <div id="cricket-live-scores" class="grid2" style="margin-bottom:20px">
+      <div class="loading"><div class="spinner"></div>Loading live scores…</div>
+    </div>
+
+    <!-- Embedded Stream -->
+    <div class="sec-hdr">
+      <div class="sec-title" style="font-size:1rem">📺 Watch Live Cricket</div>
+    </div>
+    <div class="embed-player" id="cricket-embed-player" style="display:none">
+      <iframe id="cricket-iframe" src="" allowfullscreen allow="autoplay"></iframe>
+      <div class="embed-player-label">
+        <span id="cricket-embed-title" style="font-family:var(--f2);font-weight:700">Live Cricket</span>
+        <button class="btn" onclick="closeCricketEmbed()">✕ Close</button>
+      </div>
+    </div>
+
+    <!-- Cricket Live Channels -->
+    <div class="cricket-streams" id="cricket-streams"></div>
+
+    <!-- YouTube Cricket Search -->
+    <div class="sec-hdr" style="margin-top:24px">
+      <div class="sec-title" style="font-size:1rem">▶️ Cricket on YouTube</div>
+    </div>
+    <div class="yt-quick-cats">
+      <div class="yt-cat on" onclick="cricketYT('live cricket match today')">🔴 Live Today</div>
+      <div class="yt-cat" onclick="cricketYT('ipl 2025 match highlights')">🏟️ IPL 2025</div>
+      <div class="yt-cat" onclick="cricketYT('india vs pakistan cricket 2025')">🇮🇳 IND vs PAK</div>
+      <div class="yt-cat" onclick="cricketYT('india cricket match today 2025')">🏏 India</div>
+      <div class="yt-cat" onclick="cricketYT('cricket analysis commentary')">🎙️ Commentary</div>
+      <div class="yt-cat" onclick="cricketYT('cricket best moments catches sixes')">🎯 Best Moments</div>
+    </div>
+    <div class="yt-grid" id="cricket-yt-grid">
+      <div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading…</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: LIVE STREAMING ═══════════════════ -->
+<div class="tab-panel" id="tab-streaming">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">📺</span> Live TV & Streaming <span style="font-size:.75rem;color:var(--t3);font-family:var(--f1);font-weight:400">A to Z Categories</span></div>
+      <div class="sec-right"><div class="live-pill"><div class="live-dot"></div> LIVE</div></div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="stream-cats-bar" id="stream-cats">
+      <div class="scat on" onclick="filterStreams('all')">All</div>
+      <div class="scat" onclick="filterStreams('news')">📰 News</div>
+      <div class="scat" onclick="filterStreams('entertainment')">🎬 Entertainment</div>
+      <div class="scat" onclick="filterStreams('sports')">⚽ Sports</div>
+      <div class="scat" onclick="filterStreams('cricket')">🏏 Cricket</div>
+      <div class="scat" onclick="filterStreams('music')">🎵 Music</div>
+      <div class="scat" onclick="filterStreams('kids')">👶 Kids</div>
+      <div class="scat" onclick="filterStreams('movies')">🎥 Movies</div>
+      <div class="scat" onclick="filterStreams('devotional')">🙏 Devotional</div>
+      <div class="scat" onclick="filterStreams('regional')">🗺️ Regional</div>
+      <div class="scat" onclick="filterStreams('education')">📚 Education</div>
+      <div class="scat" onclick="filterStreams('international')">🌍 International</div>
+    </div>
+
+    <!-- Embedded Player -->
+    <div class="embed-player" id="tv-embed-player" style="display:none">
+      <iframe id="tv-iframe" src="" allowfullscreen allow="autoplay;encrypted-media"></iframe>
+      <div class="embed-player-label">
+        <div>
+          <div style="font-family:var(--f2);font-weight:700;font-size:1rem" id="tv-embed-title">Live Channel</div>
+          <div style="font-size:.75rem;color:var(--t3);margin-top:2px" id="tv-embed-cat">—</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-accent" onclick="openFullscreen('tv-iframe')">⛶ Fullscreen</button>
+          <button class="btn" onclick="closeTVEmbed()">✕ Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channels Grid -->
+    <div class="stream-channels" id="stream-channels-grid"></div>
+
+    <!-- YouTube Live Search -->
+    <div class="sec-hdr" style="margin-top:24px">
+      <div class="sec-title" style="font-size:1rem">▶️ Live on YouTube</div>
+    </div>
+    <div class="yt-search-bar">
+      <input type="text" id="live-yt-inp" placeholder="Search live streams…" onkeydown="if(event.key==='Enter')liveYTSearch()">
+      <button class="btn btn-accent" onclick="liveYTSearch()">🔍 Search</button>
+    </div>
+    <div class="yt-grid" id="live-yt-grid"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: WEATHER ═══════════════════ -->
+<div class="tab-panel" id="tab-weather">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">🌤️</span> Weather & Forecast</div>
+    </div>
+
+    <!-- Current Weather -->
+    <div class="weather-main">
+      <div class="weather-city">
+        <input type="text" id="weather-city-inp" placeholder="Enter city name…" value="Pathankot" onkeydown="if(event.key==='Enter')fetchWeather()">
+        <button onclick="fetchWeather()">Get Weather</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start">
+        <div>
+          <div class="wcity" id="wth-city">Pathankot, Punjab, India</div>
+          <div class="wtemp" id="wth-temp">--<span style="font-size:2rem">°C</span></div>
+          <div class="wdesc" id="wth-desc">Loading weather…</div>
+          <div class="wstats">
+            <div class="wstat"><div class="wstat-v" id="wth-feel">--°</div><div class="wstat-l">Feels Like</div></div>
+            <div class="wstat"><div class="wstat-v" id="wth-hum">--%</div><div class="wstat-l">Humidity</div></div>
+            <div class="wstat"><div class="wstat-v" id="wth-wind">-- km/h</div><div class="wstat-l">Wind</div></div>
+            <div class="wstat"><div class="wstat-v" id="wth-vis">-- km</div><div class="wstat-l">Visibility</div></div>
+            <div class="wstat"><div class="wstat-v" id="wth-pres">-- hPa</div><div class="wstat-l">Pressure</div></div>
+            <div class="wstat"><div class="wstat-v" id="wth-uv">--</div><div class="wstat-l">UV Index</div></div>
+          </div>
+        </div>
+        <div style="font-size:5rem;text-align:center" id="wth-ico">⛅</div>
+      </div>
+    </div>
+
+    <!-- 7-Day Forecast -->
+    <div class="sec-hdr">
+      <div class="sec-title" style="font-size:1rem">📅 7-Day Forecast</div>
+    </div>
+    <div class="forecast-grid" id="forecast-grid">
+      <div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading forecast…</div>
+    </div>
+
+    <!-- India Cities Quick Access -->
+    <div class="sec-hdr" style="margin-top:24px">
+      <div class="sec-title" style="font-size:1rem">🇮🇳 Quick City Weather</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+      <button class="btn" onclick="quickCity('Pathankot')">Pathankot</button>
+      <button class="btn" onclick="quickCity('Delhi')">Delhi</button>
+      <button class="btn" onclick="quickCity('Mumbai')">Mumbai</button>
+      <button class="btn" onclick="quickCity('Chandigarh')">Chandigarh</button>
+      <button class="btn" onclick="quickCity('Amritsar')">Amritsar</button>
+      <button class="btn" onclick="quickCity('Ludhiana')">Ludhiana</button>
+      <button class="btn" onclick="quickCity('Jammu')">Jammu</button>
+      <button class="btn" onclick="quickCity('Shimla')">Shimla</button>
+      <button class="btn" onclick="quickCity('Bangalore')">Bangalore</button>
+      <button class="btn" onclick="quickCity('Hyderabad')">Hyderabad</button>
+      <button class="btn" onclick="quickCity('Kolkata')">Kolkata</button>
+      <button class="btn" onclick="quickCity('Chennai')">Chennai</button>
+    </div>
+
+    <!-- Multi-city grid -->
+    <div class="grid3" id="multi-city-grid"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: NEWS ═══════════════════ -->
+<div class="tab-panel" id="tab-news">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">📰</span> Live News</div>
+      <div class="sec-right"><button class="btn btn-accent" onclick="loadAllNews()">🔄 Refresh</button></div>
+    </div>
+    <div class="inner-tabs">
+      <div class="itab on" onclick="showNewsTab('india')">🇮🇳 India</div>
+      <div class="itab" onclick="showNewsTab('world')">🌍 World</div>
+      <div class="itab" onclick="showNewsTab('business')">💼 Business</div>
+      <div class="itab" onclick="showNewsTab('tech')">💻 Tech</div>
+      <div class="itab" onclick="showNewsTab('sports')">⚽ Sports</div>
+      <div class="itab" onclick="showNewsTab('health')">🏥 Health</div>
+      <div class="itab" onclick="showNewsTab('punjab')">🌾 Punjab</div>
+    </div>
+    <div id="news-panel-india" class="news-panel">
+      <div class="news-grid" id="news-india-grid"><div class="loading"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="news-panel-world" class="news-panel" style="display:none">
+      <div class="news-grid" id="news-world-grid"><div class="loading"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="news-panel-business" class="news-panel" style="display:none">
+      <div class="news-grid" id="news-biz-grid"><div class="loading"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="news-panel-tech" class="news-panel" style="display:none">
+      <div class="news-grid" id="news-tech-grid"><div class="loading"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="news-panel-sports" class="news-panel" style="display:none">
+      <div class="news-grid" id="news-sports-grid"><div class="loading"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="news-panel-health" class="news-panel" style="display:none">
+      <div class="news-grid" id="news-health-grid"><div class="loading"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="news-panel-punjab" class="news-panel" style="display:none">
+      <div class="news-grid" id="news-punjab-grid"><div class="loading"><div class="spinner"></div>Loading…</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: STOCKS ═══════════════════ -->
+<div class="tab-panel" id="tab-stocks">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">💹</span> Markets & Trading</div>
+      <div class="sec-right"><button class="btn btn-accent" onclick="loadStocks()">🔄 Refresh</button></div>
+    </div>
+    <div class="inner-tabs">
+      <div class="itab on" onclick="showStockTab('india')">🇮🇳 NSE/BSE</div>
+      <div class="itab" onclick="showStockTab('crypto')">₿ Crypto</div>
+      <div class="itab" onclick="showStockTab('metals')">🥇 Metals</div>
+      <div class="itab" onclick="showStockTab('forex')">💱 Forex</div>
+      <div class="itab" onclick="showStockTab('chart')">📊 Charts</div>
+    </div>
+    <div id="stkpan-india">
+      <div class="trading-grid" id="stocks-india-grid"><div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="stkpan-crypto" style="display:none">
+      <div class="trading-grid" id="stocks-crypto-grid"><div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="stkpan-metals" style="display:none">
+      <div class="grid4" id="stocks-metals-grid"><div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="stkpan-forex" style="display:none">
+      <div class="trading-grid" id="stocks-forex-grid"><div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div id="stkpan-chart" style="display:none">
+      <div class="chart-embed">
+        <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_chart&symbol=NSE:NIFTY&interval=D&hidesidetoolbar=0&saveimage=1&toolbarbg=F1F3FA&studies=[]&theme=dark&style=1&timezone=Asia/Kolkata&studies_overrides={}&overrides={}&enabled_features=[]&disabled_features=[]&locale=en&utm_source=localhost&utm_medium=widget&utm_campaign=chart" style="width:100%;height:500px;border:none"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: JOBS ═══════════════════ -->
+<div class="tab-panel" id="tab-jobs">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">💼</span> Job Portal</div>
+      <div class="sec-right"><button class="btn btn-green" onclick="loadJobs()">🔄 Refresh</button></div>
+    </div>
+    <div class="yt-search-bar" style="margin-bottom:16px">
+      <input type="text" id="job-search-inp" placeholder="Search jobs (e.g. SSC, Railway, Bank, Police)…" onkeydown="if(event.key==='Enter')searchJobs()">
+      <button class="btn btn-green" onclick="searchJobs()">🔍 Search</button>
+    </div>
+    <div class="inner-tabs">
+      <div class="itab on" onclick="filterJobs('all')">All</div>
+      <div class="itab" onclick="filterJobs('govt')">🏛️ Government</div>
+      <div class="itab" onclick="filterJobs('railway')">🚂 Railway</div>
+      <div class="itab" onclick="filterJobs('bank')">🏦 Banking</div>
+      <div class="itab" onclick="filterJobs('ssc')">📋 SSC</div>
+      <div class="itab" onclick="filterJobs('defence')">🪖 Defence</div>
+      <div class="itab" onclick="filterJobs('state')">🗺️ State</div>
+      <div class="itab" onclick="filterJobs('private')">🏢 Private</div>
+    </div>
+    <div class="grid2" id="jobs-grid"><div class="loading"><div class="spinner"></div>Loading jobs…</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: EXAMS ═══════════════════ -->
+<div class="tab-panel" id="tab-exams">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">📝</span> Entrance Exams Portal</div>
+      <div class="sec-right"><button class="btn btn-accent" onclick="loadExams()">🔄 Refresh</button></div>
+    </div>
+    <div class="inner-tabs">
+      <div class="itab on" onclick="filterExams('all')">All</div>
+      <div class="itab" onclick="filterExams('medical')">🩺 Medical</div>
+      <div class="itab" onclick="filterExams('engineering')">⚙️ Engineering</div>
+      <div class="itab" onclick="filterExams('law')">⚖️ Law</div>
+      <div class="itab" onclick="filterExams('management')">📊 MBA</div>
+      <div class="itab" onclick="filterExams('civil')">🏛️ Civil Services</div>
+      <div class="itab" onclick="filterExams('defence')">🪖 Defence</div>
+      <div class="itab" onclick="filterExams('board')">🏫 Board/School</div>
+    </div>
+    <div class="grid2" id="exams-grid"><div class="loading"><div class="spinner"></div>Loading exams…</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: SPORTS ═══════════════════ -->
+<div class="tab-panel" id="tab-sports">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">⚽</span> Sports Portal</div>
+    </div>
+    <div class="inner-tabs">
+      <div class="itab on" onclick="sportsCat('cricket')">🏏 Cricket</div>
+      <div class="itab" onclick="sportsCat('football')">⚽ Football</div>
+      <div class="itab" onclick="sportsCat('kabaddi')">🤼 Kabaddi</div>
+      <div class="itab" onclick="sportsCat('hockey')">🏑 Hockey</div>
+      <div class="itab" onclick="sportsCat('badminton')">🏸 Badminton</div>
+      <div class="itab" onclick="sportsCat('tennis')">🎾 Tennis</div>
+      <div class="itab" onclick="sportsCat('wrestling')">🥊 Wrestling</div>
+    </div>
+    <div class="yt-grid" id="sports-yt-grid"><div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading…</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: CURRENT AFFAIRS ═══════════════════ -->
+<div class="tab-panel" id="tab-affairs">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">📚</span> Current Affairs</div>
+      <div class="sec-right"><button class="btn btn-accent" onclick="loadAffairs()">🔄 Refresh</button></div>
+    </div>
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px" class="affairs-layout">
+      <div>
+        <div class="ca-grid" id="affairs-grid"><div class="loading"><div class="spinner"></div>Loading…</div></div>
+      </div>
+      <div>
+        <!-- Fuel Prices -->
+        <div class="sec-hdr" style="margin-bottom:12px">
+          <div class="sec-title" style="font-size:1rem">⛽ Fuel Prices</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px" id="fuel-grid"></div>
+
+        <!-- Metal Prices -->
+        <div class="sec-hdr" style="margin-bottom:12px">
+          <div class="sec-title" style="font-size:1rem">🥇 Metal Prices</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="metals-small-grid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: SEARCH ═══════════════════ -->
+<div class="tab-panel" id="tab-search">
+  <div class="layout">
+    <div class="sec-hdr">
+      <div class="sec-title"><span class="ico">🔍</span> Universal Search</div>
+    </div>
+    <div class="yt-search-bar" style="margin-bottom:20px">
+      <input type="text" id="global-search-inp" placeholder="Search everything…" onkeydown="if(event.key==='Enter')globalSearch()">
+      <button class="btn btn-accent" onclick="globalSearch()">🔍 Search</button>
+    </div>
+    <div class="inner-tabs">
+      <div class="itab on" onclick="searchMode('all')">All</div>
+      <div class="itab" onclick="searchMode('youtube')">▶️ YouTube</div>
+      <div class="itab" onclick="searchMode('news')">📰 News</div>
+      <div class="itab" onclick="searchMode('jobs')">💼 Jobs</div>
+      <div class="itab" onclick="searchMode('exams')">📝 Exams</div>
+      <div class="itab" onclick="searchMode('web')">🌐 Web</div>
+    </div>
+    <div id="search-results-area">
+      <div class="empty">Enter a search query above to find results across all sources</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer z1">
+  <strong>⚡ SEHAJ NATH INFOTECH</strong> · Patel Chowk, Pathankot, Punjab, India · All-in-One Mega Portal v19.0<br>
+  <span style="margin-top:6px;display:inline-block">📺 Live TV · ▶️ YouTube · 🎵 Music · 📻 Radio · 🏏 Cricket · ☁️ Weather · 📰 News · 💹 Markets · 💼 Jobs · 📝 Exams · ⚽ Sports · 📚 Affairs</span>
+</footer>
+
+<!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
+<script>
+// ══════════════════════════════════════════
+// DATA STORES
+// ══════════════════════════════════════════
+let currentYTVideo = null;
+let audioEl = document.getElementById('audio-el');
+let radioAudio = document.getElementById('radio-audio');
+let mpPlaying = false;
+let mpCurrentIdx = 0;
+let mpShuffle = false;
+let mpRepeat = false;
+let mpProgress = 0;
+let radioPlaying = false;
+let currentRadioStn = null;
+let currentSearchMode = 'all';
+let currentJobFilter = 'all';
+let currentExamFilter = 'all';
+let allJobs = [];
+let allExams = [];
+let weatherData = {};
+let multiCityWeather = {};
+
+// ══ CLOCK ══
+function updateClock(){
+  const n = new Date();
+  document.getElementById('live-time').textContent = n.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('live-date').textContent = n.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+}
+updateClock();
+setInterval(updateClock,1000);
+
+// ══ TAB SYSTEM ══
+function showTab(id){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('on'));
+  const p = document.getElementById('tab-'+id);
+  if(p) p.classList.add('on');
+  const tabs = document.querySelectorAll('.ntab');
+  tabs.forEach(t=>{if(t.getAttribute('onclick')&&t.getAttribute('onclick').includes("'"+id+"'"))t.classList.add('on')});
+  // Lazy load on first visit
+  if(id==='youtube' && !window._ytLoaded){ window._ytLoaded=true; ytQuick('cricket highlights india'); }
+  if(id==='music' && !window._musicLoaded){ window._musicLoaded=true; loadPlaylist('bollywood'); }
+  if(id==='radio' && !window._radioLoaded){ window._radioLoaded=true; renderRadioStations(); }
+  if(id==='cricket' && !window._cricketLoaded){ window._cricketLoaded=true; loadCricketTab(); }
+  if(id==='streaming' && !window._tvLoaded){ window._tvLoaded=true; renderStreamChannels(); }
+  if(id==='weather' && !window._weatherLoaded){ window._weatherLoaded=true; fetchWeather(); }
+  if(id==='news' && !window._newsLoaded){ window._newsLoaded=true; loadAllNews(); }
+  if(id==='stocks' && !window._stocksLoaded){ window._stocksLoaded=true; loadStocks(); }
+  if(id==='jobs' && !window._jobsLoaded){ window._jobsLoaded=true; loadJobs(); }
+  if(id==='exams' && !window._examsLoaded){ window._examsLoaded=true; loadExams(); }
+  if(id==='sports' && !window._sportsLoaded){ window._sportsLoaded=true; sportsCat('cricket'); }
+  if(id==='affairs' && !window._affairsLoaded){ window._affairsLoaded=true; loadAffairs(); }
+}
+
+function showNewsTab(cat){
+  document.querySelectorAll('.news-panel').forEach(p=>p.style.display='none');
+  document.querySelector('#news-panel-'+cat).style.display='block';
+  document.querySelectorAll('#tab-news .itab').forEach(t=>t.classList.remove('on'));
+  event.target.classList.add('on');
+  loadNewsCategory(cat);
+}
+function showStockTab(cat){
+  document.querySelectorAll('[id^="stkpan-"]').forEach(p=>p.style.display='none');
+  document.getElementById('stkpan-'+cat).style.display='block';
+  document.querySelectorAll('#tab-stocks .itab').forEach(t=>t.classList.remove('on'));
+  event.target.classList.add('on');
+  if(cat==='india') loadStocks();
+  else if(cat==='crypto') loadCrypto();
+  else if(cat==='metals') loadMetals();
+  else if(cat==='forex') loadForex();
+}
+
+// ══════════════════════════════════════════
+// WEATHER
+// ══════════════════════════════════════════
+const WEATHER_KEY = 'f29af2f8b3be8d0e72c2ab8a9aa9e3ec'; // OpenWeatherMap free key (public demo)
+async function fetchWeather(city){
+  city = city || document.getElementById('weather-city-inp').value.trim() || 'Pathankot';
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=${WEATHER_KEY}&units=metric&cnt=40`;
+  try{
+    const r = await fetch(url); const d = await r.json();
+    if(d.cod && d.cod!==200 && d.cod!=='200'){ throw new Error(d.message); }
+    const cur = d.list[0];
+    document.getElementById('wth-city').textContent = d.city.name + ', ' + d.city.country;
+    document.getElementById('wth-temp').innerHTML = Math.round(cur.main.temp) + '<span style="font-size:2rem">°C</span>';
+    document.getElementById('wth-desc').textContent = cur.weather[0].description;
+    document.getElementById('wth-feel').textContent = Math.round(cur.main.feels_like)+'°';
+    document.getElementById('wth-hum').textContent = cur.main.humidity+'%';
+    document.getElementById('wth-wind').textContent = Math.round(cur.wind.speed*3.6)+' km/h';
+    document.getElementById('wth-vis').textContent = ((cur.visibility||10000)/1000).toFixed(1)+' km';
+    document.getElementById('wth-pres').textContent = cur.main.pressure+' hPa';
+    document.getElementById('wth-uv').textContent = '—';
+    document.getElementById('wth-ico').textContent = wtIco(cur.weather[0].id, cur.weather[0].description);
+    // Update home widgets
+    document.getElementById('w-temp').textContent = Math.round(cur.main.temp)+'°C';
+    document.getElementById('w-city').textContent = d.city.name;
+    document.getElementById('w-wind').textContent = Math.round(cur.wind.speed*3.6)+' km/h';
+    document.getElementById('w-humidity').textContent = 'Humidity: '+cur.main.humidity+'%';
+    document.getElementById('w-desc').textContent = cur.weather[0].description;
+    // Forecast
+    buildForecast(d.list, d.city);
+  }catch(e){
+    document.getElementById('wth-desc').textContent = 'Unable to load weather. Check city name.';
+    buildFallbackForecast();
+  }
+}
+function buildForecast(list, city){
+  const days = {};
+  list.forEach(item=>{
+    const d = new Date(item.dt*1000);
+    const key = d.toDateString();
+    if(!days[key]) days[key] = {day:d,items:[],min:999,max:-999};
+    days[key].items.push(item);
+    days[key].min = Math.min(days[key].min, item.main.temp_min);
+    days[key].max = Math.max(days[key].max, item.main.temp_max);
+  });
+  const html = Object.values(days).slice(0,7).map(d=>{
+    const mid = d.items[Math.floor(d.items.length/2)];
+    return `<div class="fcast-card">
+      <div class="fcast-day">${d.day.toLocaleDateString('en-IN',{weekday:'short'})}</div>
+      <span class="fcast-ico">${wtIco(mid.weather[0].id, mid.weather[0].description)}</span>
+      <div class="fcast-hi">${Math.round(d.max)}°</div>
+      <div class="fcast-lo">${Math.round(d.min)}°</div>
+      <div style="font-size:.65rem;color:var(--t3);margin-top:3px">${mid.weather[0].main}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('forecast-grid').innerHTML = html;
+}
+function buildFallbackForecast(){
+  const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const icos = ['☀️','⛅','🌧️','⛈️','🌤️','☀️','🌥️'];
+  document.getElementById('forecast-grid').innerHTML = days.map((d,i)=>`
+    <div class="fcast-card">
+      <div class="fcast-day">${d}</div>
+      <span class="fcast-ico">${icos[i]}</span>
+      <div class="fcast-hi">--°</div>
+      <div class="fcast-lo">--°</div>
+    </div>`).join('');
+}
+function wtIco(id, desc){
+  if(id>=200&&id<300) return '⛈️';
+  if(id>=300&&id<400) return '🌦️';
+  if(id>=500&&id<600) return '🌧️';
+  if(id>=600&&id<700) return '❄️';
+  if(id>=700&&id<800) return '🌫️';
+  if(id===800) return '☀️';
+  if(id===801||id===802) return '⛅';
+  if(id>=802&&id<900) return '☁️';
+  return '🌤️';
+}
+function quickCity(c){ document.getElementById('weather-city-inp').value=c; fetchWeather(c); }
+async function loadMultiCity(){
+  const cities=['Pathankot','Delhi','Mumbai','Amritsar','Chandigarh','Jammu'];
+  const grid = document.getElementById('multi-city-grid');
+  grid.innerHTML = '<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading cities…</div>';
+  const results = await Promise.allSettled(cities.map(c=>
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(c)}&appid=${WEATHER_KEY}&units=metric`).then(r=>r.json())
+  ));
+  grid.innerHTML = results.map((r,i)=>{
+    if(r.status==='rejected'||!r.value||r.value.cod!==200) return '';
+    const d=r.value;
+    return `<div class="weather-main" style="padding:14px;cursor:pointer" onclick="quickCity('${cities[i]}')">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-family:var(--f2);font-weight:700">${d.name}</div>
+          <div style="font-size:.75rem;color:var(--t3)">${d.weather[0].description}</div>
+        </div>
+        <div>
+          <span style="font-size:2rem">${wtIco(d.weather[0].id,d.weather[0].description)}</span>
+          <div style="font-family:var(--f2);font-size:1.5rem;font-weight:800;color:var(--a1);text-align:center">${Math.round(d.main.temp)}°</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════
+// YOUTUBE
+// ══════════════════════════════════════════
+function ytSearch(){
+  const q = document.getElementById('yt-search-inp').value.trim();
+  if(!q) return;
+  ytQuick(q);
+}
+async function ytQuick(q){
+  document.getElementById('yt-search-inp').value = q;
+  document.querySelectorAll('.yt-cat').forEach(c=>c.classList.remove('on'));
+  const el = document.getElementById('yt-grid');
+  el.innerHTML = '<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Searching YouTube…</div>';
+  try{
+    const data = await fetchYTResults(q);
+    renderYTGrid(data,'yt-grid');
+  }catch(e){ el.innerHTML = `<div class="empty" style="grid-column:1/-1">⚠️ ${e.message}</div>`; }
+}
+async function fetchYTResults(q){
+  const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+  // Use CORS proxy for client-side scraping
+  const proxies = [
+    `https://corsproxy.io/?${encodeURIComponent(url)}`,
+    `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`
+  ];
+  let page = null;
+  for(const proxy of proxies){
+    try{
+      const r = await fetch(proxy,{signal:AbortSignal.timeout(8000)});
+      const t = await r.text();
+      // allorigins wraps in JSON
+      if(t.startsWith('{')){ const j=JSON.parse(t); page=j.contents||j; break; }
+      page = t; break;
+    }catch(e){ continue; }
+  }
+  if(!page) throw new Error('Could not reach YouTube. Check internet connection.');
+  const results = [];
+  const m = page.match(/var ytInitialData = ({.+?});<\/script>/);
+  if(m){
+    try{
+      const data = JSON.parse(m[1]);
+      const items = data?.contents?.twoColumnSearchResultsRenderer?.primaryContents?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents||[];
+      items.forEach(item=>{
+        const vr = item.videoRenderer; if(!vr) return;
+        results.push({
+          id:vr.videoId,
+          title:vr.title?.runs?.[0]?.text||'',
+          channel:vr.ownerText?.runs?.[0]?.text||'',
+          duration:vr.lengthText?.simpleText||'',
+          views:vr.viewCountText?.simpleText||'',
+          thumb:`https://img.youtube.com/vi/${vr.videoId}/mqdefault.jpg`
+        });
+      });
+    }catch(e){}
+  }
+  if(!results.length){
+    const ids=[...new Set(page.match(/["']videoId["']\s*:\s*["']([A-Za-z0-9_-]{11})["']/g)||[])]
+      .map(s=>s.match(/[A-Za-z0-9_-]{11}/)[0]).slice(0,12);
+    ids.forEach(id=>results.push({id,title:id,channel:'YouTube',duration:'',views:'',thumb:`https://img.youtube.com/vi/${id}/mqdefault.jpg`}));
+  }
+  return results;
+}
+function renderYTGrid(videos, containerId){
+  const el = document.getElementById(containerId);
+  if(!videos||!videos.length){ el.innerHTML='<div class="empty" style="grid-column:1/-1">No results found</div>'; return; }
+  el.innerHTML = videos.slice(0,20).map(v=>`
+    <div class="yt-card" onclick="playYT('${v.id}','${(v.title||'').replace(/'/g,'\\\'').replace(/"/g,'')}','${(v.channel||'').replace(/'/g,'\\\'')}','${v.views||''}')">
+      <div class="yt-thumb"><img src="${v.thumb}" alt="${v.title||''}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'320\\' height=\\'180\\'><rect fill=\\'%230f1c2d\\'width=\\'320\\'height=\\'180\\'/><text y=\\'50%\\' x=\\'50%\\' text-anchor=\\'middle\\'dominant-baseline=\\'middle\\'fill=\\'%234d7498\\'font-size=\\'40\\'>▶</text></svg>'">
+        <div class="yt-play"><div class="yt-play-ico">▶</div></div>
+        ${v.duration?`<div class="yt-dur">${v.duration}</div>`:''}
+      </div>
+      <div class="yt-info">
+        <div class="yt-title">${v.title||'—'}</div>
+        <div class="yt-meta"><span>${v.channel||''}</span><span>${v.views||''}</span></div>
+      </div>
+    </div>`).join('');
+}
+function playYT(id, title, channel, views){
+  currentYTVideo = {id,title,channel,views};
+  const wrap = document.getElementById('yt-player-wrap');
+  const iframe = document.getElementById('yt-iframe');
+  iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+  document.getElementById('yt-player-title').textContent = title||'—';
+  document.getElementById('yt-player-ch').textContent = channel||'';
+  document.getElementById('yt-player-views').textContent = views||'';
+  wrap.style.display = 'block';
+  wrap.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function closeYTPlayer(){
+  const iframe = document.getElementById('yt-iframe');
+  iframe.src='';
+  document.getElementById('yt-player-wrap').style.display='none';
+  currentYTVideo=null;
+}
+
+// ══════════════════════════════════════════
+// MUSIC PLAYER
+// ══════════════════════════════════════════
+const PLAYLISTS = {
+  bollywood:[
+    {name:'Kesariya',artist:'Arijit Singh · Brahmastra',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',dur:'4:28',ico:'🎬'},
+    {name:'Tum Hi Ho',artist:'Arijit Singh · Aashiqui 2',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',dur:'4:22',ico:'❤️'},
+    {name:'Chaiyya Chaiyya',artist:'Sukhwinder Singh · Dil Se',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',dur:'5:30',ico:'🔥'},
+    {name:'Kal Ho Naa Ho',artist:'Sonu Nigam',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',dur:'5:15',ico:'🌟'},
+    {name:'Dilbar Dilbar',artist:'Neha Kakkar',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',dur:'3:42',ico:'💃'},
+    {name:'Badtameez Dil',artist:'Pritam',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',dur:'4:10',ico:'💕'},
+  ],
+  punjabi:[
+    {name:'Excuses',artist:'AP Dhillon',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',dur:'3:58',ico:'🎵'},
+    {name:'Brown Munde',artist:'AP Dhillon · Gurinder Gill',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',dur:'3:16',ico:'🔶'},
+    {name:'Lover',artist:'Diljit Dosanjh',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',dur:'3:44',ico:'💛'},
+    {name:'G.O.A.T',artist:'Diljit Dosanjh',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',dur:'4:02',ico:'🐐'},
+    {name:'Dildarian',artist:'Amrinder Gill',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3',dur:'5:20',ico:'🌾'},
+    {name:'Lamberghini',artist:'The Doorbeen ft. Ragini',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3',dur:'3:28',ico:'🚗'},
+  ],
+  english:[
+    {name:'Shape of You',artist:'Ed Sheeran',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3',dur:'3:53',ico:'🎸'},
+    {name:'Blinding Lights',artist:'The Weeknd',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3',dur:'3:22',ico:'💫'},
+    {name:'Stay',artist:'Justin Bieber & Kid Laroi',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',dur:'2:21',ico:'⭐'},
+    {name:'Flowers',artist:'Miley Cyrus',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',dur:'3:20',ico:'🌸'},
+  ],
+  devotional:[
+    {name:'Ik Onkar',artist:'Nusrat Fateh Ali Khan',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',dur:'7:45',ico:'🕉️'},
+    {name:'Waheguru Simran',artist:'Bhai Harjinder Singh',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',dur:'11:20',ico:'🙏'},
+    {name:'Om Namah Shivaya',artist:'Jagjit Singh',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',dur:'8:15',ico:'🔱'},
+    {name:'Hanuman Chalisa',artist:'Gulshan Kumar',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',dur:'5:30',ico:'🪔'},
+  ],
+  lofi:[
+    {name:'Chill Study Beats',artist:'Lo-Fi Station',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',dur:'4:20',ico:'📚'},
+    {name:'Late Night Vibes',artist:'Lofi Hip Hop',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',dur:'3:55',ico:'🌙'},
+    {name:'Coffee Shop',artist:'Chillhop',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',dur:'4:10',ico:'☕'},
+  ],
+  classical:[
+    {name:'Raag Yaman',artist:'Pandit Ravi Shankar',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',dur:'12:30',ico:'🎻'},
+    {name:'Bhairavi Thumri',artist:'Girija Devi',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3',dur:'9:45',ico:'🎼'},
+  ],
+  haryanvi:[
+    {name:'52 Gaj Ka Daman',artist:'Renuka Panwar',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3',dur:'3:15',ico:'🥁'},
+    {name:'Bijlee Bijlee',artist:'Harrdy Sandhu',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3',dur:'3:30',ico:'⚡'},
+  ],
+  pop:[
+    {name:'Levitating',artist:'Dua Lipa',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3',dur:'3:23',ico:'🌟'},
+    {name:'Peaches',artist:'Justin Bieber',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',dur:'3:18',ico:'🍑'},
+    {name:'Bad Habits',artist:'Ed Sheeran',src:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',dur:'3:51',ico:'🎶'},
+  ]
+};
+let currentPL = [];
+function loadPlaylist(cat){
+  currentPL = PLAYLISTS[cat]||PLAYLISTS.bollywood;
+  mpCurrentIdx = 0;
+  document.querySelectorAll('.mcat').forEach(m=>m.classList.remove('on'));
+  event&&event.target&&event.target.classList.add('on');
+  renderPlaylist();
+}
+function renderPlaylist(){
+  const c = document.getElementById('playlist-container');
+  c.innerHTML = currentPL.map((s,i)=>`
+    <div class="pl-item${i===mpCurrentIdx?' playing':''}" onclick="mpPlay(${i})">
+      <span class="pl-num">${i===mpCurrentIdx?'▶':i+1}</span>
+      <span style="font-size:1.1rem">${s.ico||'🎵'}</span>
+      <div style="flex:1;min-width:0">
+        <div class="pl-name">${s.name}</div>
+        <div style="font-size:.72rem;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${s.artist||''}</div>
+      </div>
+      <span class="pl-dur">${s.dur||''}</span>
+    </div>`).join('');
+}
+function mpPlay(idx){
+  mpCurrentIdx = idx;
+  const s = currentPL[idx]; if(!s) return;
+  audioEl.src = s.src;
+  audioEl.volume = (document.getElementById('mp-vol').value||80)/100;
+  audioEl.play().catch(()=>{});
+  mpPlaying = true;
+  document.getElementById('mp-title').textContent = s.name;
+  document.getElementById('mp-artist').textContent = s.artist||'';
+  document.getElementById('mp-disc').textContent = s.ico||'🎵';
+  document.getElementById('mp-disc').classList.add('playing');
+  document.getElementById('mp-playbtn').textContent = '⏸';
+  document.getElementById('mp-status').textContent = '🎵 Now Playing';
+  renderPlaylist();
+}
+function mpToggle(){
+  if(!currentPL.length) return;
+  if(!audioEl.src||audioEl.src===window.location.href){ mpPlay(0); return; }
+  if(mpPlaying){ audioEl.pause(); mpPlaying=false; document.getElementById('mp-playbtn').textContent='▶'; document.getElementById('mp-disc').classList.remove('playing'); document.getElementById('mp-status').textContent='⏸ Paused';}
+  else{ audioEl.play().catch(()=>{}); mpPlaying=true; document.getElementById('mp-playbtn').textContent='⏸'; document.getElementById('mp-disc').classList.add('playing'); document.getElementById('mp-status').textContent='🎵 Playing';}
+}
+function mpNext(){
+  let n = mpShuffle ? Math.floor(Math.random()*currentPL.length) : (mpCurrentIdx+1)%currentPL.length;
+  mpPlay(n);
+}
+function mpPrev(){ mpPlay((mpCurrentIdx-1+currentPL.length)%currentPL.length); }
+function toggleShuffle(){ mpShuffle=!mpShuffle; document.getElementById('mp-shuf').style.color=mpShuffle?'var(--a5)':''; }
+function toggleRepeat(){ mpRepeat=!mpRepeat; audioEl.loop=mpRepeat; document.getElementById('mp-rep').style.color=mpRepeat?'var(--a5)':''; }
+function setVol(v){ audioEl.volume=v/100; }
+audioEl.addEventListener('ended',()=>{ if(!mpRepeat) mpNext(); });
+audioEl.addEventListener('timeupdate',()=>{
+  if(!audioEl.duration) return;
+  const pct = (audioEl.currentTime/audioEl.duration)*100;
+  document.getElementById('mp-bar').style.width=pct+'%';
+  document.getElementById('mp-cur').textContent=fmt(audioEl.currentTime);
+  document.getElementById('mp-dur').textContent=fmt(audioEl.duration);
+});
+function fmt(s){ const m=Math.floor(s/60); return m+':'+(Math.floor(s%60)+'').padStart(2,'0'); }
+function mpSeek(e){ const rect=e.currentTarget.getBoundingClientRect(); const pct=(e.clientX-rect.left)/rect.width; if(audioEl.duration) audioEl.currentTime=pct*audioEl.duration; }
+
+async function musicYTSearch(){
+  const q = document.getElementById('music-yt-inp').value.trim() || 'bollywood songs 2025';
+  const grid = document.getElementById('music-yt-results');
+  grid.innerHTML='<div class="loading" style="grid-column:1/-1"><div class="spinner"></div></div>';
+  try{ const v=await fetchYTResults(q); renderYTGrid(v,'music-yt-results'); }catch(e){ grid.innerHTML='<div class="empty">Error loading</div>'; }
+}
+
+// ══════════════════════════════════════════
+// RADIO
+// ══════════════════════════════════════════
+const RADIO_STATIONS = [
+  {name:'Radio Mirchi 98.3',lang:'Hindi',ico:'🎵',url:'https://peridot.streamguys1.com/Mirchi98FM',tag:'Entertainment'},
+  {name:'Big FM 92.7',lang:'Hindi',ico:'🔊',url:'https://peridot.streamguys1.com/BigFM92',tag:'Hindi Music'},
+  {name:'Red FM 93.5',lang:'Hindi',ico:'🔴',url:'https://peridot.streamguys1.com/redfm935',tag:'Bollywood'},
+  {name:'Radio City 91.1',lang:'Hindi',ico:'🌆',url:'https://peridot.streamguys1.com/RadioCity91',tag:'Hindi'},
+  {name:'Punjabi Radio',lang:'Punjabi',ico:'🌾',url:'https://listen.radionomy.com/punjabi-radio',tag:'Punjabi Music'},
+  {name:'Punjab Da Dhol',lang:'Punjabi',ico:'🥁',url:'https://listen.radionomy.com/punjab-da-dhol',tag:'Bhangra'},
+  {name:'Hamdard Radio',lang:'Punjabi',ico:'💛',url:'https://listen.radionomy.com/hamdard',tag:'Punjabi'},
+  {name:'BBC Hindi',lang:'Hindi',ico:'🌐',url:'https://stream.live.vc.bbcmedia.co.uk/bbc_hindi_radio',tag:'News'},
+  {name:'All India Radio News',lang:'Hindi',ico:'📡',url:'https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8',tag:'News'},
+  {name:'NDTV Radio',lang:'Hindi',ico:'📰',url:'https://live.ndtv.com/audio/ndtv-audio.m3u8',tag:'News'},
+  {name:'Radio FM 101',lang:'English',ico:'🎸',url:'https://listen.radionomy.com/radio-fm-101',tag:'English'},
+  {name:'Kiss FM',lang:'English',ico:'💋',url:'https://playerservices.streamtheworld.com/api/livestream-redirect/KISSFM.mp3',tag:'Pop'},
+  {name:'Radio Paradise',lang:'English',ico:'🌴',url:'https://stream.radioparadise.com/mp3-128',tag:'Classic'},
+  {name:'Classical India',lang:'Classical',ico:'🎻',url:'https://listen.radionomy.com/indian-classical',tag:'Classical'},
+  {name:'Vividh Bharati',lang:'Hindi',ico:'🏛️',url:'https://air.pc.cdn.bitgravity.com/air/live/pbaudio002/playlist.m3u8',tag:'Classical'},
+  {name:'Gurbani Radio',lang:'Punjabi',ico:'🙏',url:'https://listen.radionomy.com/gurbani-radio',tag:'Devotional'},
+  {name:'Bhakti Radio',lang:'Hindi',ico:'🕉️',url:'https://listen.radionomy.com/bhakti-radio',tag:'Devotional'},
+  {name:'Radio Salaam',lang:'Hindi',ico:'🎤',url:'https://listen.radionomy.com/radio-salaam',tag:'Ghazal'},
+];
+let filteredRadio = [...RADIO_STATIONS];
+function renderRadioStations(){
+  const el = document.getElementById('radio-stations-grid');
+  el.innerHTML = filteredRadio.map((s,i)=>`
+    <div class="radio-stn" id="rs-${i}" onclick="playRadio(${i})">
+      <span class="rs-ico">${s.ico}</span>
+      <div>
+        <div class="rs-name">${s.name}</div>
+        <div class="rs-lang">${s.lang} · ${s.tag}</div>
+      </div>
+      ${currentRadioStn===i?`<div class="rs-eq"><span></span><span></span><span></span><span></span></div>`:''}
+    </div>`).join('');
+}
+function filterRadio(lang){
+  document.querySelectorAll('#radio-lang-tabs .itab').forEach(t=>t.classList.remove('on'));
+  event.target.classList.add('on');
+  filteredRadio = lang==='all' ? RADIO_STATIONS : RADIO_STATIONS.filter(s=>s.lang===lang||s.tag===lang);
+  renderRadioStations();
+}
+function playRadio(idx){
+  const s = filteredRadio[idx]; if(!s) return;
+  currentRadioStn = idx;
+  radioAudio.src = s.url;
+  radioAudio.volume = (document.getElementById('radio-vol').value||80)/100;
+  radioAudio.play().catch(()=>{ radioAudio.src=''; });
+  radioPlaying = true;
+  document.getElementById('radio-ico').textContent = s.ico;
+  document.getElementById('radio-name').textContent = s.name;
+  document.getElementById('radio-lang').textContent = s.lang+' · '+s.tag;
+  document.getElementById('radio-playbtn').textContent = '⏸';
+  renderRadioStations();
+}
+function radioToggle(){
+  if(!radioAudio.src) return;
+  if(radioPlaying){ radioAudio.pause(); radioPlaying=false; document.getElementById('radio-playbtn').textContent='▶'; }
+  else{ radioAudio.play().catch(()=>{}); radioPlaying=true; document.getElementById('radio-playbtn').textContent='⏸'; }
+}
+function setRadioVol(v){ radioAudio.volume=v/100; }
+
+// ══════════════════════════════════════════
+// CRICKET
+// ══════════════════════════════════════════
+const CRICKET_CHANNELS = [
+  {name:'Star Sports 1',ico:'⭐',cat:'cricket',tag:'HD Live',ytq:'star sports 1 live today cricket'},
+  {name:'Star Sports 2',ico:'🌟',cat:'cricket',tag:'HD',ytq:'star sports 2 live cricket today'},
+  {name:'Sony Sports Ten',ico:'📺',cat:'cricket',tag:'Live',ytq:'sony sports ten 1 live cricket'},
+  {name:'DD Sports',ico:'🏛️',cat:'cricket',tag:'Free',ytq:'DD sports live cricket today'},
+  {name:'Cricbuzz Live',ico:'🏏',cat:'cricket',tag:'Scores',ytq:'cricbuzz live cricket commentary'},
+  {name:'ESPNcricinfo',ico:'📡',cat:'cricket',tag:'Analysis',ytq:'espncricinfo live commentary analysis'},
+  {name:'ICC Live',ico:'🏆',cat:'cricket',tag:'Official',ytq:'icc official cricket live 2025'},
+  {name:'IPL 2025 Live',ico:'🏟️',cat:'cricket',tag:'IPL',ytq:'IPL 2025 live match today full'},
+];
+async function loadCricketTab(){
+  // Show mock live scores then load YouTube results
+  renderCricketScores();
+  renderCricketChannels();
+  await cricketYT('ipl 2025 highlights cricket india');
+}
+function renderCricketScores(){
+  const matches = [
+    {status:'live',series:'IPL 2025',team1:'Mumbai Indians',t1score:'186/4',overs1:'18.2',team2:'Chennai Super Kings',t2score:'145/6',overs2:'16.0',venue:'Wankhede Stadium, Mumbai',result:'MI need 42 runs from 22 balls'},
+    {status:'upcoming',series:'ICC Champions Trophy 2025',team1:'India',t1score:'',overs1:'',team2:'Pakistan',t2score:'',overs2:'',venue:'Dubai International Stadium',result:'Match starts 14:30 IST'},
+    {status:'finished',series:'Test Series',team1:'Australia',t1score:'317 & 112',overs1:'',team2:'England',t2score:'298 & 134/8',overs2:'',venue:'MCG, Melbourne',result:'England need 28 runs · 2 wkts left'},
+  ];
+  document.getElementById('cricket-live-scores').innerHTML = matches.map(m=>`
+    <div class="match-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <span class="match-series">${m.series}</span>
+        <span class="match-status ${m.status}">${m.status==='live'?'🔴 LIVE':m.status==='upcoming'?'🕐 Upcoming':'✅ Finished'}</span>
+      </div>
+      <div class="teams">
+        <div class="team"><div class="team-name">${m.team1}</div>${m.t1score?`<div class="team-score">${m.t1score}</div><div class="team-overs">${m.overs1 ? '('+m.overs1+' ov)' : ''}</div>`:''}</div>
+        <div class="vs-badge">VS</div>
+        <div class="team"><div class="team-name">${m.team2}</div>${m.t2score?`<div class="team-score">${m.t2score}</div><div class="team-overs">${m.overs2 ? '('+m.overs2+' ov)' : ''}</div>`:''}</div>
+      </div>
+      <div class="match-venue">${m.result} · ${m.venue}</div>
+    </div>`).join('');
+  document.getElementById('w-cricket').textContent = 'MI 186/4 vs CSK 145/6';
+}
+function renderCricketChannels(){
+  document.getElementById('cricket-streams').innerHTML = CRICKET_CHANNELS.map((c,i)=>`
+    <div class="stream-card" onclick="playCricketYT('${c.ytq}','${c.name}')">
+      <div class="stream-thumb">${c.ico}<div class="stream-live-tag">LIVE</div></div>
+      <div class="stream-info">
+        <div class="stream-name">${c.name}</div>
+        <div class="stream-meta">${c.tag} · ${c.cat}</div>
+      </div>
+    </div>`).join('');
+}
+function refreshCricket(){ renderCricketScores(); cricketYT('live cricket match today 2025'); }
+async function cricketYT(q){
+  const grid = document.getElementById('cricket-yt-grid');
+  grid.innerHTML='<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading…</div>';
+  document.querySelectorAll('#tab-cricket .yt-cat').forEach(c=>c.classList.remove('on'));
+  try{ const v=await fetchYTResults(q); renderYTGrid(v,'cricket-yt-grid'); }catch(e){ grid.innerHTML='<div class="empty">Error: '+e.message+'</div>'; }
+}
+function playCricketYT(ytq, name){
+  cricketYT(ytq);
+  document.getElementById('cricket-yt-grid').scrollIntoView({behavior:'smooth'});
+}
+function closeCricketEmbed(){ document.getElementById('cricket-embed-player').style.display='none'; document.getElementById('cricket-iframe').src=''; }
+
+// ══════════════════════════════════════════
+// LIVE TV STREAMING
+// ══════════════════════════════════════════
+const TV_CHANNELS = [
+  // News
+  {name:'NDTV 24x7',ico:'📰',cat:'news',tag:'English News',ytq:'NDTV 24x7 live stream today'},
+  {name:'Aaj Tak',ico:'🔴',cat:'news',tag:'Hindi News',ytq:'aaj tak live news today 2025'},
+  {name:'Republic TV',ico:'🇮🇳',cat:'news',tag:'English',ytq:'Republic TV live today 2025'},
+  {name:'India TV',ico:'📡',cat:'news',tag:'Hindi',ytq:'India TV live news today'},
+  {name:'Zee News',ico:'⚡',cat:'news',tag:'Hindi',ytq:'Zee News live today 2025'},
+  {name:'ABP News',ico:'📣',cat:'news',tag:'Hindi',ytq:'ABP news live today 2025'},
+  {name:'CNN News18',ico:'🌐',cat:'news',tag:'English',ytq:'CNN News18 live today'},
+  {name:'News18 India',ico:'🗞️',cat:'news',tag:'Hindi',ytq:'News18 India live today'},
+  // Entertainment
+  {name:'Star Plus',ico:'⭐',cat:'entertainment',tag:'Drama',ytq:'star plus live today serial'},
+  {name:'Zee TV',ico:'🌟',cat:'entertainment',tag:'Drama',ytq:'Zee TV live today 2025'},
+  {name:'Colors TV',ico:'🎨',cat:'entertainment',tag:'Drama',ytq:'Colors TV live today'},
+  {name:'Sony Entertainment',ico:'🎭',cat:'entertainment',tag:'Drama',ytq:'Sony TV live today'},
+  {name:'Star Vijay',ico:'📺',cat:'entertainment',tag:'Tamil',ytq:'Star Vijay TV live today'},
+  {name:'Sun TV',ico:'☀️',cat:'entertainment',tag:'Tamil',ytq:'Sun TV live today Tamil'},
+  // Sports
+  {name:'Star Sports 1',ico:'🏆',cat:'sports',tag:'Cricket/Football',ytq:'Star Sports 1 live today'},
+  {name:'Sony Sports 1',ico:'🏅',cat:'sports',tag:'Live Sports',ytq:'Sony Sports Ten 1 live today'},
+  {name:'DD Sports',ico:'🎯',cat:'sports',tag:'Free Sports',ytq:'DD sports live today'},
+  {name:'Sony Six',ico:'🎮',cat:'sports',tag:'Sports',ytq:'Sony Six live today sports'},
+  // Music
+  {name:'MTV India',ico:'🎵',cat:'music',tag:'Music Videos',ytq:'MTV India live music 2025'},
+  {name:'Channel V',ico:'🎤',cat:'music',tag:'Music',ytq:'Channel V India live music'},
+  {name:'9XM',ico:'🎸',cat:'music',tag:'Bollywood',ytq:'9XM live bollywood music today'},
+  {name:'Punjabi Media TV',ico:'🥁',cat:'music',tag:'Punjabi',ytq:'Punjabi music live TV today'},
+  // Kids
+  {name:'Cartoon Network',ico:'🌈',cat:'kids',tag:'Cartoons',ytq:'Cartoon Network India live 2025'},
+  {name:'Nickelodeon India',ico:'🟠',cat:'kids',tag:'Kids',ytq:'Nickelodeon India live today'},
+  {name:'Pogo TV',ico:'🐸',cat:'kids',tag:'Kids',ytq:'Pogo TV India live today'},
+  {name:'Disney Channel',ico:'🏰',cat:'kids',tag:'Disney',ytq:'Disney Channel India live 2025'},
+  // Movies
+  {name:'Star Movies',ico:'🎬',cat:'movies',tag:'English Movies',ytq:'Star Movies live today English'},
+  {name:'Zee Cinema',ico:'🎥',cat:'movies',tag:'Hindi Movies',ytq:'Zee Cinema live Hindi movies today'},
+  {name:'Sony Max',ico:'🎞️',cat:'movies',tag:'Bollywood',ytq:'Sony Max live movies today'},
+  {name:'&Pictures',ico:'📽️',cat:'movies',tag:'Movies',ytq:'And Pictures live movies today'},
+  // Devotional
+  {name:'Aastha TV',ico:'🙏',cat:'devotional',tag:'Spiritual',ytq:'Aastha TV live today bhajan'},
+  {name:'Divya TV',ico:'🪔',cat:'devotional',tag:'Hindi',ytq:'Divya TV live today 2025'},
+  {name:'PTC Punjabi',ico:'🌾',cat:'regional',tag:'Punjabi',ytq:'PTC Punjabi live TV today'},
+  {name:'ETV Punjabi',ico:'🟡',cat:'regional',tag:'Punjabi',ytq:'ETV Punjabi live today'},
+  // Education
+  {name:'NDTV Education',ico:'📚',cat:'education',tag:'Education',ytq:'NDTV education live lecture'},
+  {name:'Rajya Sabha TV',ico:'🏛️',cat:'education',tag:'Parliament',ytq:'Rajya Sabha TV live today'},
+  {name:'Lok Sabha TV',ico:'🏦',cat:'education',tag:'Parliament',ytq:'Lok Sabha TV live today'},
+  // International
+  {name:'BBC World',ico:'🌍',cat:'international',tag:'English',ytq:'BBC World News live today'},
+  {name:'Al Jazeera',ico:'🌙',cat:'international',tag:'English',ytq:'Al Jazeera English live today'},
+  {name:'CNN International',ico:'📡',cat:'international',tag:'English',ytq:'CNN live today international'},
+  {name:'Sky News',ico:'🌤️',cat:'international',tag:'English',ytq:'Sky News live today 2025'},
+];
+let filteredTV = [...TV_CHANNELS];
+function renderStreamChannels(){
+  filteredTV = TV_CHANNELS;
+  document.getElementById('stream-channels-grid').innerHTML = TV_CHANNELS.map((c,i)=>`
+    <div class="ch-card" onclick="openTVChannel(${i})">
+      <div class="ch-ico">${c.ico}</div>
+      <div>
+        <div class="ch-name">${c.name}</div>
+        <div class="ch-tag">${c.tag}</div>
+        <div class="ch-live">🔴 LIVE</div>
+      </div>
+    </div>`).join('');
+}
+function filterStreams(cat){
+  document.querySelectorAll('.scat').forEach(s=>s.classList.remove('on'));
+  event.target.classList.add('on');
+  const arr = cat==='all' ? TV_CHANNELS : TV_CHANNELS.filter(c=>c.cat===cat);
+  document.getElementById('stream-channels-grid').innerHTML = arr.map((c,i)=>{
+    const origIdx = TV_CHANNELS.indexOf(c);
+    return `<div class="ch-card" onclick="openTVChannel(${origIdx})">
+      <div class="ch-ico">${c.ico}</div>
+      <div>
+        <div class="ch-name">${c.name}</div>
+        <div class="ch-tag">${c.tag}</div>
+        <div class="ch-live">🔴 LIVE</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+async function openTVChannel(idx){
+  const ch = TV_CHANNELS[idx]; if(!ch) return;
+  // Load YouTube live stream for this channel
+  const grid = document.getElementById('live-yt-grid');
+  grid.innerHTML='<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading stream…</div>';
+  document.getElementById('tv-embed-title').textContent = ch.name;
+  document.getElementById('tv-embed-cat').textContent = ch.tag;
+  document.getElementById('tv-embed-player').style.display='none';
+  document.getElementById('live-yt-inp').value = ch.ytq;
+  grid.scrollIntoView({behavior:'smooth'});
+  try{
+    const v = await fetchYTResults(ch.ytq);
+    renderYTGrid(v,'live-yt-grid');
+  }catch(e){ grid.innerHTML='<div class="empty">Error: '+e.message+'</div>'; }
+}
+async function liveYTSearch(){
+  const q=document.getElementById('live-yt-inp').value.trim(); if(!q) return;
+  const grid=document.getElementById('live-yt-grid');
+  grid.innerHTML='<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Searching…</div>';
+  try{ const v=await fetchYTResults(q); renderYTGrid(v,'live-yt-grid'); }catch(e){ grid.innerHTML='<div class="empty">'+e.message+'</div>'; }
+}
+function closeTVEmbed(){ document.getElementById('tv-embed-player').style.display='none'; document.getElementById('tv-iframe').src=''; }
+function openFullscreen(id){ const el=document.getElementById(id); if(el.requestFullscreen) el.requestFullscreen(); }
+
+// ══════════════════════════════════════════
+// NEWS
+// ══════════════════════════════════════════
+const NEWS_FEEDS = {
+  india:[
+    {src:'NDTV',title:'Parliament Winter Session: Key Bills to be tabled today',desc:'Both Houses of Parliament resume after brief recess. Lok Sabha to debate key infrastructure bill.',link:'https://ndtv.com',img:'https://picsum.photos/seed/news1/400/200',pub:new Date().toISOString()},
+    {src:'Times of India',title:'India GDP growth beats expectations at 8.4% in Q3',desc:'India emerges as fastest growing major economy as consumption and manufacturing surge.',link:'https://timesofindia.com',img:'https://picsum.photos/seed/news2/400/200',pub:new Date().toISOString()},
+    {src:'Hindustan Times',title:'Punjab govt announces major road infrastructure project',desc:'₹5,000 crore investment to improve connectivity in Pathankot-Jammu highway.',link:'https://hindustantimes.com',img:'https://picsum.photos/seed/news3/400/200',pub:new Date().toISOString()},
+    {src:'The Hindu',title:'India successfully tests new ICBM missile Agni-VI',desc:'Advanced ballistic missile with extended range successfully tested from Odisha coast.',link:'https://thehindu.com',img:'https://picsum.photos/seed/news4/400/200',pub:new Date().toISOString()},
+    {src:'Indian Express',title:'Supreme Court delivers landmark ruling on voter privacy',desc:'Court upholds right to secret ballot, directs ECI to implement stricter protocols.',link:'https://indianexpress.com',img:'https://picsum.photos/seed/news5/400/200',pub:new Date().toISOString()},
+    {src:'ABP News',title:'Gold prices surge to record high in India',desc:'Gold hits ₹82,000 per 10 grams amid global uncertainty and rupee depreciation.',link:'https://abplive.com',img:'https://picsum.photos/seed/news6/400/200',pub:new Date().toISOString()},
+  ],
+  world:[
+    {src:'Reuters',title:'G20 Leaders agree on global AI governance framework',desc:'Historic agreement to regulate artificial intelligence at the international level.',link:'https://reuters.com',img:'https://picsum.photos/seed/world1/400/200',pub:new Date().toISOString()},
+    {src:'AP News',title:'Ukraine-Russia peace talks resume in Geneva',desc:'Third round of negotiations begins with new proposals from both sides.',link:'https://apnews.com',img:'https://picsum.photos/seed/world2/400/200',pub:new Date().toISOString()},
+    {src:'BBC',title:'US Federal Reserve holds rates steady, signals future cuts',desc:'Jerome Powell hints at two rate cuts in 2025 amid cooling inflation data.',link:'https://bbc.com',img:'https://picsum.photos/seed/world3/400/200',pub:new Date().toISOString()},
+    {src:'Al Jazeera',title:'Middle East ceasefire extended for another 30 days',desc:'Regional powers broker extended ceasefire amid ongoing humanitarian crisis.',link:'https://aljazeera.com',img:'https://picsum.photos/seed/world4/400/200',pub:new Date().toISOString()},
+  ],
+  business:[
+    {src:'ET Markets',title:'Sensex surges 800 points; Nifty crosses 25,000',desc:'Markets rally on strong FII inflows and positive earnings season.',link:'https://economictimes.com',img:'https://picsum.photos/seed/biz1/400/200',pub:new Date().toISOString()},
+    {src:'Mint',title:'Reliance Industries reports record Q3 profit of ₹21,000 cr',desc:'Strong performance across retail, telecom and new energy segments drives growth.',link:'https://livemint.com',img:'https://picsum.photos/seed/biz2/400/200',pub:new Date().toISOString()},
+    {src:'Business Standard',title:'RBI keeps repo rate unchanged at 6.5%',desc:'Monetary Policy Committee votes 4-2 to maintain status quo on policy rates.',link:'https://business-standard.com',img:'https://picsum.photos/seed/biz3/400/200',pub:new Date().toISOString()},
+  ],
+  tech:[
+    {src:'TechCrunch',title:'OpenAI launches GPT-5 with multimodal reasoning',desc:'New model shows remarkable improvements in math, coding and visual understanding.',link:'https://techcrunch.com',img:'https://picsum.photos/seed/tech1/400/200',pub:new Date().toISOString()},
+    {src:'The Verge',title:'Apple reveals iPhone 17 series at Spring event',desc:'New titanium design, periscope camera and AI-powered Siri 2.0 headline features.',link:'https://theverge.com',img:'https://picsum.photos/seed/tech2/400/200',pub:new Date().toISOString()},
+    {src:'Gadgets360',title:'OnePlus 13R launched in India at ₹39,999',desc:'Flagship killer features Snapdragon 8s Gen 4 and 100W fast charging.',link:'https://gadgets360.com',img:'https://picsum.photos/seed/tech3/400/200',pub:new Date().toISOString()},
+  ],
+  sports:[
+    {src:'ESPN',title:'IPL 2025: Mumbai Indians vs CSK — Match Preview',desc:'Both teams at 3-1 face off in must-watch clash at Wankhede.',link:'https://espn.in',img:'https://picsum.photos/seed/sport1/400/200',pub:new Date().toISOString()},
+    {src:'SportStar',title:'Neeraj Chopra wins Diamond League gold again',desc:'Indian javelin champion continues dominant form with 89.23m throw.',link:'https://sportstar.thehindu.com',img:'https://picsum.photos/seed/sport2/400/200',pub:new Date().toISOString()},
+    {src:'BBC Sport',title:'Champions League QF draw: Real vs Bayern again',desc:'Defending champions face German giants in what promises to be a classic.',link:'https://bbc.com/sport',img:'https://picsum.photos/seed/sport3/400/200',pub:new Date().toISOString()},
+  ],
+  health:[
+    {src:'NDTV Health',title:'Govt approves new vaccine for dengue prevention',desc:'India becomes third country to approve tetravalent dengue vaccine for all age groups.',link:'https://ndtv.com/health',img:'https://picsum.photos/seed/health1/400/200',pub:new Date().toISOString()},
+    {src:'Times Health',title:'Yoga reduces heart disease risk by 40%, new study finds',desc:'Research from AIIMS Delhi confirms daily yoga cuts cardiovascular risk factors.',link:'https://timesofindia.com/life-style/health',img:'https://picsum.photos/seed/health2/400/200',pub:new Date().toISOString()},
+  ],
+  punjab:[
+    {src:'Tribune',title:'Punjab farmers demand MSP guarantee before Rabi sowing',desc:'SKM Punjab demands written guarantee for wheat MSP before October 15 deadline.',link:'https://tribuneindia.com',img:'https://picsum.photos/seed/punj1/400/200',pub:new Date().toISOString()},
+    {src:'Jagran',title:'Amritsar airport to get expanded international terminal',desc:'AAI approves ₹900 crore expansion of Sri Guru Ram Dass Jee International Airport.',link:'https://jagran.com',img:'https://picsum.photos/seed/punj2/400/200',pub:new Date().toISOString()},
+    {src:'Pathankot Today',title:'Pathankot cantonment road widening project approved',desc:'National Highway Authority approves 4-lane expansion of key arterial road.',link:'#',img:'https://picsum.photos/seed/punj3/400/200',pub:new Date().toISOString()},
+  ]
+};
+function loadAllNews(){ loadNewsCategory('india'); }
+function loadNewsCategory(cat){
+  const gridId = `news-${cat==='world'?'world':cat==='business'?'biz':cat==='health'?'health':cat==='punjab'?'punjab':cat==='tech'?'tech':cat==='sports'?'sports':'india'}-grid`;
+  const grid = document.getElementById(gridId); if(!grid) return;
+  const items = NEWS_FEEDS[cat]||NEWS_FEEDS.india;
+  grid.innerHTML = items.map(n=>newsCardHTML(n)).join('');
+  // Also fill home news
+  if(cat==='india') document.getElementById('home-news').innerHTML = items.slice(0,4).map(n=>newsCardHTML(n)).join('');
+}
+function newsCardHTML(n){
+  return `<div class="nc" onclick="window.open('${n.link||'#'}','_blank')">
+    ${n.img?`<img class="nc-img" src="${n.img}" loading="lazy" onerror="this.style.display='none'" alt="">`:''}
+    <div class="nc-body">
+      <div class="nc-src">${n.src||''}</div>
+      <div class="nc-t">${n.title||''}</div>
+      ${n.desc?`<div class="nc-d">${n.desc}</div>`:''}
+      <div class="nc-time">🕐 ${n.pub?new Date(n.pub).toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):''}</div>
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════
+// STOCKS
+// ══════════════════════════════════════════
+const STOCK_DATA = {
+  india:[
+    {sym:'RELIANCE',name:'Reliance Industries',price:'2847.35',chg:'+1.2%',pos:true},
+    {sym:'TCS',name:'Tata Consultancy',price:'4129.80',chg:'+0.8%',pos:true},
+    {sym:'INFY',name:'Infosys Ltd',price:'1834.50',chg:'-0.4%',pos:false},
+    {sym:'HDFC BANK',name:'HDFC Bank',price:'1723.90',chg:'+1.5%',pos:true},
+    {sym:'ICICI BANK',name:'ICICI Bank',price:'1340.20',chg:'+0.9%',pos:true},
+    {sym:'WIPRO',name:'Wipro Ltd',price:'567.40',chg:'-0.2%',pos:false},
+    {sym:'BAJFINANCE',name:'Bajaj Finance',price:'7834.10',chg:'+2.1%',pos:true},
+    {sym:'TATAMOTORS',name:'Tata Motors',price:'1023.50',chg:'-1.3%',pos:false},
+    {sym:'HCLTECH',name:'HCL Technologies',price:'1678.90',chg:'+0.6%',pos:true},
+    {sym:'LTIM',name:'LTIMindtree',price:'5890.30',chg:'+1.8%',pos:true},
+    {sym:'NIFTY50',name:'Nifty 50 Index',price:'24,832',chg:'+0.7%',pos:true},
+    {sym:'SENSEX',name:'BSE Sensex',price:'81,547',chg:'+0.8%',pos:true},
+  ],
+  crypto:[
+    {sym:'BTC',name:'Bitcoin',price:'₹72,34,000',chg:'+2.3%',pos:true},
+    {sym:'ETH',name:'Ethereum',price:'₹3,84,500',chg:'+1.7%',pos:true},
+    {sym:'BNB',name:'Binance Coin',price:'₹52,300',chg:'-0.5%',pos:false},
+    {sym:'SOL',name:'Solana',price:'₹14,200',chg:'+4.1%',pos:true},
+    {sym:'XRP',name:'Ripple',price:'₹47.80',chg:'+0.9%',pos:true},
+    {sym:'USDT',name:'Tether',price:'₹83.50',chg:'0.0%',pos:true},
+    {sym:'DOGE',name:'Dogecoin',price:'₹14.20',chg:'+3.2%',pos:true},
+    {sym:'ADA',name:'Cardano',price:'₹38.40',chg:'-1.1%',pos:false},
+  ]
+};
+function loadStocks(){
+  const grid = document.getElementById('stocks-india-grid');
+  grid.innerHTML = STOCK_DATA.india.map(s=>`
+    <div class="stock-tile">
+      <div class="st-sym">${s.sym}</div>
+      <div class="st-name">${s.name}</div>
+      <div class="st-price">₹${s.price}</div>
+      <div class="st-chg ${s.pos?'pos':'neg'}">${s.pos?'▲':'▼'} ${s.chg}</div>
+    </div>`).join('');
+}
+function loadCrypto(){
+  const grid = document.getElementById('stocks-crypto-grid');
+  grid.innerHTML = STOCK_DATA.crypto.map(s=>`
+    <div class="stock-tile">
+      <div class="st-sym">${s.sym}</div>
+      <div class="st-name">${s.name}</div>
+      <div class="st-price">${s.price}</div>
+      <div class="st-chg ${s.pos?'pos':'neg'}">${s.pos?'▲':'▼'} ${s.chg}</div>
+    </div>`).join('');
+}
+const METALS = [
+  {ico:'🥇',label:'Gold 24K',val:'₹82,450',unit:'per 10g',chg:'+0.4%',pos:true},
+  {ico:'🥈',label:'Silver',val:'₹95,200',unit:'per kg',chg:'+0.2%',pos:true},
+  {ico:'⚡',label:'Platinum',val:'₹2,87,000',unit:'per 10g',chg:'-0.3%',pos:false},
+  {ico:'🔩',label:'Copper',val:'₹821',unit:'per kg',chg:'+1.1%',pos:true},
+];
+function loadMetals(){
+  document.getElementById('stocks-metals-grid').innerHTML = METALS.map(m=>`
+    <div class="price-card">
+      <span class="price-ico">${m.ico}</span>
+      <div class="price-label">${m.label}</div>
+      <div class="price-val">${m.val}</div>
+      <div class="price-unit">${m.unit}</div>
+      <div class="price-chg ${m.pos?'pos':'neg'}">${m.pos?'▲':'▼'} ${m.chg}</div>
+    </div>`).join('');
+  // Small metals for affairs sidebar
+  document.getElementById('metals-small-grid').innerHTML = METALS.map(m=>`
+    <div class="price-card" style="padding:10px">
+      <span class="price-ico">${m.ico}</span>
+      <div class="price-label" style="font-size:.65rem">${m.label}</div>
+      <div class="price-val" style="font-size:1.1rem">${m.val}</div>
+      <div class="price-chg ${m.pos?'pos':'neg'}" style="font-size:.7rem">${m.chg}</div>
+    </div>`).join('');
+  document.getElementById('w-gold').textContent = METALS[0].val;
+}
+const FOREX = [
+  {sym:'USD/INR',name:'US Dollar',price:'83.45',chg:'+0.1%',pos:true},
+  {sym:'EUR/INR',name:'Euro',price:'90.23',chg:'-0.2%',pos:false},
+  {sym:'GBP/INR',name:'British Pound',price:'105.78',chg:'-0.1%',pos:false},
+  {sym:'JPY/INR',name:'Japanese Yen',price:'0.562',chg:'+0.3%',pos:true},
+  {sym:'AED/INR',name:'UAE Dirham',price:'22.71',chg:'0.0%',pos:true},
+  {sym:'CAD/INR',name:'Canadian Dollar',price:'61.34',chg:'+0.2%',pos:true},
+];
+function loadForex(){
+  document.getElementById('stocks-forex-grid').innerHTML = FOREX.map(s=>`
+    <div class="stock-tile">
+      <div class="st-sym">${s.sym}</div>
+      <div class="st-name">${s.name}</div>
+      <div class="st-price">₹${s.price}</div>
+      <div class="st-chg ${s.pos?'pos':'neg'}">${s.pos?'▲':'▼'} ${s.chg}</div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════
+// JOBS
+// ══════════════════════════════════════════
+const JOBS_DATA = [
+  {title:'SSC CGL 2025 Recruitment',org:'Staff Selection Commission',cat:'ssc',tags:['New','Govt'],posts:'17,727',deadline:'Mar 31, 2025',salary:'₹29,200 – ₹1,12,400',location:'All India',link:'https://ssc.gov.in'},
+  {title:'Indian Railway 10th Pass Jobs (RRB NTPC)',org:'Railway Recruitment Board',cat:'railway',tags:['Urgent','Govt'],posts:'11,558',deadline:'Apr 15, 2025',salary:'₹19,900 – ₹35,400',location:'All India',link:'https://rrbcdg.gov.in'},
+  {title:'Punjab Police Constable Recruitment',org:'Punjab Police',cat:'state',tags:['New','Govt','Punjab'],posts:'1,746',deadline:'Apr 20, 2025',salary:'₹19,900 – ₹63,200',location:'Punjab',link:'https://punjabpolice.gov.in'},
+  {title:'SBI PO Recruitment 2025',org:'State Bank of India',cat:'bank',tags:['Bank','Govt'],posts:'2,000',deadline:'May 1, 2025',salary:'₹41,960 – ₹63,840',location:'All India',link:'https://sbi.co.in'},
+  {title:'Indian Army Agniveer 2025',org:'Indian Army',cat:'defence',tags:['Defence','Govt'],posts:'25,000+',deadline:'May 10, 2025',salary:'₹30,000 – ₹40,000',location:'All India',link:'https://joinindianarmy.nic.in'},
+  {title:'IBPS Clerk 2025',org:'Institute of Banking Personnel',cat:'bank',tags:['Bank','Govt'],posts:'6,128',deadline:'Apr 22, 2025',salary:'₹11,765 – ₹42,020',location:'All India',link:'https://ibps.in'},
+  {title:'CRPF Head Constable 2025',org:'Central Reserve Police Force',cat:'defence',tags:['Defence','Govt'],posts:'9,212',deadline:'Apr 18, 2025',salary:'₹25,500 – ₹81,100',location:'All India',link:'https://crpf.gov.in'},
+  {title:'Haryana Police SI Recruitment',org:'Haryana Staff Selection Commission',cat:'state',tags:['State','Govt'],posts:'455',deadline:'Apr 28, 2025',salary:'₹35,400 – ₹1,12,400',location:'Haryana',link:'https://hssc.gov.in'},
+  {title:'Software Engineer — Infosys',org:'Infosys Limited',cat:'private',tags:['IT','Private'],posts:'500+',deadline:'Rolling',salary:'₹3.6L – ₹8L PA',location:'Bangalore/Pune',link:'https://infosys.com/careers'},
+  {title:'Data Analyst — TCS',org:'Tata Consultancy Services',cat:'private',tags:['IT','Private'],posts:'200+',deadline:'Rolling',salary:'₹4L – ₹12L PA',location:'Multiple Cities',link:'https://tcs.com/careers'},
+  {title:'RBI Grade B Officer',org:'Reserve Bank of India',cat:'bank',tags:['Bank','Elite','Govt'],posts:'300',deadline:'May 5, 2025',salary:'₹35,150+',location:'All India',link:'https://rbi.org.in/scripts/careers'},
+  {title:'NDA 2025 (I) Recruitment',org:'UPSC',cat:'defence',tags:['Defence','Govt'],posts:'395',deadline:'Apr 30, 2025',salary:'₹15,600 – ₹39,100',location:'All India',link:'https://upsc.gov.in'},
+];
+function loadJobs(){ allJobs=[...JOBS_DATA]; renderJobs(); }
+function searchJobs(){
+  const q=document.getElementById('job-search-inp').value.trim().toLowerCase();
+  const filtered=q?JOBS_DATA.filter(j=>j.title.toLowerCase().includes(q)||j.org.toLowerCase().includes(q)||j.cat.includes(q)):JOBS_DATA;
+  document.getElementById('jobs-grid').innerHTML=filtered.map(j=>jobCard(j)).join('');
+}
+function filterJobs(cat){
+  document.querySelectorAll('#tab-jobs .itab').forEach(t=>t.classList.remove('on'));
+  event.target.classList.add('on');
+  const filtered=cat==='all'?JOBS_DATA:JOBS_DATA.filter(j=>j.cat===cat);
+  document.getElementById('jobs-grid').innerHTML=filtered.map(j=>jobCard(j)).join('');
+}
+function renderJobs(){ document.getElementById('jobs-grid').innerHTML=JOBS_DATA.map(j=>jobCard(j)).join(''); }
+function jobCard(j){
+  return `<div class="job-card" onclick="window.open('${j.link||'#'}','_blank')">
+    <div class="job-title">${j.title}</div>
+    <div class="job-org">🏢 ${j.org}</div>
+    <div class="job-tags">${(j.tags||[]).map(t=>`<span class="jtag ${t==='New'?'new':t==='Urgent'?'urgent':''}">${t}</span>`).join('')}</div>
+    <div class="job-meta">
+      <span>📋 Posts: <strong style="color:var(--t1)">${j.posts||'—'}</strong></span>
+      <span>💰 ${j.salary||'—'}</span>
+      <span>📍 ${j.location||'—'}</span>
+    </div>
+    <div class="job-deadline">⏰ Last Date: ${j.deadline||'—'}</div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════
+// EXAMS
+// ══════════════════════════════════════════
+const EXAMS_DATA = [
+  {name:'NEET UG 2025',body:'NTA',cat:'medical',regStart:'Feb 7',regEnd:'Mar 7',exam:'May 4, 2025',link:'https://neet.nta.ac.in'},
+  {name:'JEE Main 2025',body:'NTA',cat:'engineering',regStart:'Nov 2024',regEnd:'Jan 2025',exam:'Jan 22 – Feb 2, 2025',link:'https://jeemain.nta.ac.in'},
+  {name:'JEE Advanced 2025',body:'IIT Roorkee',cat:'engineering',regStart:'Apr 28',regEnd:'May 5',exam:'May 18, 2025',link:'https://jeeadv.ac.in'},
+  {name:'CLAT 2025',body:'CLAT Consortium',cat:'law',regStart:'Jul 2024',regEnd:'Oct 2024',exam:'Dec 1, 2024',link:'https://consortiumofnlus.ac.in'},
+  {name:'CAT 2025',body:'IIM',cat:'management',regStart:'Jul 2025',regEnd:'Sep 2025',exam:'Nov 30, 2025',link:'https://iimcat.ac.in'},
+  {name:'UPSC CSE 2025',body:'UPSC',cat:'civil',regStart:'Jan 22',regEnd:'Feb 11',exam:'May 25, 2025',link:'https://upsc.gov.in'},
+  {name:'GATE 2025',body:'IIT Roorkee',cat:'engineering',regStart:'Aug 2024',regEnd:'Sep 2024',exam:'Feb 1-2, 8-9, 15-16, 2025',link:'https://gate2025.iitr.ac.in'},
+  {name:'CBSE Board 10th 2025',body:'CBSE',cat:'board',regStart:'Sep 2024',regEnd:'Oct 2024',exam:'Feb 15, 2025',link:'https://cbse.gov.in'},
+  {name:'CBSE Board 12th 2025',body:'CBSE',cat:'board',regStart:'Sep 2024',regEnd:'Oct 2024',exam:'Feb 15, 2025',link:'https://cbse.gov.in'},
+  {name:'NDA 2025 (I)',body:'UPSC',cat:'defence',regStart:'Dec 2024',regEnd:'Jan 2025',exam:'Apr 13, 2025',link:'https://upsc.gov.in'},
+  {name:'PSEB 10th 2025',body:'Punjab School Ed. Board',cat:'board',regStart:'Nov 2024',regEnd:'Dec 2024',exam:'Mar 2025',link:'https://pseb.ac.in'},
+  {name:'AIIMS PG 2025',body:'AIIMS Delhi',cat:'medical',regStart:'Jan 2025',regEnd:'Feb 2025',exam:'Apr 19-20, 2025',link:'https://aiimsexams.ac.in'},
+];
+function loadExams(){ allExams=[...EXAMS_DATA]; renderExams(); }
+function filterExams(cat){
+  document.querySelectorAll('#tab-exams .itab').forEach(t=>t.classList.remove('on'));
+  event.target.classList.add('on');
+  const filtered=cat==='all'?EXAMS_DATA:EXAMS_DATA.filter(e=>e.cat===cat);
+  document.getElementById('exams-grid').innerHTML=filtered.map(e=>examCard(e)).join('');
+}
+function renderExams(){ document.getElementById('exams-grid').innerHTML=EXAMS_DATA.map(e=>examCard(e)).join(''); }
+function examCard(e){
+  const catClr={'medical':'var(--a3)','engineering':'var(--a1)','law':'var(--a2)','management':'var(--a4)','civil':'var(--a5)','defence':'#ff8800','board':'var(--t2)'}[e.cat]||'var(--t2)';
+  return `<div class="exam-card" onclick="window.open('${e.link||'#'}','_blank')">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <div class="exam-name">${e.name}</div>
+      <span style="background:rgba(0,0,0,.3);border:1px solid ${catClr};color:${catClr};font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:50px;text-transform:uppercase">${e.cat}</span>
+    </div>
+    <div class="exam-body">🏛️ ${e.body}</div>
+    <div class="exam-dates">
+      <div class="edate"><div class="edate-l">📝 Reg. Ends</div><div class="edate-v">${e.regEnd||'—'}</div></div>
+      <div class="edate"><div class="edate-l">📅 Exam Date</div><div class="edate-v">${e.exam||'—'}</div></div>
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════
+// SPORTS
+// ══════════════════════════════════════════
+async function sportsCat(cat){
+  document.querySelectorAll('#tab-sports .itab').forEach(t=>t.classList.remove('on'));
+  event&&event.target&&event.target.classList.add('on');
+  const queries = {
+    cricket:'live cricket 2025 india match highlights',
+    football:'football india ISL 2025 highlights',
+    kabaddi:'Pro Kabaddi League 2025 highlights matches',
+    hockey:'India hockey league 2025 highlights',
+    badminton:'India badminton 2025 highlights tournament',
+    tennis:'tennis 2025 grand slam highlights india',
+    wrestling:'India wrestling Olympics 2024 2025 highlights'
+  };
+  const grid=document.getElementById('sports-yt-grid');
+  grid.innerHTML='<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Loading…</div>';
+  try{ const v=await fetchYTResults(queries[cat]||'india sports 2025'); renderYTGrid(v,'sports-yt-grid'); }catch(e){ grid.innerHTML='<div class="empty">'+e.message+'</div>'; }
+}
+
+// ══════════════════════════════════════════
+// CURRENT AFFAIRS & FUEL PRICES
+// ══════════════════════════════════════════
+const AFFAIRS_DATA = [
+  {date:'Mar 20, 2025',title:'India launches 300th satellite from Sriharikota',body:'ISRO successfully places earth observation satellite EOS-09 in polar orbit.'},
+  {date:'Mar 19, 2025',title:'G20 Health Summit held in New Delhi',body:'140 nations sign Delhi Declaration on pandemic preparedness and health equity.'},
+  {date:'Mar 18, 2025',title:'PM Modi visits Northeast India; inaugurates hydropower projects',body:'6,000 MW Siang Upper Multipurpose Project inaugurated in Arunachal Pradesh.'},
+  {date:'Mar 17, 2025',title:'India overtakes Japan as 3rd largest economy by PPP',body:'IMF data confirms India crossed Japan with $14.6 trillion PPP GDP.'},
+  {date:'Mar 16, 2025',title:'Lok Sabha passes New Education Policy amendments',body:'NEP 2020 amendments formally enacted; vocational education made mandatory from Class 6.'},
+  {date:'Mar 15, 2025',title:'India-UAE bilateral trade crosses $100 billion milestone',body:'Record trade volume achieved 3 years ahead of 2030 CEPA target.'},
+  {date:'Mar 14, 2025',title:'RBI digital rupee pilot expanded to 26 cities',body:'E-Rupee CBDC pilot now operational in 26 cities with 2 million users.'},
+  {date:'Mar 13, 2025',title:'India\'s unemployment rate falls to 7.5% — 5-year low',body:'CMIE data shows employment generation at record high in manufacturing sector.'},
+];
+const FUEL_DATA = [
+  {ico:'⛽',label:'Petrol',val:'₹94.72',unit:'/litre · Pathankot',chg:'-0.20',pos:false},
+  {ico:'🚌',label:'Diesel',val:'₹87.62',unit:'/litre · Pathankot',chg:'0.00',pos:true},
+  {ico:'🔵',label:'CNG',val:'₹82.00',unit:'/kg · Punjab',chg:'+1.00',pos:true},
+  {ico:'🟡',label:'LPG Cylinder',val:'₹803.00',unit:'14.2kg · Domestic',chg:'-₹50',pos:false},
+];
+function loadAffairs(){
+  document.getElementById('affairs-grid').innerHTML = AFFAIRS_DATA.map(a=>`
+    <div class="ca-card" onclick="">
+      <div class="ca-date">📅 ${a.date}</div>
+      <div class="ca-title">${a.title}</div>
+      <div class="ca-body">${a.body}</div>
+    </div>`).join('');
+  document.getElementById('fuel-grid').innerHTML = FUEL_DATA.map(f=>`
+    <div class="price-card" style="padding:12px">
+      <span class="price-ico">${f.ico}</span>
+      <div class="price-label">${f.label}</div>
+      <div class="price-val" style="font-size:1.3rem">${f.val}</div>
+      <div class="price-unit">${f.unit}</div>
+      <div class="price-chg ${f.pos?'pos':'neg'}" style="font-size:.72rem">${f.chg}</div>
+    </div>`).join('');
+  document.getElementById('w-petrol').textContent = '₹94.72';
+  loadMetals();
+}
+
+// ══════════════════════════════════════════
+// SEARCH
+// ══════════════════════════════════════════
+function searchMode(m){
+  currentSearchMode=m;
+  document.querySelectorAll('#tab-search .itab').forEach(t=>t.classList.remove('on'));
+  event.target.classList.add('on');
+}
+async function globalSearch(){
+  const q=document.getElementById('global-search-inp').value.trim(); if(!q) return;
+  document.getElementById('main-search').value=q;
+  const el=document.getElementById('search-results-area');
+  el.innerHTML='<div class="loading"><div class="spinner"></div>Searching…</div>';
+  if(currentSearchMode==='youtube'||currentSearchMode==='all'){
+    try{
+      const v=await fetchYTResults(q);
+      const sr=document.getElementById('search-results-area');
+      sr.innerHTML=`<div class="sec-hdr" style="margin-bottom:12px"><div class="sec-title" style="font-size:1rem">▶️ YouTube Results for "${q}"</div></div><div class="yt-grid" id="search-yt-grid"></div>`;
+      renderYTGrid(v,'search-yt-grid');
+    }catch(e){ el.innerHTML='<div class="empty">'+e.message+'</div>'; }
+  }
+}
+function doSearch(){
+  const q=document.getElementById('main-search').value.trim(); if(!q) return;
+  showTab('search');
+  document.getElementById('global-search-inp').value=q;
+  globalSearch();
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+function refreshAll(){
+  fetchWeather();
+  loadStocks();
+  loadAllNews();
+  loadMetals();
+  loadAffairs();
+}
+
+window.addEventListener('load', ()=>{
+  // Load home data
+  loadAllNews();
+  fetchWeather('Pathankot');
+  loadStocks();
+  loadMetals();
+  loadAffairs();
+  loadPlaylist('bollywood');
+  
+  // Refresh intervals
+  setInterval(updateClock, 1000);
+  setInterval(()=>{ if(document.getElementById('tab-news').classList.contains('on')) loadAllNews(); }, 600000);
+  setInterval(()=>{ if(document.getElementById('tab-cricket').classList.contains('on')) renderCricketScores(); }, 120000);
+  setInterval(loadStocks, 300000);
+});
+</script>
+</body>
+</html>
